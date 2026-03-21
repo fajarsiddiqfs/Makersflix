@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Makersflix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--bg1:#111;--bg2:#181818;--bg3:#222;--bg4:#2a2a2a;
+  --bdr:rgba(255,255,255,0.07);--bdr2:rgba(255,255,255,0.14);
+  --txt:#fff;--mt:rgba(255,255,255,0.48);--mt2:rgba(255,255,255,0.26);
+  --nav:58px;--sb:68px;--sb-exp:230px;
+  --f:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--txt);font-family:var(--f);min-height:100vh;overflow-x:hidden}
+img{display:block;max-width:100%}
+button{font-family:var(--f)}
+
+/* ═══════════════════════════════
+   TOP NAVIGATION
+═══════════════════════════════ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:400;
+  height:var(--nav);
+  background:rgba(8,8,8,0.98);
+  border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;
+  padding:0 16px 0 calc(var(--sb) + 16px);
+  gap:10px;
+}
+/* Hamburger — mobile only */
+.ham{
+  display:none;
+  width:40px;height:40px;border-radius:8px;border:none;
+  background:none;cursor:pointer;color:var(--txt);
+  align-items:center;justify-content:center;flex-shrink:0;
+}
+.ham svg{width:22px;height:22px}
+
+/* Logo */
+.logo{
+  display:flex;align-items:center;
+  text-decoration:none;color:var(--txt);
+  font-size:17px;font-weight:800;letter-spacing:-.4px;
+  flex-shrink:0;
+}
+
+/* Desktop nav links */
+.nav-links{
+  display:flex;gap:2px;list-style:none;
+  margin-left:6px;
+}
+.nav-links a{
+  color:var(--mt);font-size:13px;font-weight:400;
+  text-decoration:none;padding:7px 13px;border-radius:7px;
+  transition:all .15s;white-space:nowrap;
+}
+.nav-links a:hover,.nav-links a.act{color:var(--txt);font-weight:500}
+
+/* Search */
+.nsrch{
+  flex:1;max-width:360px;margin-left:auto;
+  display:flex;align-items:center;gap:7px;
+  background:var(--bg2);border:1px solid var(--bdr2);
+  border-radius:8px;padding:0 12px;height:36px;
+  transition:border-color .15s;
+}
+.nsrch:focus-within{border-color:rgba(255,255,255,.35)}
+.nsrch svg{width:14px;height:14px;color:var(--mt);flex-shrink:0}
+.nsrch input{
+  background:none;border:none;outline:none;
+  color:var(--txt);font-family:var(--f);font-size:13px;width:100%;
+  min-width:0;
+}
+.nsrch input::placeholder{color:var(--mt2)}
+
+/* Nav action icons */
+.nav-acts{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.nic{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--bg2);border:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;color:var(--mt);transition:all .15s;
+}
+.nic:hover{background:var(--bg3);color:var(--txt);border-color:var(--bdr2)}
+.nic svg{width:16px;height:16px}
+.nav-av{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--bg3);border:1.5px solid var(--bdr2);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:12px;font-weight:700;color:var(--mt);
+  transition:border-color .15s;flex-shrink:0;
+}
+.nav-av:hover{border-color:rgba(255,255,255,.4);color:var(--txt)}
+
+/* ═══════════════════════════════
+   SIDEBAR (desktop: icon+hover-expand)
+   (mobile: slide-in drawer)
+═══════════════════════════════ */
+.sidebar{
+  position:fixed;top:0;left:0;bottom:0;z-index:350;
+  width:var(--sb);overflow:hidden;
+  background:rgba(8,8,8,0.98);border-right:1px solid var(--bdr);
+  display:flex;flex-direction:column;
+  padding:0;
+  transition:width 220ms cubic-bezier(0.4,0,0.2,1);
+}
+.sidebar:hover{width:var(--sb-exp)}
+/* Brand logo area in sidebar — top of sidebar like Instagram */
+.sb-brand{
+  display:flex;align-items:center;
+  height:var(--nav);
+  padding-left:calc((var(--sb) - 36px) / 2);
+  gap:14px;
+  flex-shrink:0;
+  overflow:hidden;
+  border-bottom:1px solid var(--bdr);
+  transition:padding-left 220ms cubic-bezier(0.4,0,0.2,1);
+}
+.sidebar:hover .sb-brand{padding-left:16px}
+.sb-brand-ico{
+  width:36px;height:36px;flex-shrink:0;
+  background:var(--bg2);border:1px solid var(--bdr2);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+}
+.sb-brand-ico svg{width:22px;height:22px}
+.sb-brand-name{
+  font-size:16px;font-weight:700;letter-spacing:-.3px;
+  color:var(--txt);white-space:nowrap;
+  opacity:0;
+  transition:opacity 160ms ease 60ms;
+}
+.sidebar:hover .sb-brand-name{opacity:1}
+.sidebar.mob-open .sb-brand-name{opacity:1!important}
+.sb-items-wrap{
+  flex:1;overflow-y:auto;overflow-x:hidden;
+  padding:8px 0;
+  scrollbar-width:none;
+}
+.sb-items-wrap::-webkit-scrollbar{display:none}
+/* overlay — mobile only */
+.sb-overlay{
+  display:none;position:fixed;inset:0;z-index:340;
+  background:rgba(0,0,0,.65);
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.sb-overlay.vis{opacity:1;pointer-events:auto}
+
+.sbi{
+  display:flex;align-items:center;height:52px;
+  padding:0;
+  /* collapsed: icon centered in 68px; expanded: icon+text left-aligned */
+  padding-left:calc((var(--sb) - 28px) / 2);
+  gap:16px;
+  cursor:pointer;color:var(--txt);
+  border:none;background:none;
+  box-sizing:border-box;
+  width:calc(100% - 16px);margin:1px 8px;
+  text-align:left;white-space:nowrap;overflow:hidden;
+  transition:background .15s, padding-left 220ms cubic-bezier(0.4,0,0.2,1);
+  border-radius:10px;
+}
+.sbi:hover{background:rgba(255,255,255,0.09)}
+.sidebar:hover .sbi{padding-left:16px}
+.sbi.act{font-weight:700}
+.sbi.act .sbi-lb{font-weight:700}
+.sbi-ic{
+  width:28px;height:28px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.sbi-ic svg{width:26px;height:26px;stroke-width:1.6}
+.sbi-lb{
+  font-size:15px;font-weight:400;color:var(--txt);
+  opacity:0;
+  transition:opacity 160ms ease 60ms;
+  pointer-events:none;flex:1;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.sidebar:hover .sbi-lb{opacity:1}
+.sidebar.mob-open .sbi-lb{opacity:1!important}
+.sb-div{height:1px;background:var(--bdr);margin:6px 14px}
+.sb-bot{margin-top:auto;padding-bottom:12px}
+.sb-cof{
+  display:flex;align-items:center;height:52px;
+  padding-left:calc((var(--sb) - 28px) / 2);
+  gap:16px;
+  cursor:pointer;color:var(--txt);border:none;background:none;
+  border-radius:10px;margin:1px 8px;width:calc(100% - 16px);
+  white-space:nowrap;overflow:hidden;
+  box-sizing:border-box;
+  text-decoration:none;
+  transition:background .15s, padding-left 220ms cubic-bezier(0.4,0,0.2,1);
+}
+.sb-cof:hover{background:rgba(255,255,255,0.09)}
+.sidebar:hover .sb-cof{padding-left:16px}
+.sb-cof .sbi-ic svg{width:26px;height:26px}
+
+/* ═══════════════════════════════
+   MAIN CONTENT
+═══════════════════════════════ */
+.main{
+  margin-top:var(--nav);
+  margin-left:var(--sb);
+  min-height:calc(100vh - var(--nav));
+  transition:margin-left .2s;
+}
+.pg{display:none}.pg.on{display:block}
+
+/* ═══════════════════════════════
+   HERO BANNER
+═══════════════════════════════ */
+.hero{
+  position:relative;height:400px;overflow:hidden;
+  background:#0d0d0d;display:flex;align-items:flex-end;
+}
+.hero-img{
+  position:absolute;right:0;top:0;width:60%;height:100%;
+  background:var(--bg2);overflow:hidden;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.45}
+.hero-fade{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,#0a0a0a 35%,rgba(10,10,10,.75) 60%,transparent);
+  z-index:1;
+}
+.hero-bot{
+  position:absolute;bottom:0;left:0;right:0;height:100px;
+  background:linear-gradient(to top,#0a0a0a,transparent);z-index:2;
+}
+.hero-cnt{
+  position:relative;z-index:3;
+  padding:0 40px 40px;max-width:520px;
+}
+.hero-lbl{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--mt);margin-bottom:9px}
+.hero-ttl{font-size:clamp(26px,3.8vw,46px);font-weight:800;line-height:1.07;letter-spacing:-1.2px;margin-bottom:11px}
+.hero-dsc{font-size:13px;color:var(--mt);line-height:1.65;margin-bottom:20px;max-width:380px}
+.hero-btns{display:flex;gap:9px;flex-wrap:wrap}
+.bw{display:flex;align-items:center;gap:7px;background:var(--txt);color:#000;border:none;border-radius:7px;padding:10px 20px;font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer;transition:opacity .15s;white-space:nowrap}
+.bw:hover{opacity:.87}
+.bw svg{width:13px;height:13px;flex-shrink:0}
+.bg_{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);color:var(--txt);border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:10px 20px;font-family:var(--f);font-size:13px;font-weight:500;cursor:pointer;transition:background .15s;white-space:nowrap}
+.bg_:hover{background:rgba(255,255,255,.16)}
+.bg_ svg{width:13px;height:13px;flex-shrink:0}
+
+/* ═══════════════════════════════
+   CATEGORY PILLS
+═══════════════════════════════ */
+.cats{
+  display:flex;gap:7px;flex-wrap:nowrap;
+  padding:18px 20px 2px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.cats::-webkit-scrollbar{display:none}
+.cat{
+  background:none;border:1px solid var(--bdr2);border-radius:100px;
+  padding:7px 16px;font-size:12px;font-weight:500;color:var(--mt);
+  cursor:pointer;font-family:var(--f);transition:all .15s;
+  white-space:nowrap;flex-shrink:0;
+}
+.cat:hover{border-color:rgba(255,255,255,.35);color:var(--txt)}
+.cat.on{background:var(--txt);border-color:var(--txt);color:#000}
+
+/* ═══════════════════════════════
+   SECTIONS & GRIDS
+═══════════════════════════════ */
+.sec{padding:20px 20px 4px}
+.sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.sec-t{font-size:14px;font-weight:600;letter-spacing:-.1px}
+.sec-m{font-size:12px;color:var(--mt);font-weight:500;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:3px;transition:color .15s;white-space:nowrap}
+.sec-m:hover{color:var(--txt)}
+.sec-m svg{width:11px;height:11px}
+
+/* Video grid — responsive */
+.vg{
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+}
+.vg-3{grid-template-columns:repeat(3,1fr);gap:20px}
+.vg-4{grid-template-columns:repeat(4,1fr)}
+
+.vc{
+  background:var(--bg1);border-radius:12px;overflow:hidden;
+  cursor:pointer;border:1px solid var(--bdr);
+  transition:transform .22s,border-color .22s,box-shadow .22s;
+}
+.vc:hover{transform:translateY(-4px);border-color:var(--bdr2);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.vth{aspect-ratio:16/9;background:var(--bg2);position:relative;overflow:hidden}
+.vth img{width:100%;height:100%;object-fit:cover}
+.vpo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.15);opacity:0;transition:opacity .15s}
+.vc:hover .vpo{opacity:1}
+.vpb{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
+.vpb svg{width:15px;height:15px;color:#000;margin-left:2px}
+.vbdg{position:absolute;top:9px;left:9px;background:rgba(0,0,0,.82);border:1px solid rgba(255,255,255,.15);color:var(--txt);font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;letter-spacing:.5px}
+.vdr{position:absolute;bottom:8px;right:9px;background:rgba(0,0,0,.82);color:var(--txt);font-size:11px;font-weight:600;padding:3px 7px;border-radius:4px}
+.vi{padding:12px 14px 14px}
+.vtt{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vm{font-size:12px;color:var(--mt2);display:flex;gap:6px;align-items:center}
+.vmd{width:2px;height:2px;border-radius:50%;background:var(--mt2);flex-shrink:0}
+
+/* ═══════════════════════════════
+   PAGE HEADER
+═══════════════════════════════ */
+.phd{padding:32px 20px 20px}
+.plbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mt2);margin-bottom:8px}
+.pttl{font-size:clamp(26px,4vw,44px);font-weight:800;letter-spacing:-1.5px;line-height:1.05;margin-bottom:10px}
+.pdsc{font-size:13px;color:var(--mt);font-weight:400;line-height:1.65;max-width:500px}
+
+/* ═══════════════════════════════
+   TWO-COLUMN LAYOUT
+═══════════════════════════════ */
+.twocol{display:grid;grid-template-columns:1fr 1fr}
+.tc-l{padding:52px 40px;display:flex;flex-direction:column;justify-content:center}
+.tc-r{background:var(--bg2);border-left:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;padding:40px;min-height:420px}
+
+/* Stat grid */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:22px;max-width:200px}
+.stat{background:var(--bg3);border:1px solid var(--bdr);border-radius:9px;padding:13px 11px;text-align:center}
+.sv{font-size:17px;font-weight:800}
+.ss{font-size:10px;color:var(--mt2);margin-top:2px}
+
+/* ═══════════════════════════════
+   MAKERS GRID
+═══════════════════════════════ */
+.mkg{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;padding:16px 20px 40px}
+.mkc{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;padding:12px 4px;border-radius:10px;border:1px solid transparent;transition:all .15s}
+.mkc:hover{background:var(--bg2);border-color:var(--bdr)}
+.mkav{width:56px;height:56px;border-radius:50%;background:var(--bg2);border:1.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700}
+.mknm{font-size:10px;font-weight:500;text-align:center;color:var(--mt);line-height:1.3}
+
+/* ═══════════════════════════════
+   PROFILE
+═══════════════════════════════ */
+.prfh{display:flex;align-items:flex-start;gap:20px;padding:36px 20px 22px;flex-wrap:wrap}
+.prav{width:88px;height:88px;border-radius:50%;background:var(--bg3);border:2px solid var(--bdr2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.prif{flex:1;min-width:200px}
+.prnm{font-size:19px;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:5px;flex-wrap:wrap}
+.prck{width:17px;height:17px;background:var(--txt);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prck svg{width:10px;height:10px;color:#000}
+.prbio{font-size:13px;color:var(--mt);line-height:1.6;margin-bottom:7px;font-weight:300}
+.prln{font-size:12px;color:var(--mt);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .15s}
+.prln:hover{color:var(--txt)}
+.prln svg{width:12px;height:12px;flex-shrink:0}
+.supbtn{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--bdr2);border-radius:8px;padding:9px 17px;color:var(--txt);font-family:var(--f);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.supbtn:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.28)}
+.supbtn svg{width:14px;height:14px}
+
+/* ═══════════════════════════════
+   METRICS (Open page)
+═══════════════════════════════ */
+.oitro{padding:32px 20px;max-width:700px;margin:0 auto;text-align:center}
+.oitro p{font-size:15px;color:var(--mt);line-height:1.75;font-weight:300}
+.metg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 20px 40px}
+.metb{background:var(--bg2);border:1px solid var(--bdr);border-radius:11px;padding:24px 16px;min-height:108px;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end}
+.metl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mt2);position:absolute;top:14px;left:16px}
+.metv{font-size:28px;font-weight:800;line-height:1}
+.mets{font-size:11px;color:var(--mt2);margin-top:4px}
+
+/* ═══════════════════════════════
+   LIVESTREAM
+═══════════════════════════════ */
+.livew{padding:40px 20px;text-align:center}
+.llbl{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--mt2);margin-bottom:10px}
+.lttl{font-size:clamp(20px,3.5vw,38px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:26px}
+.lplyr{max-width:820px;margin:0 auto;aspect-ratio:16/9;background:var(--bg2);border-radius:12px;overflow:hidden;border:1px solid var(--bdr2);position:relative;display:flex;align-items:center;justify-content:center}
+.lplyr iframe{width:100%;height:100%;border:none}
+.lph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.lpbtn{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;border:none}
+.lpbtn:hover{background:var(--txt)}
+.lpbtn svg{width:22px;height:22px;color:#000;margin-left:3px}
+.lcap{font-size:13px;font-style:italic;color:var(--mt);margin-top:12px}
+
+/* ═══════════════════════════════
+   MODAL
+═══════════════════════════════ */
+.mbg{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:16px}
+.mbg.on{display:flex}
+.modal{background:var(--bg1);border-radius:12px;overflow:hidden;width:100%;max-width:820px;border:1px solid var(--bdr2);animation:miin .22s ease}
+@keyframes miin{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
+.mpl{aspect-ratio:16/9;background:#000;position:relative}
+.mpl iframe{width:100%;height:100%;border:none}
+.mcls{position:absolute;top:10px;right:10px;z-index:3;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.75);border:1px solid var(--bdr2);color:var(--txt);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;font-family:var(--f)}
+.mcls:hover{background:rgba(255,255,255,.15)}
+.mcls svg{width:11px;height:11px}
+.mbd{padding:16px 20px 18px}
+.mtt{font-size:15px;font-weight:600;margin-bottom:4px}
+.mmt{font-size:12px;color:var(--mt2);display:flex;gap:8px;flex-wrap:wrap}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+.ft{padding:20px;border-top:1px solid var(--bdr);font-size:12px;color:var(--mt2);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.ft a{color:var(--mt2);text-decoration:none;transition:color .15s}.ft a:hover{color:var(--txt)}
+
+/* ═══════════════════════════════
+   MOBILE BOTTOM NAV
+═══════════════════════════════ */
+.bnav{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:380;
+  background:rgba(8,8,8,.98);
+  border-top:1px solid var(--bdr);
+  padding:6px 0 calc(6px + env(safe-area-inset-bottom));
+  justify-content:space-around;
+}
+.bb{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  cursor:pointer;color:var(--mt);background:none;border:none;
+  padding:4px 8px;font-family:var(--f);min-width:48px;
+  transition:color .15s;
+}
+.bb.on,.bb:hover{color:var(--txt)}
+.bb svg{width:22px;height:22px}
+.bb span{font-size:9px;font-weight:500;letter-spacing:.3px;text-transform:uppercase}
+
+/* ═══════════════════════════════
+   SHOP ITEMS
+═══════════════════════════════ */
+.shitem{background:var(--bg3);border:1px solid var(--bdr);border-radius:9px;padding:14px 15px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .15s}
+.shitem:hover{border-color:var(--bdr2)}
+.shiico{width:42px;height:42px;background:var(--bg4);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.shiico svg{width:20px;height:20px;color:var(--txt)}
+
+/* ═══════════════════════════════
+   DESKTOP: 900px+
+═══════════════════════════════ */
+@media(min-width:900px){
+  .ham{display:none!important}
+  .bnav{display:none!important}
+  .sidebar{display:flex}
+}
+
+/* ═══════════════════════════════
+   TABLET / MOBILE: <900px
+═══════════════════════════════ */
+@media(max-width:899px){
+  .sidebar{
+    transform:translateX(-100%);
+    width:var(--sb-exp)!important;
+    transition:transform .22s ease;
+    top:0!important;
+  }
+  .sidebar.mob-open{transform:translateX(0)}
+  .sidebar.mob-open .sbi-lb{opacity:1!important}
+  .sidebar.mob-open .sbi{padding-left:16px!important}
+  .sidebar.mob-open .sb-brand{padding-left:16px!important}
+  .sidebar.mob-open .sb-cof{padding-left:16px!important}
+  .sb-overlay{display:block}
+  .ham{display:flex}
+  .bnav{display:flex}
+  .main{margin-left:0;margin-bottom:72px}
+  .topnav{padding:0 12px;gap:8px}
+  .nav-links{display:none}
+  .nsrch{max-width:none;flex:1}
+  .nav-acts .nic{display:none}
+  .hero{height:auto;min-height:260px}
+  .hero-img{display:none}
+  .hero-fade{background:rgba(10,10,10,.65)}
+  .hero-cnt{padding:24px 20px 32px;max-width:100%}
+  .hero-ttl{font-size:clamp(22px,6vw,32px)}
+  .vg-4{grid-template-columns:repeat(2,1fr)}
+  .vg-3{grid-template-columns:repeat(2,1fr)!important}
+  .twocol{grid-template-columns:1fr}
+  .tc-r{border-left:none;border-top:1px solid var(--bdr);min-height:280px}
+  .tc-l{padding:32px 20px}
+  .mkg{grid-template-columns:repeat(4,1fr)}
+  .mkav{width:50px;height:50px;font-size:14px}
+  .metg{grid-template-columns:repeat(2,1fr)}
+  .prfh{padding:24px 16px 18px}
+}
+
+@media(max-width:600px){
+  .mkg{grid-template-columns:repeat(3,1fr)}
+  .metg{grid-template-columns:repeat(2,1fr)}
+  .vg{grid-template-columns:repeat(2,1fr)}
+  .vg-3{grid-template-columns:repeat(1,1fr)!important;gap:14px}
+  .hero-ttl{font-size:22px}
+  .hero-dsc{display:none}
+  .stats{max-width:180px}
+}
+@media(max-width:380px){
+  .mkg{grid-template-columns:repeat(3,1fr)}
+  .mkav{width:44px;height:44px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP NAV ═══ -->
+<nav class="topnav nav">
+  <!-- Hamburger (mobile) -->
+  <button class="ham" id="ham" onclick="toggleSb()" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+
+  <!-- Logo — text only in top nav -->
+  <a class="logo" href="#" onclick="go('home');return false">Makersflix</a>
+
+  <!-- Desktop nav links -->
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#" onclick="go('home');return false" id="nl-home" class="act">Originals</a></li>
+    <li><a href="#" onclick="go('makers');return false" id="nl-makers">Makers</a></li>
+    <li><a href="#" onclick="go('community');return false" id="nl-community">Community</a></li>
+    <li><a href="#" onclick="go('launch');return false" id="nl-launch">Launch</a></li>
+    <li><a href="#" onclick="go('tutorials');return false" id="nl-tutorials">Tutorials</a></li>
+  </ul>
+
+  <!-- Search -->
+  <div class="nsrch">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" placeholder="Search videos, makers…" oninput="dosrch(this.value)" id="srchi">
+  </div>
+
+  <!-- Nav actions -->
+  <div class="nav-acts">
+    <div class="nic" title="Upload">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
+    </div>
+    <div class="nic" title="Notifications">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+    </div>
+    <div class="nav-av" onclick="go('profile')">FS</div>
+  </div>
+</nav>
+
+<!-- ═══ SIDEBAR OVERLAY (mobile tap-to-close) ═══ -->
+<div class="sb-overlay" id="sb-ov" onclick="closeSb()"></div>
+
+<!-- ═══ SIDEBAR ═══ -->
+<div class="sidebar" id="sidebar">
+  <!-- Brand logo top of sidebar -->
+  <div class="sb-brand" onclick="go('home');closeSb();" style="cursor:pointer">
+    <div class="sb-brand-ico">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="13" rx="2"/>
+        <path d="M2 8h20"/>
+        <path d="M7 5.5l2.5 3L7 12"/>
+        <rect x="12" y="8.5" width="6" height="1.2" rx=".6" fill="currentColor" stroke="none" opacity=".5"/>
+        <rect x="12" y="10.5" width="4" height="1" rx=".5" fill="currentColor" stroke="none" opacity=".3"/>
+        <path d="M9 21h6M12 16v5" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <span class="sb-brand-name">Makersflix</span>
+  </div>
+  <div class="sb-items-wrap">
+  <button class="sbi act" id="sb-home" onclick="go('home')">
+    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg></span>
+    <span class="sbi-lb">Originals</span>
+  </button>
+  <button class="sbi" id="sb-launch" onclick="go('launch')">
+    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
+    <span class="sbi-lb">Launch Videos</span>
+  </button>
+  <button class="sbi" id="sb-community" onclick="go('community')">
+    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+    <span class="sbi-lb">Community</span>
+  </button>
+  <button class="sbi" id="sb-tutorials" onclick="go('tutorials')">
+    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></span>
+    <span class="sbi-lb">Tutorials</span>
+  </button>
+  <button class="sbi" id="sb-shop" onclick="go('shop')">
+    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg></span>
+    <span class="sbi-lb">Shop</span>
+  </button>
+  <div class="sb-div"></div>
+  <button class="sbi" id="sb-open" onclick="go('open')">
+    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></span>
+    <span class="sbi-lb">Open</span>
+  </button>
+  <button class="sbi" id="sb-livestream" onclick="go('livestream')">
+    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49m-8.48-.01a6 6 0 010-8.49m11.31-2.82a10 10 0 010 14.14m-14.14 0a10 10 0 010-14.14"/></svg></span>
+    <span class="sbi-lb">Livestream</span>
+  </button>
+  <button class="sbi" id="sb-makers" onclick="go('makers')">
+    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+    <span class="sbi-lb">Makers</span>
+  </button>
+
+  </div><!-- /sb-items-wrap -->
+  <!-- Bottom: Buy Me a Coffee -->
+  <div class="sb-bot">
+    <div class="sb-div"></div>
+    <a class="sb-cof" href="https://buymeacoffee.com/makersflix" target="_blank" rel="noopener">
+      <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+      <span class="sbi-lb">Support Us</span>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<div class="main">
+
+<!-- ── HOME ── -->
+<div class="pg on" id="pg-home">
+  <div class="hero">
+    <div class="hero-img"><img src="https://img.youtube.com/vi/ZoqgAy3h4OM/maxresdefault.jpg" alt=""></div>
+    <div class="hero-fade"></div><div class="hero-bot"></div>
+    <div class="hero-cnt">
+      <div class="hero-lbl">Originals</div>
+      <div class="hero-ttl">#InRealLife</div>
+      <div class="hero-dsc">Meetups &amp; experiences with entrepreneurs, makers, founders &amp; digital nomads from around the world.</div>
+      <div class="hero-btns">
+        <button class="bw" onclick="ov('ZoqgAy3h4OM','#InRealLife','Makersflix Originals','142k views · 18:24')"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch Now</button>
+        <button class="bg_"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>My List</button>
+      </div>
+    </div>
+  </div>
+  <div class="cats" id="hcats">
+    <button class="cat on" onclick="hcat(this,'all')">All</button>
+    <button class="cat" onclick="hcat(this,'indiehacker')">Indiehacker</button>
+    <button class="cat" onclick="hcat(this,'saas')">SaaS</button>
+    <button class="cat" onclick="hcat(this,'startup')">Startup</button>
+    <button class="cat" onclick="hcat(this,'productivity')">Productivity</button>
+    <button class="cat" onclick="hcat(this,'maker')">Maker Story</button>
+  </div>
+  <div class="sec"><div class="sec-hd"><span class="sec-t">Trending Now</span><a class="sec-m" href="#">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></div><div class="vg vg-3" id="g1"></div></div>
+  <div class="sec"><div class="sec-hd"><span class="sec-t">Startup Journeys</span><a class="sec-m" href="#">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></div><div class="vg vg-3" id="g2"></div></div>
+  <div class="sec"><div class="sec-hd"><span class="sec-t">Indiehacker Wins</span><a class="sec-m" href="#">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></div><div class="vg vg-3" id="g3"></div></div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+</div>
+
+<!-- ── TUTORIALS ── -->
+<div class="pg" id="pg-tutorials">
+  <div class="phd"><div class="plbl">Tutorials</div><div class="pttl">Let's learn to make,<br>Launch Videos, Vlogs<br>or Produce your next<br>big thing.</div></div>
+  <div class="cats" id="tcats"><button class="cat on" onclick="gcat(this,'tcats','gt','all')">All</button><button class="cat" onclick="gcat(this,'tcats','gt','video')">Video Making</button><button class="cat" onclick="gcat(this,'tcats','gt','launch')">Launch</button><button class="cat" onclick="gcat(this,'tcats','gt','tools')">Tools</button></div>
+  <div class="sec"><div class="vg" id="gt"></div></div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+<!-- ── LIVESTREAM ── -->
+<div class="pg" id="pg-livestream">
+  <div class="livew">
+    <div class="llbl">Livestream</div>
+    <div class="lttl">Tune in live with us in<br>another stream.</div>
+    <div class="lplyr" id="lp">
+      <div class="lph" id="lph">
+        <button class="lpbtn" onclick="startlive()"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+        <span style="font-size:13px;color:var(--mt)">Click to watch live</span>
+      </div>
+    </div>
+    <div class="lcap">In case you missed it — we got it recorded.</div>
+    <div style="max-width:860px;margin:32px auto 0;text-align:left"><div class="sec-hd" style="margin-bottom:12px"><span class="sec-t">Past Streams</span></div><div class="vg" id="gl"></div></div>
+  </div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+<!-- ── COMMUNITY ── -->
+<div class="pg" id="pg-community">
+  <div class="twocol">
+    <div class="tc-l">
+      <div class="plbl">Community</div>
+      <div class="pttl">Join a community<br>1000+ video makers,<br>producers &amp; editors.</div>
+      <div class="pdsc" style="margin-top:12px">We use Telegram as a platform for community discussions. It's FREE to join, so respect the space or your actions will be responsible.</div>
+      <div style="display:flex;gap:9px;margin-top:20px;flex-wrap:wrap">
+        <button class="bw" onclick="window.open('https://t.me/makersflix','_blank')">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="color:#000"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Join Telegram
+        </button>
+        <button class="bg_">Learn More</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="sv">1k+</div><div class="ss">Members</div></div>
+        <div class="stat"><div class="sv">50+</div><div class="ss">Countries</div></div>
+        <div class="stat"><div class="sv">Free</div><div class="ss">To Join</div></div>
+        <div class="stat"><div class="sv">24/7</div><div class="ss">Active</div></div>
+      </div>
+    </div>
+    <div class="tc-r">
+      <div style="text-align:center;max-width:240px">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin:0 auto 14px">
+          <rect width="64" height="64" rx="12" fill="var(--bg3)"/>
+          <path d="M32 12C19.85 12 10 21.85 10 34s9.85 22 22 22 22-9.85 22-22S44.15 12 32 12zm10.82 14.95l-3.67 17.27c-.28 1.2-1.01 1.47-2.02.83l-5.5-4.04-2.66 2.56c-.28.28-.55.46-1.19.46l.46-6.15L39.39 27.8c.46-.46-.1-.73-.73-.18L20.75 37l-5.41-1.65c-1.19-.37-1.19-1.19.28-1.74l21.21-8.17c.99-.37 1.92.28 1.56 1.47z" fill="var(--mt2)"/>
+        </svg>
+        <div style="font-size:15px;font-weight:700;margin-bottom:6px">Makersflix Telegram</div>
+        <div style="font-size:12px;color:var(--mt);line-height:1.6">Real conversations between makers, builders and founders. Join free.</div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+<!-- ── MAKERS ── -->
+<div class="pg" id="pg-makers">
+  <div class="phd" style="text-align:center;padding-bottom:4px"><div class="pttl" style="font-size:clamp(28px,5vw,40px)">Makers</div></div>
+  <div class="mkg" id="gmk"></div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+<!-- ── LAUNCH ── -->
+<div class="pg" id="pg-launch">
+  <div class="phd">
+    <div class="plbl">Commercial</div>
+    <div class="pttl">#LaunchLikeAPro</div>
+    <div class="pdsc">Launching your next product? A collection of all launch, promo &amp; ads videos — curated for you.</div>
+    <div style="display:flex;gap:9px;margin-top:16px;flex-wrap:wrap">
+      <button class="bg_"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add My Own Videos</button>
+      <button class="bw" style="color:#000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;color:#000"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Make For Me A Video</button>
+    </div>
+  </div>
+  <div class="cats" id="lcats"><button class="cat on" onclick="gcat(this,'lcats','glch','all')">All</button><button class="cat" onclick="gcat(this,'lcats','glch','promo')">Promo</button><button class="cat" onclick="gcat(this,'lcats','glch','ads')">Ads</button><button class="cat" onclick="gcat(this,'lcats','glch','productlaunch')">Product Launch</button></div>
+  <div class="sec"><div class="vg" id="glch"></div></div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+<!-- ── OPEN ── -->
+<div class="pg" id="pg-open">
+  <div class="oitro">
+    <div class="plbl" style="display:block;text-align:center">Open</div>
+    <div class="pttl" style="text-align:center;font-size:clamp(24px,4vw,34px);margin-bottom:14px">Makersflix is Open.</div>
+    <p>Makersflix is an Open Startup. It operates fully transparent and shares its metrics, including revenue, users and traffic. Revenue is verified by Stripe, Indiehackers, traffic by Google Analytics, uptime by Uptimerobot.</p>
+  </div>
+  <div class="metg">
+    <div class="metb"><div class="metl">Monthly Revenue</div><div class="metv">$0</div><div class="mets">Verified by Stripe</div></div>
+    <div class="metb"><div class="metl">Monthly Visitors</div><div class="metv">—</div><div class="mets">Google Analytics</div></div>
+    <div class="metb"><div class="metl">Uptime</div><div class="metv">99.9%</div><div class="mets">Uptimerobot</div></div>
+    <div class="metb"><div class="metl">Community</div><div class="metv">1k+</div><div class="mets">Members</div></div>
+    <div class="metb"><div class="metl">Videos</div><div class="metv">100+</div><div class="mets">Curated</div></div>
+    <div class="metb"><div class="metl">Makers</div><div class="metv">42+</div><div class="mets">Active Creators</div></div>
+    <div class="metb"><div class="metl">Countries</div><div class="metv">50+</div><div class="mets">Global</div></div>
+    <div class="metb"><div class="metl">Indiehackers</div><div class="metv">Listed</div><div class="mets">Verified</div></div>
+    <div class="metb"><div class="metl">Founded</div><div class="metv">2019</div><div class="mets">MakersFlix.com</div></div>
+  </div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+<!-- ── SHOP ── -->
+<div class="pg" id="pg-shop">
+  <div class="twocol">
+    <div class="tc-l">
+      <div class="plbl">Shop</div>
+      <div class="pttl">You got the SWAG.<br>Be proud of your<br>f*cking sh*t.</div>
+      <div class="pdsc" style="margin-top:12px">Don't be serious, it's just another store selling the coolest things for creators, makers, hackers, digital nomads, entrepreneurs, founders. Whatever! Teespring is handling it.</div>
+      <div style="display:flex;gap:9px;margin-top:18px;flex-wrap:wrap">
+        <button class="bw" onclick="window.open('https://teespring.com','_blank')">Shop Now</button>
+        <button class="bg_">View All</button>
+      </div>
+    </div>
+    <div class="tc-r">
+      <div style="width:100%;max-width:280px;display:flex;flex-direction:column;gap:9px">
+        <div class="shitem">
+          <div class="shiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+          <div><div style="font-size:13px;font-weight:600">Caps &amp; Hats</div><div style="font-size:11px;color:var(--mt2);margin-top:2px">From $24</div></div>
+        </div>
+        <div class="shitem">
+          <div class="shiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.86H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.86l.58-3.57a2 2 0 00-1.34-2.23z"/></svg></div>
+          <div><div style="font-size:13px;font-weight:600">T-Shirts</div><div style="font-size:11px;color:var(--mt2);margin-top:2px">From $29</div></div>
+        </div>
+        <div class="shitem">
+          <div class="shiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+          <div><div style="font-size:13px;font-weight:600">Mugs &amp; Accessories</div><div style="font-size:11px;color:var(--mt2);margin-top:2px">From $18</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+<!-- ── PROFILE ── -->
+<div class="pg" id="pg-profile">
+  <div class="prfh">
+    <div class="prav" id="prav">FS</div>
+    <div class="prif">
+      <div class="prnm"><span id="prnm">Fajar Siddiq</span><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      <div class="prbio" id="prbio">Owner &amp; Founder at @euphoryadesign + @dementclothing + @ilmproductionsg + Professional Yo-Yo Player + Digital Nomad + Maker + Designer &amp; Developer</div>
+      <a class="prln" href="https://fajarsiddiq.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>www.fajarsiddiq.com</a>
+    </div>
+    <button class="supbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Support</button>
+  </div>
+  <div class="sec"><div class="vg vg-4" id="gprf"></div></div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+<!-- ── SEARCH RESULTS ── -->
+<div class="pg" id="pg-search">
+  <div class="phd"><div class="plbl">Search</div><div class="pttl" id="sttl">Results</div></div>
+  <div class="sec"><div class="vg" id="gsrch"></div></div>
+  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
+</div>
+
+</div><!-- /main -->
+
+<!-- ═══ MOBILE BOTTOM NAV ═══ -->
+<nav class="bnav" id="bnav">
+  <button class="bb on" id="bn-home" onclick="go('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="bb" id="bn-tutorials" onclick="go('tutorials')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    <span>Learn</span>
+  </button>
+  <button class="bb" id="bn-launch" onclick="go('launch')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+    <span>Launch</span>
+  </button>
+  <button class="bb" id="bn-makers" onclick="go('makers')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+    <span>Makers</span>
+  </button>
+  <button class="bb" id="bn-more" onclick="toggleSb()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg>
+    <span>More</span>
+  </button>
+</nav>
+
+<!-- ═══ VIDEO MODAL ═══ -->
+<div class="mbg" id="vm" onclick="if(event.target===this)cv()">
+  <div class="modal">
+    <div class="mpl">
+      <button class="mcls" onclick="cv()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <iframe id="vf" src="" allowfullscreen allow="autoplay;encrypted-media"></iframe>
+    </div>
+    <div class="mbd">
+      <div class="mtt" id="vt"></div>
+      <div class="mmt" id="vm2"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const VD=[
+  {id:'ZoqgAy3h4OM',t:'How I Built a $10k/mo SaaS Alone',c:'saas',d:'18:24',v:'142k',cr:'Pieter Levels',b:'TRENDING'},
+  {id:'1W1bZAkFgYw',t:'From Zero to $1M ARR — The Real Story',c:'startup',d:'24:11',v:'89k',cr:'KP Talks',b:''},
+  {id:'H5wLgkGwBM8',t:'How Notion Grew to 20M Users',c:'saas',d:'15:30',v:'201k',cr:'Lenny Rachitsky',b:'HOT'},
+  {id:'PKy2lYPRgqc',t:'Indie Hacker Hits $50k MRR in 12 Months',c:'indiehacker',d:'31:05',v:'67k',cr:'Arvid Kahl',b:''},
+  {id:'ph2IU-UGqeM',t:'Build in Public — Why Transparency Wins',c:'maker',d:'12:44',v:'43k',cr:'Makersflix',b:'NEW'},
+  {id:'lT1PbDRjCgM',t:'Micro SaaS: The Playbook Nobody Tells You',c:'saas',d:'22:18',v:'95k',cr:'Tyler Tringas',b:''},
+  {id:'rHiHeaEl5KA',t:'I Made $100k Selling Digital Products',c:'indiehacker',d:'19:55',v:'112k',cr:'Pat Walls',b:''},
+  {id:'Hv-JkuzXesM',t:'Morning Routine of a $5M Founder',c:'productivity',d:'08:30',v:'78k',cr:'Ali Abdaal',b:''},
+  {id:'8xoECRMDKc8',t:'The Lean Startup — Full Breakdown',c:'startup',d:'28:40',v:'156k',cr:'Eric Ries',b:''},
+  {id:'sQdUcHnmj-E',t:'How to Get Your First 100 Customers',c:'startup',d:'17:22',v:'92k',cr:'YC Startup School',b:''},
+  {id:'_3BEf5O8cOE',t:'How to Make a Product Launch Video',c:'video',d:'14:15',v:'38k',cr:'Video Wizards',b:'TUTORIAL'},
+  {id:'Rku_GDz8fAk',t:'Notion Setup for Founders — Full Guide',c:'tools',d:'26:00',v:'51k',cr:'Thomas Frank',b:'TUTORIAL'},
+  {id:'T4lnkqhEJOU',t:'Build a Landing Page That Converts',c:'launch',d:'18:50',v:'44k',cr:'Conversion Lab',b:'TUTORIAL'},
+  {id:'lCRLbMQIGHI',t:'YouTube SEO for Makers & Builders',c:'video',d:'21:33',v:'29k',cr:'Makersflix',b:'TUTORIAL'},
+  {id:'dIYoMiuHExw',t:'Product Hunt Launch — Step by Step',c:'promo',d:'16:44',v:'67k',cr:'Ryan Hoover',b:''},
+  {id:'VczHGMEBZ4M',t:'1000 Upvotes on Product Hunt',c:'productlaunch',d:'11:22',v:'48k',cr:'Makers Mag',b:'HOT'},
+  {id:'mjpMtHGMUbA',t:'Perfect App Store Screenshots',c:'promo',d:'09:15',v:'33k',cr:'Startup Design',b:''},
+  {id:'TmwKV01vlq4',t:'Email Marketing for Launches',c:'ads',d:'23:44',v:'41k',cr:'ConvertKit',b:''},
+  {id:'Mx1dwvkXm4w',t:'Live: Building in Public — Week 12',c:'live',d:'1:24:33',v:'8.2k',cr:'Makersflix Live',b:'RECORDED'},
+  {id:'n4APJZ01c8A',t:'Live AMA: Newsletter to 50k Subs',c:'live',d:'58:12',v:'5.9k',cr:'Makersflix Live',b:'RECORDED'},
+];
+const MK=[
+  {i:'FS',n:'Fajar Siddiq'},{i:'PL',n:'Pieter Levels'},{i:'AK',n:'Arvid Kahl'},
+  {i:'PW',n:'Pat Walls'},{i:'KP',n:'KP'},{i:'TR',n:'Tyler Tringas'},
+  {i:'LR',n:'Lenny R.'},{i:'AA',n:'Ali Abdaal'},{i:'RH',n:'Ryan Hoover'},
+  {i:'TF',n:'Thomas Frank'},{i:'MF',n:'Mubs'},{i:'JK',n:'Justin Jackson'},
+  {i:'CK',n:'Courtland'},{i:'BD',n:'Ben Tossell'},{i:'SL',n:'Sahil Lavingia'},
+  {i:'HT',n:'Harry Dry'},{i:'DH',n:'DHH'},{i:'JS',n:'Jon Yongfook'},
+  {i:'MV',n:'Marc Lou'},{i:'XD',n:'X. Desouza'},{i:'NM',n:'Nik Mirkovic'},{i:'EC',n:'Edward C.'},
+];
+
+// ── CARD ──────────────────────────────────────────────────────────────────────
+function mk(v){
+  return`<div class="vc" onclick="ov('${v.id}','${v.t}','${v.cr}','${v.v} views · ${v.d}')">
+    <div class="vth">
+      ${v.b?`<div class="vbdg">${v.b}</div>`:''}
+      <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" loading="lazy" onerror="this.style.display='none'">
+      <div class="vpo"><div class="vpb"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      <div class="vdr">${v.d}</div>
+    </div>
+    <div class="vi">
+      <div class="vtt">${v.t}</div>
+      <div class="vm"><span>${v.cr}</span><span class="vmd"></span><span>${v.v}</span></div>
+    </div>
+  </div>`;
+}
+function fl(id,arr){const e=document.getElementById(id);if(e)e.innerHTML=arr.map(mk).join('');}
+
+// ── PAGE INIT ─────────────────────────────────────────────────────────────────
+const ini={
+  home:()=>{
+    fl('g1',VD.filter(v=>['saas','indiehacker','startup','productivity','maker'].includes(v.c)).slice(0,3));
+    fl('g2',VD.filter(v=>v.c==='startup').slice(0,3));
+    fl('g3',VD.filter(v=>v.c==='indiehacker').slice(0,3));
+  },
+  tutorials:()=>fl('gt',VD.filter(v=>['video','launch','tools'].includes(v.c))),
+  launch:()=>fl('glch',VD.filter(v=>['promo','ads','productlaunch'].includes(v.c))),
+  livestream:()=>fl('gl',VD.filter(v=>v.c==='live')),
+  makers:()=>{
+    const g=document.getElementById('gmk');
+    if(g)g.innerHTML=MK.map(m=>`<div class="mkc" onclick="sprof('${m.n}','${m.i}')"><div class="mkav">${m.i}</div><div class="mknm">${m.n}</div></div>`).join('');
+  },
+  profile:()=>{
+    const g=document.getElementById('gprf');
+    if(!g)return;
+    const add=`<div style="background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;cursor:pointer" onclick="alert('Connect your YouTube / Twitch / Vimeo')">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <div style="font-size:10px;color:var(--mt2);text-align:center;padding:0 10px;line-height:1.5">Add any Twitch, Youtube,<br>Vimeo videos to your profile.</div>
+    </div>`;
+    g.innerHTML=add+VD.slice(0,11).map(mk).join('');
+  }
+};
+
+// ── NAVIGATION ────────────────────────────────────────────────────────────────
+const PGS=['home','tutorials','livestream','community','makers','launch','open','shop','profile','search'];
+let curPg='home';
+
+function go(id){
+  closeSb();
+  PGS.forEach(p=>{
+    const e=document.getElementById('pg-'+p);
+    if(e)e.classList.toggle('on',p===id);
+  });
+  // sidebar active
+  document.querySelectorAll('.sbi').forEach(b=>b.classList.remove('act'));
+  const sb=document.getElementById('sb-'+id);if(sb)sb.classList.add('act');
+  // bottom nav active
+  document.querySelectorAll('.bb').forEach(b=>b.classList.remove('on'));
+  const bn=document.getElementById('bn-'+id);if(bn)bn.classList.add('on');
+  // top nav links active
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('act'));
+  const nl=document.getElementById('nl-'+id);if(nl)nl.classList.add('act');
+  // lazy init
+  if(ini[id])ini[id]();
+  curPg=id;
+  window.scrollTo(0,0);
+}
+
+// ── SIDEBAR TOGGLE (mobile) ───────────────────────────────────────────────────
+function toggleSb(){
+  const sb=document.getElementById('sidebar');
+  const ov=document.getElementById('sb-ov');
+  const open=sb.classList.toggle('mob-open');
+  ov.classList.toggle('vis',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeSb(){
+  document.getElementById('sidebar').classList.remove('mob-open');
+  document.getElementById('sb-ov').classList.remove('vis');
+  document.body.style.overflow='';
+}
+
+// ── CATEGORY FILTERS ──────────────────────────────────────────────────────────
+function hcat(btn,cat){
+  document.querySelectorAll('#hcats .cat').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const p=cat==='all'?VD:VD.filter(v=>v.c===cat);
+  fl('g1',p.slice(0,3));
+  fl('g2',p.filter(v=>v.c==='startup'||cat==='all').slice(0,3));
+  fl('g3',p.filter(v=>v.c==='indiehacker'||cat==='all').slice(0,3));
+}
+function gcat(btn,cid,gid,cat){
+  document.querySelectorAll('#'+cid+' .cat').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  fl(gid,cat==='all'?VD:VD.filter(v=>v.c===cat));
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+let st;
+function dosrch(q){
+  clearTimeout(st);
+  if(!q.trim())return;
+  st=setTimeout(()=>{
+    const r=VD.filter(v=>
+      v.t.toLowerCase().includes(q.toLowerCase())||
+      v.cr.toLowerCase().includes(q.toLowerCase())||
+      v.c.toLowerCase().includes(q.toLowerCase())
+    );
+    document.getElementById('sttl').textContent=`"${q}"`;
+    fl('gsrch',r);
+    if(!r.length)document.getElementById('gsrch').innerHTML=`<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--mt);font-size:14px">No results for "${q}"</div>`;
+    go('search');
+  },280);
+}
+
+// ── PROFILE HELPER ────────────────────────────────────────────────────────────
+function sprof(name,init){
+  document.getElementById('prnm').textContent=name;
+  document.getElementById('prav').textContent=init;
+  document.getElementById('prbio').textContent='Maker, builder & creator on Makersflix. Sharing the journey of building products people love.';
+  go('profile');
+}
+
+// ── VIDEO MODAL ───────────────────────────────────────────────────────────────
+function ov(ytid,title,creator,meta){
+  document.getElementById('vf').src=`https://www.youtube.com/embed/${ytid}?autoplay=1&rel=0&modestbranding=1`;
+  document.getElementById('vt').textContent=title;
+  document.getElementById('vm2').innerHTML=`<span>${creator}</span><span style="opacity:.35">·</span><span>${meta}</span>`;
+  document.getElementById('vm').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function cv(){
+  document.getElementById('vm').classList.remove('on');
+  document.getElementById('vf').src='';
+  document.body.style.overflow='';
+}
+function startlive(){
+  document.getElementById('lp').innerHTML=`<iframe src="https://www.youtube.com/embed/Mx1dwvkXm4w?autoplay=1&rel=0" allowfullscreen allow="autoplay"></iframe>`;
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cv()});
+
+// ── BOOT ─────────────────────────────────────────────────────────────────────
+go('home');
+</script>
+</body>
+</html>
