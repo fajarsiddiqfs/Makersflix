@@ -2,1005 +2,1893 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Makersflix</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0a0a;--bg1:#111;--bg2:#181818;--bg3:#222;--bg4:#2a2a2a;
-  --bdr:rgba(255,255,255,0.07);--bdr2:rgba(255,255,255,0.14);
-  --txt:#fff;--mt:rgba(255,255,255,0.48);--mt2:rgba(255,255,255,0.26);
-  --nav:58px;--sb:68px;--sb-exp:230px;
-  --f:'Inter',sans-serif;
-}
-html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
-body{background:var(--bg);color:var(--txt);font-family:var(--f);min-height:100vh;overflow-x:hidden}
-img{display:block;max-width:100%}
-button{font-family:var(--f)}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* ═══════════════════════════════
-   TOP NAVIGATION
-═══════════════════════════════ */
-.topnav{
-  position:fixed;top:0;left:0;right:0;z-index:400;
-  height:var(--nav);
-  background:rgba(8,8,8,0.98);
-  border-bottom:1px solid var(--bdr);
-  display:flex;align-items:center;
-  padding:0 16px 0 calc(var(--sb) + 16px);
-  gap:10px;
-}
-/* Hamburger — mobile only */
-.ham{
-  display:none;
-  width:40px;height:40px;border-radius:8px;border:none;
-  background:none;cursor:pointer;color:var(--txt);
-  align-items:center;justify-content:center;flex-shrink:0;
-}
-.ham svg{width:22px;height:22px}
+<!-- Primary Meta Tags -->
+<title>MakersFlix — Done-for-You Shorts, Reels & Launch Videos</title>
+<meta name="title" content="MakersFlix — Done-for-You Shorts, Reels & Launch Videos">
+<meta name="description" content="We edit your raw footage into scroll-stopping Shorts, Reels & Launch Videos — delivered in 48 hours. No editing hassle. Just consistent, professional content.">
+<meta name="keywords" content="video editing service, short form video editing, reels editing, youtube shorts editing, tiktok editing, content creator editing, done for you video editing, social media video editor">
+<meta name="author" content="MakersFlix">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FF004F">
+<link rel="canonical" href="https://makersflix.com/">
 
-/* Logo */
-.logo{
-  display:flex;align-items:center;
-  text-decoration:none;color:var(--txt);
-  font-size:17px;font-weight:800;letter-spacing:-.4px;
-  flex-shrink:0;
-}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://makersflix.com/">
+<meta property="og:title" content="MakersFlix — Done-for-You Shorts, Reels & Launch Videos">
+<meta property="og:description" content="We edit your raw footage into scroll-stopping Shorts, Reels & Launch Videos — delivered in 48 hours. No editing hassle. Just consistent, professional content.">
+<meta property="og:image" content="https://makersflix.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="MakersFlix">
+<meta property="og:locale" content="en_US">
 
-/* Desktop nav links */
-.nav-links{
-  display:flex;gap:2px;list-style:none;
-  margin-left:6px;
-}
-.nav-links a{
-  color:var(--mt);font-size:13px;font-weight:400;
-  text-decoration:none;padding:7px 13px;border-radius:7px;
-  transition:all .15s;white-space:nowrap;
-}
-.nav-links a:hover,.nav-links a.act{color:var(--txt);font-weight:500}
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://makersflix.com/">
+<meta name="twitter:title" content="MakersFlix — Done-for-You Shorts, Reels & Launch Videos">
+<meta name="twitter:description" content="We edit your raw footage into scroll-stopping Shorts, Reels & Launch Videos — delivered in 48 hours. No editing hassle. Just consistent, professional content.">
+<meta name="twitter:image" content="https://makersflix.com/og-image.jpg">
 
-/* Search */
-.nsrch{
-  flex:1;max-width:360px;margin-left:auto;
-  display:flex;align-items:center;gap:7px;
-  background:var(--bg2);border:1px solid var(--bdr2);
-  border-radius:8px;padding:0 12px;height:36px;
-  transition:border-color .15s;
-}
-.nsrch:focus-within{border-color:rgba(255,255,255,.35)}
-.nsrch svg{width:14px;height:14px;color:var(--mt);flex-shrink:0}
-.nsrch input{
-  background:none;border:none;outline:none;
-  color:var(--txt);font-family:var(--f);font-size:13px;width:100%;
-  min-width:0;
-}
-.nsrch input::placeholder{color:var(--mt2)}
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzA0IiBoZWlnaHQ9IjcwNCIgdmlld0JveD0iMCAwIDcwNCA3MDQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI3MDQiIGhlaWdodD0iNzA0IiByeD0iMjA1IiBmaWxsPSJibGFjayIvPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMzAxMV8xNzczKSI+CjxwYXRoIGQ9Ik00OTQuMDEzIDIyNC43NTRIMjA3LjQxMUMxNjkuOTYxIDIyNC43NTQgMTM5LjYwMyAyNTUuMTEzIDEzOS42MDMgMjkyLjU2MlY0NTIuNTlDMTM5LjYwMyA0OTAuMDM5IDE2OS45NjEgNTIwLjM5OCAyMDcuNDExIDUyMC4zOThINDk0LjAxM0M1MzEuNDYzIDUyMC4zOTggNTYxLjgyMiA0OTAuMDM5IDU2MS44MjIgNDUyLjU5VjI5Mi41NjJDNTYxLjgyMiAyNTUuMTEzIDUzMS40NjMgMjI0Ljc1NCA0OTQuMDEzIDIyNC43NTRaIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjQ1LjIwNTUiLz4KPHBhdGggZD0iTTIzNi4zNDMgNDE5LjEzN0wzMjUuODUgMzI1LjEwOUwzMzguNTYgMzk2LjkxMkw0MzMuOTYyIDMyNS4xMDlMNDQyLjQ4IDQxOS4xMzciIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNDUuMjA1NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik00MzkuNzY3IDExOC45NzNMMzUwLjM4NCAyMDguMzM4TDI4My4zNTYgMTQwLjY3MSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI0NS4yMDU1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8zMDExXzE3NzMiPgo8cmVjdCB3aWR0aD0iNDY3LjQyNSIgaGVpZ2h0PSI0NjIiIGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMTcgODEpIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzA0IiBoZWlnaHQ9IjcwNCIgdmlld0JveD0iMCAwIDcwNCA3MDQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI3MDQiIGhlaWdodD0iNzA0IiByeD0iMjA1IiBmaWxsPSJibGFjayIvPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMzAxMV8xNzczKSI+CjxwYXRoIGQ9Ik00OTQuMDEzIDIyNC43NTRIMjA3LjQxMUMxNjkuOTYxIDIyNC43NTQgMTM5LjYwMyAyNTUuMTEzIDEzOS42MDMgMjkyLjU2MlY0NTIuNTlDMTM5LjYwMyA0OTAuMDM5IDE2OS45NjEgNTIwLjM5OCAyMDcuNDExIDUyMC4zOThINDk0LjAxM0M1MzEuNDYzIDUyMC4zOTggNTYxLjgyMiA0OTAuMDM5IDU2MS44MjIgNDUyLjU5VjI5Mi41NjJDNTYxLjgyMiAyNTUuMTEzIDUzMS40NjMgMjI0Ljc1NCA0OTQuMDEzIDIyNC43NTRaIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjQ1LjIwNTUiLz4KPHBhdGggZD0iTTIzNi4zNDMgNDE5LjEzN0wzMjUuODUgMzI1LjEwOUwzMzguNTYgMzk2LjkxMkw0MzMuOTYyIDMyNS4xMDlMNDQyLjQ4IDQxOS4xMzciIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNDUuMjA1NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik00MzkuNzY3IDExOC45NzNMMzUwLjM4NCAyMDguMzM4TDI4My4zNTYgMTQwLjY3MSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI0NS4yMDU1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8zMDExXzE3NzMiPgo8cmVjdCB3aWR0aD0iNDY3LjQyNSIgaGVpZ2h0PSI0NjIiIGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMTcgODEpIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==">
 
-/* Nav action icons */
-.nav-acts{display:flex;align-items:center;gap:6px;flex-shrink:0}
-.nic{
-  width:34px;height:34px;border-radius:8px;
-  background:var(--bg2);border:1px solid var(--bdr);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;color:var(--mt);transition:all .15s;
-}
-.nic:hover{background:var(--bg3);color:var(--txt);border-color:var(--bdr2)}
-.nic svg{width:16px;height:16px}
-.nav-av{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--bg3);border:1.5px solid var(--bdr2);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:12px;font-weight:700;color:var(--mt);
-  transition:border-color .15s;flex-shrink:0;
-}
-.nav-av:hover{border-color:rgba(255,255,255,.4);color:var(--txt)}
-
-/* ═══════════════════════════════
-   SIDEBAR (desktop: icon+hover-expand)
-   (mobile: slide-in drawer)
-═══════════════════════════════ */
-.sidebar{
-  position:fixed;top:0;left:0;bottom:0;z-index:350;
-  width:var(--sb);overflow:hidden;
-  background:rgba(8,8,8,0.98);border-right:1px solid var(--bdr);
-  display:flex;flex-direction:column;
-  padding:0;
-  transition:width 220ms cubic-bezier(0.4,0,0.2,1);
-}
-.sidebar:hover{width:var(--sb-exp)}
-/* Brand logo area in sidebar — top of sidebar like Instagram */
-.sb-brand{
-  display:flex;align-items:center;
-  height:var(--nav);
-  padding-left:calc((var(--sb) - 36px) / 2);
-  gap:14px;
-  flex-shrink:0;
-  overflow:hidden;
-  border-bottom:1px solid var(--bdr);
-  transition:padding-left 220ms cubic-bezier(0.4,0,0.2,1);
-}
-.sidebar:hover .sb-brand{padding-left:16px}
-.sb-brand-ico{
-  width:36px;height:36px;flex-shrink:0;
-  background:var(--bg2);border:1px solid var(--bdr2);
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-}
-.sb-brand-ico svg{width:22px;height:22px}
-.sb-brand-name{
-  font-size:16px;font-weight:700;letter-spacing:-.3px;
-  color:var(--txt);white-space:nowrap;
-  opacity:0;
-  transition:opacity 160ms ease 60ms;
-}
-.sidebar:hover .sb-brand-name{opacity:1}
-.sidebar.mob-open .sb-brand-name{opacity:1!important}
-.sb-items-wrap{
-  flex:1;overflow-y:auto;overflow-x:hidden;
-  padding:8px 0;
-  scrollbar-width:none;
-}
-.sb-items-wrap::-webkit-scrollbar{display:none}
-/* overlay — mobile only */
-.sb-overlay{
-  display:none;position:fixed;inset:0;z-index:340;
-  background:rgba(0,0,0,.65);
-  opacity:0;pointer-events:none;transition:opacity .2s;
-}
-.sb-overlay.vis{opacity:1;pointer-events:auto}
-
-.sbi{
-  display:flex;align-items:center;height:52px;
-  padding:0;
-  /* collapsed: icon centered in 68px; expanded: icon+text left-aligned */
-  padding-left:calc((var(--sb) - 28px) / 2);
-  gap:16px;
-  cursor:pointer;color:var(--txt);
-  border:none;background:none;
-  box-sizing:border-box;
-  width:calc(100% - 16px);margin:1px 8px;
-  text-align:left;white-space:nowrap;overflow:hidden;
-  transition:background .15s, padding-left 220ms cubic-bezier(0.4,0,0.2,1);
-  border-radius:10px;
-}
-.sbi:hover{background:rgba(255,255,255,0.09)}
-.sidebar:hover .sbi{padding-left:16px}
-.sbi.act{font-weight:700}
-.sbi.act .sbi-lb{font-weight:700}
-.sbi-ic{
-  width:28px;height:28px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.sbi-ic svg{width:26px;height:26px;stroke-width:1.6}
-.sbi-lb{
-  font-size:15px;font-weight:400;color:var(--txt);
-  opacity:0;
-  transition:opacity 160ms ease 60ms;
-  pointer-events:none;flex:1;min-width:0;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.sidebar:hover .sbi-lb{opacity:1}
-.sidebar.mob-open .sbi-lb{opacity:1!important}
-.sb-div{height:1px;background:var(--bdr);margin:6px 14px}
-.sb-bot{margin-top:auto;padding-bottom:12px}
-.sb-cof{
-  display:flex;align-items:center;height:52px;
-  padding-left:calc((var(--sb) - 28px) / 2);
-  gap:16px;
-  cursor:pointer;color:var(--txt);border:none;background:none;
-  border-radius:10px;margin:1px 8px;width:calc(100% - 16px);
-  white-space:nowrap;overflow:hidden;
-  box-sizing:border-box;
-  text-decoration:none;
-  transition:background .15s, padding-left 220ms cubic-bezier(0.4,0,0.2,1);
-}
-.sb-cof:hover{background:rgba(255,255,255,0.09)}
-.sidebar:hover .sb-cof{padding-left:16px}
-.sb-cof .sbi-ic svg{width:26px;height:26px}
-
-/* ═══════════════════════════════
-   MAIN CONTENT
-═══════════════════════════════ */
-.main{
-  margin-top:var(--nav);
-  margin-left:var(--sb);
-  min-height:calc(100vh - var(--nav));
-  transition:margin-left .2s;
-}
-.pg{display:none}.pg.on{display:block}
-
-/* ═══════════════════════════════
-   HERO BANNER
-═══════════════════════════════ */
-.hero{
-  position:relative;height:400px;overflow:hidden;
-  background:#0d0d0d;display:flex;align-items:flex-end;
-}
-.hero-img{
-  position:absolute;right:0;top:0;width:60%;height:100%;
-  background:var(--bg2);overflow:hidden;
-}
-.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.45}
-.hero-fade{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg,#0a0a0a 35%,rgba(10,10,10,.75) 60%,transparent);
-  z-index:1;
-}
-.hero-bot{
-  position:absolute;bottom:0;left:0;right:0;height:100px;
-  background:linear-gradient(to top,#0a0a0a,transparent);z-index:2;
-}
-.hero-cnt{
-  position:relative;z-index:3;
-  padding:0 40px 40px;max-width:520px;
-}
-.hero-lbl{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--mt);margin-bottom:9px}
-.hero-ttl{font-size:clamp(26px,3.8vw,46px);font-weight:800;line-height:1.07;letter-spacing:-1.2px;margin-bottom:11px}
-.hero-dsc{font-size:13px;color:var(--mt);line-height:1.65;margin-bottom:20px;max-width:380px}
-.hero-btns{display:flex;gap:9px;flex-wrap:wrap}
-.bw{display:flex;align-items:center;gap:7px;background:var(--txt);color:#000;border:none;border-radius:7px;padding:10px 20px;font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer;transition:opacity .15s;white-space:nowrap}
-.bw:hover{opacity:.87}
-.bw svg{width:13px;height:13px;flex-shrink:0}
-.bg_{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);color:var(--txt);border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:10px 20px;font-family:var(--f);font-size:13px;font-weight:500;cursor:pointer;transition:background .15s;white-space:nowrap}
-.bg_:hover{background:rgba(255,255,255,.16)}
-.bg_ svg{width:13px;height:13px;flex-shrink:0}
-
-/* ═══════════════════════════════
-   CATEGORY PILLS
-═══════════════════════════════ */
-.cats{
-  display:flex;gap:7px;flex-wrap:nowrap;
-  padding:18px 20px 2px;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
-.cats::-webkit-scrollbar{display:none}
-.cat{
-  background:none;border:1px solid var(--bdr2);border-radius:100px;
-  padding:7px 16px;font-size:12px;font-weight:500;color:var(--mt);
-  cursor:pointer;font-family:var(--f);transition:all .15s;
-  white-space:nowrap;flex-shrink:0;
-}
-.cat:hover{border-color:rgba(255,255,255,.35);color:var(--txt)}
-.cat.on{background:var(--txt);border-color:var(--txt);color:#000}
-
-/* ═══════════════════════════════
-   SECTIONS & GRIDS
-═══════════════════════════════ */
-.sec{padding:20px 20px 4px}
-.sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.sec-t{font-size:14px;font-weight:600;letter-spacing:-.1px}
-.sec-m{font-size:12px;color:var(--mt);font-weight:500;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:3px;transition:color .15s;white-space:nowrap}
-.sec-m:hover{color:var(--txt)}
-.sec-m svg{width:11px;height:11px}
-
-/* Video grid — responsive */
-.vg{
-  display:grid;
-  gap:16px;
-  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-}
-.vg-3{grid-template-columns:repeat(3,1fr);gap:20px}
-.vg-4{grid-template-columns:repeat(4,1fr)}
-
-.vc{
-  background:var(--bg1);border-radius:12px;overflow:hidden;
-  cursor:pointer;border:1px solid var(--bdr);
-  transition:transform .22s,border-color .22s,box-shadow .22s;
-}
-.vc:hover{transform:translateY(-4px);border-color:var(--bdr2);box-shadow:0 12px 40px rgba(0,0,0,.5)}
-.vth{aspect-ratio:16/9;background:var(--bg2);position:relative;overflow:hidden}
-.vth img{width:100%;height:100%;object-fit:cover}
-.vpo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.15);opacity:0;transition:opacity .15s}
-.vc:hover .vpo{opacity:1}
-.vpb{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center}
-.vpb svg{width:15px;height:15px;color:#000;margin-left:2px}
-.vbdg{position:absolute;top:9px;left:9px;background:rgba(0,0,0,.82);border:1px solid rgba(255,255,255,.15);color:var(--txt);font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px;letter-spacing:.5px}
-.vdr{position:absolute;bottom:8px;right:9px;background:rgba(0,0,0,.82);color:var(--txt);font-size:11px;font-weight:600;padding:3px 7px;border-radius:4px}
-.vi{padding:12px 14px 14px}
-.vtt{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.vm{font-size:12px;color:var(--mt2);display:flex;gap:6px;align-items:center}
-.vmd{width:2px;height:2px;border-radius:50%;background:var(--mt2);flex-shrink:0}
-
-/* ═══════════════════════════════
-   PAGE HEADER
-═══════════════════════════════ */
-.phd{padding:32px 20px 20px}
-.plbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mt2);margin-bottom:8px}
-.pttl{font-size:clamp(26px,4vw,44px);font-weight:800;letter-spacing:-1.5px;line-height:1.05;margin-bottom:10px}
-.pdsc{font-size:13px;color:var(--mt);font-weight:400;line-height:1.65;max-width:500px}
-
-/* ═══════════════════════════════
-   TWO-COLUMN LAYOUT
-═══════════════════════════════ */
-.twocol{display:grid;grid-template-columns:1fr 1fr}
-.tc-l{padding:52px 40px;display:flex;flex-direction:column;justify-content:center}
-.tc-r{background:var(--bg2);border-left:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;padding:40px;min-height:420px}
-
-/* Stat grid */
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:22px;max-width:200px}
-.stat{background:var(--bg3);border:1px solid var(--bdr);border-radius:9px;padding:13px 11px;text-align:center}
-.sv{font-size:17px;font-weight:800}
-.ss{font-size:10px;color:var(--mt2);margin-top:2px}
-
-/* ═══════════════════════════════
-   MAKERS GRID
-═══════════════════════════════ */
-.mkg{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;padding:16px 20px 40px}
-.mkc{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;padding:12px 4px;border-radius:10px;border:1px solid transparent;transition:all .15s}
-.mkc:hover{background:var(--bg2);border-color:var(--bdr)}
-.mkav{width:56px;height:56px;border-radius:50%;background:var(--bg2);border:1.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700}
-.mknm{font-size:10px;font-weight:500;text-align:center;color:var(--mt);line-height:1.3}
-
-/* ═══════════════════════════════
-   PROFILE
-═══════════════════════════════ */
-.prfh{display:flex;align-items:flex-start;gap:20px;padding:36px 20px 22px;flex-wrap:wrap}
-.prav{width:88px;height:88px;border-radius:50%;background:var(--bg3);border:2px solid var(--bdr2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
-.prif{flex:1;min-width:200px}
-.prnm{font-size:19px;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:5px;flex-wrap:wrap}
-.prck{width:17px;height:17px;background:var(--txt);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.prck svg{width:10px;height:10px;color:#000}
-.prbio{font-size:13px;color:var(--mt);line-height:1.6;margin-bottom:7px;font-weight:300}
-.prln{font-size:12px;color:var(--mt);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .15s}
-.prln:hover{color:var(--txt)}
-.prln svg{width:12px;height:12px;flex-shrink:0}
-.supbtn{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--bdr2);border-radius:8px;padding:9px 17px;color:var(--txt);font-family:var(--f);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
-.supbtn:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.28)}
-.supbtn svg{width:14px;height:14px}
-
-/* ═══════════════════════════════
-   METRICS (Open page)
-═══════════════════════════════ */
-.oitro{padding:32px 20px;max-width:700px;margin:0 auto;text-align:center}
-.oitro p{font-size:15px;color:var(--mt);line-height:1.75;font-weight:300}
-.metg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 20px 40px}
-.metb{background:var(--bg2);border:1px solid var(--bdr);border-radius:11px;padding:24px 16px;min-height:108px;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end}
-.metl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mt2);position:absolute;top:14px;left:16px}
-.metv{font-size:28px;font-weight:800;line-height:1}
-.mets{font-size:11px;color:var(--mt2);margin-top:4px}
-
-/* ═══════════════════════════════
-   LIVESTREAM
-═══════════════════════════════ */
-.livew{padding:40px 20px;text-align:center}
-.llbl{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--mt2);margin-bottom:10px}
-.lttl{font-size:clamp(20px,3.5vw,38px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:26px}
-.lplyr{max-width:820px;margin:0 auto;aspect-ratio:16/9;background:var(--bg2);border-radius:12px;overflow:hidden;border:1px solid var(--bdr2);position:relative;display:flex;align-items:center;justify-content:center}
-.lplyr iframe{width:100%;height:100%;border:none}
-.lph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
-.lpbtn{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;border:none}
-.lpbtn:hover{background:var(--txt)}
-.lpbtn svg{width:22px;height:22px;color:#000;margin-left:3px}
-.lcap{font-size:13px;font-style:italic;color:var(--mt);margin-top:12px}
-
-/* ═══════════════════════════════
-   MODAL
-═══════════════════════════════ */
-.mbg{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:16px}
-.mbg.on{display:flex}
-.modal{background:var(--bg1);border-radius:12px;overflow:hidden;width:100%;max-width:820px;border:1px solid var(--bdr2);animation:miin .22s ease}
-@keyframes miin{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:none}}
-.mpl{aspect-ratio:16/9;background:#000;position:relative}
-.mpl iframe{width:100%;height:100%;border:none}
-.mcls{position:absolute;top:10px;right:10px;z-index:3;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.75);border:1px solid var(--bdr2);color:var(--txt);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;font-family:var(--f)}
-.mcls:hover{background:rgba(255,255,255,.15)}
-.mcls svg{width:11px;height:11px}
-.mbd{padding:16px 20px 18px}
-.mtt{font-size:15px;font-weight:600;margin-bottom:4px}
-.mmt{font-size:12px;color:var(--mt2);display:flex;gap:8px;flex-wrap:wrap}
-
-/* ═══════════════════════════════
-   FOOTER
-═══════════════════════════════ */
-.ft{padding:20px;border-top:1px solid var(--bdr);font-size:12px;color:var(--mt2);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.ft a{color:var(--mt2);text-decoration:none;transition:color .15s}.ft a:hover{color:var(--txt)}
-
-/* ═══════════════════════════════
-   MOBILE BOTTOM NAV
-═══════════════════════════════ */
-.bnav{
-  display:none;
-  position:fixed;bottom:0;left:0;right:0;z-index:380;
-  background:rgba(8,8,8,.98);
-  border-top:1px solid var(--bdr);
-  padding:6px 0 calc(6px + env(safe-area-inset-bottom));
-  justify-content:space-around;
-}
-.bb{
-  display:flex;flex-direction:column;align-items:center;gap:3px;
-  cursor:pointer;color:var(--mt);background:none;border:none;
-  padding:4px 8px;font-family:var(--f);min-width:48px;
-  transition:color .15s;
-}
-.bb.on,.bb:hover{color:var(--txt)}
-.bb svg{width:22px;height:22px}
-.bb span{font-size:9px;font-weight:500;letter-spacing:.3px;text-transform:uppercase}
-
-/* ═══════════════════════════════
-   SHOP ITEMS
-═══════════════════════════════ */
-.shitem{background:var(--bg3);border:1px solid var(--bdr);border-radius:9px;padding:14px 15px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .15s}
-.shitem:hover{border-color:var(--bdr2)}
-.shiico{width:42px;height:42px;background:var(--bg4);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.shiico svg{width:20px;height:20px;color:var(--txt)}
-
-/* ═══════════════════════════════
-   DESKTOP: 900px+
-═══════════════════════════════ */
-@media(min-width:900px){
-  .ham{display:none!important}
-  .bnav{display:none!important}
-  .sidebar{display:flex}
-}
-
-/* ═══════════════════════════════
-   TABLET / MOBILE: <900px
-═══════════════════════════════ */
-@media(max-width:899px){
-  .sidebar{
-    transform:translateX(-100%);
-    width:var(--sb-exp)!important;
-    transition:transform .22s ease;
-    top:0!important;
+<!-- Structured Data / JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "MakersFlix",
+  "description": "Done-for-you short-form video editing agency for creators and brands. We deliver Shorts, Reels & Launch Videos in 48 hours.",
+  "url": "https://makersflix.com",
+  "logo": "https://makersflix.com/logo.png",
+  "image": "https://makersflix.com/og-image.jpg",
+  "priceRange": "$299 - $999+",
+  "serviceType": "Video Editing",
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Video Editing Plans",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Clipstart — Starter",
+        "price": "299",
+        "priceCurrency": "USD",
+        "description": "4 short-form videos per month"
+      },
+      {
+        "@type": "Offer",
+        "name": "ReelFlow — Growth",
+        "price": "599",
+        "priceCurrency": "USD",
+        "description": "8–10 short-form videos per month"
+      },
+      {
+        "@type": "Offer",
+        "name": "ScaleUp — Custom",
+        "price": "999",
+        "priceCurrency": "USD",
+        "description": "15–20 short-form videos per month"
+      }
+    ]
   }
-  .sidebar.mob-open{transform:translateX(0)}
-  .sidebar.mob-open .sbi-lb{opacity:1!important}
-  .sidebar.mob-open .sbi{padding-left:16px!important}
-  .sidebar.mob-open .sb-brand{padding-left:16px!important}
-  .sidebar.mob-open .sb-cof{padding-left:16px!important}
-  .sb-overlay{display:block}
-  .ham{display:flex}
-  .bnav{display:flex}
-  .main{margin-left:0;margin-bottom:72px}
-  .topnav{padding:0 12px;gap:8px}
-  .nav-links{display:none}
-  .nsrch{max-width:none;flex:1}
-  .nav-acts .nic{display:none}
-  .hero{height:auto;min-height:260px}
-  .hero-img{display:none}
-  .hero-fade{background:rgba(10,10,10,.65)}
-  .hero-cnt{padding:24px 20px 32px;max-width:100%}
-  .hero-ttl{font-size:clamp(22px,6vw,32px)}
-  .vg-4{grid-template-columns:repeat(2,1fr)}
-  .vg-3{grid-template-columns:repeat(2,1fr)!important}
-  .twocol{grid-template-columns:1fr}
-  .tc-r{border-left:none;border-top:1px solid var(--bdr);min-height:280px}
-  .tc-l{padding:32px 20px}
-  .mkg{grid-template-columns:repeat(4,1fr)}
-  .mkav{width:50px;height:50px;font-size:14px}
-  .metg{grid-template-columns:repeat(2,1fr)}
-  .prfh{padding:24px 16px 18px}
 }
+</script>
 
-@media(max-width:600px){
-  .mkg{grid-template-columns:repeat(3,1fr)}
-  .metg{grid-template-columns:repeat(2,1fr)}
-  .vg{grid-template-columns:repeat(2,1fr)}
-  .vg-3{grid-template-columns:repeat(1,1fr)!important;gap:14px}
-  .hero-ttl{font-size:22px}
-  .hero-dsc{display:none}
-  .stats{max-width:180px}
-}
-@media(max-width:380px){
-  .mkg{grid-template-columns:repeat(3,1fr)}
-  .mkav{width:44px;height:44px;font-size:13px}
-}
+<!-- Performance: Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+<style>
+  :root {
+    --bg: #121212;
+    --bg-dark: #0a0a0a;
+    --orange: #FF004F;
+    --orange-light: #00F2EA;
+    --text: #FFFFFF;
+    --text-muted: #888888;
+    --border: #2a2a2a;
+    --white: #FFFFFF;
+    --card-bg: #1e1e1e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  #about, #works, #services, #pricing, #contact, #faq { scroll-margin-top: 90px; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--orange);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+    mix-blend-mode: normal;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--orange);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease, width 0.3s, height 0.3s;
+    opacity: 0.6;
+  }
+
+  /* NAV */
+  /* NAV wrapper — full-width transparent positioning layer */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    padding: 16px 24px;
+    background: transparent;
+    pointer-events: none;
+  }
+  /* Gradient border wrapper */
+  .nav-gradient-wrap {
+    position: relative;
+    width: 100%; max-width: 1000px;
+    border-radius: 100px;
+    padding: 1.5px;
+    background: linear-gradient(120deg, #FF004F55, #00F2EA55, #FF004F33, #ffffff18);
+    pointer-events: all;
+  }
+  .nav-gradient-wrap::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 100px;
+    background: linear-gradient(120deg, #FF004F, #00F2EA, #FF004F66);
+    opacity: 0.18;
+    filter: blur(10px);
+    z-index: -1;
+  }
+  /* The pill itself */
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%;
+    background: rgba(18,18,18,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 100px;
+    padding: 10px 10px 10px 20px;
+    gap: 16px;
+  }
+  .nav-logo {
+    display: flex; align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex; gap: 6px; list-style: none;
+    flex: 1; justify-content: center;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--text-muted);
+    font-size: 14px; font-weight: 400;
+    padding: 7px 14px; border-radius: 100px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: #FFFFFF; background: rgba(255,255,255,0.07); }
+  .nav-cta {
+    background: var(--orange); color: #FFFFFF;
+    padding: 10px 22px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .nav-cta:hover { opacity: 0.85; transform: scale(1.03); }
+
+  /* GRADIENT CARD WRAPPER — same gradient as nav */
+  .card-gradient-wrap {
+    position: relative;
+    border-radius: 20px;
+    padding: 1.5px;
+    background: linear-gradient(120deg, #FF004F55, #00F2EA55, #FF004F33, #ffffff18);
+    display: flex;
+    flex-direction: column;
+  }
+  .steps-grid .card-gradient-wrap {
+    flex-shrink: 0;
+  }
+  .card-gradient-wrap > * {
+    flex: 1;
+  }
+  .card-gradient-wrap::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(120deg, #FF004F, #00F2EA, #FF004F66);
+    opacity: 0.12;
+    filter: blur(10px);
+    z-index: -1;
+  }
+  .card-gradient-wrap > * {
+    border: none !important;
+    border-radius: 18.5px !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Landscape pricing cards */
+  .pricing-landscape-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+  .pricing-landscape { display: flex; flex-direction: column; gap: 24px; padding: 32px; height: auto; }
+  .pricing-landscape-left { width: 100%; }
+  .pricing-landscape-right { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+
+  /* Landscape mobile */
+  @media (max-width: 768px) {
+    .pricing-landscape-grid { grid-template-columns: 1fr; }
+    .pricing-landscape { padding: 28px 20px; }
+  }
+
+  /* Featured pricing card: no special treatment */
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 24px 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 6px 16px 6px 8px; border-radius: 100px;
+    font-size: 12px; font-weight: 400; color: var(--text-muted);
+    margin-bottom: 32px;
+    animation: fadeSlideDown 0.8s ease forwards;
+    opacity: 0;
+  }
+  .hero-badge .dot { width: 8px; height: 8px; background: #00F2EA; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+
+  .hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(36px, 4.5vw, 68px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -3px;
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeSlideUp 0.9s 0.2s ease forwards;
+  }
+  .hero h1 .highlight {
+    color: var(--orange);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -3px;
+  }
+  .hero h1 .viral-wrap {
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .viral-icon {
+    display: inline-flex;
+    color: #00F2EA;
+    align-items: center; justify-content: center;
+    animation: spin 6s linear infinite;
+    flex-shrink: 0;
+  }
+  .viral-icon svg { width: 52px; height: 52px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hero-sub {
+    font-size: 16px; color: var(--text-muted); margin-top: 20px; margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeSlideUp 0.9s 0.4s ease forwards;
+  }
+  .hero-btns {
+    display: flex; gap: 14px; align-items: center;
+    opacity: 0;
+    animation: fadeSlideUp 0.9s 0.55s ease forwards;
+  }
+  .btn-primary {
+    background: var(--orange); color: #FFFFFF;
+    padding: 14px 28px; border-radius: 100px;
+    font-size: 14px; font-weight: 400; text-decoration: none;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--white); color: #121212; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
+  .btn-secondary {
+    color: var(--text); font-size: 14px; font-weight: 400; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 14px 4px;
+    border-bottom: 1.5px solid var(--text);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-secondary:hover { color: #00F2EA; border-color: #00F2EA; }
+
+  .hero-video-wrap {
+    margin-top: 56px; width: 100%; max-width: 900px;
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    position: relative;
+    opacity: 0;
+    animation: fadeSlideUp 1s 0.7s ease forwards;
+  }
+  .hero-video-wrap video, .hero-video-wrap img {
+    width: 100%; height: 460px; object-fit: cover; display: block;
+  }
+
+  /* TRUSTED LOGOS */
+  .trusted {
+    padding: 40px 48px; text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .trusted-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0px; margin-bottom: 20px; }
+  .logos-track-wrap { overflow: hidden; }
+  .logos-track {
+    display: flex; gap: 64px; align-items: center;
+    animation: marquee 22s linear infinite;
+    width: max-content;
+  }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  .logo-item {
+    display: flex; align-items: center; justify-content: center;
+    width: 120px; height: 40px;
+    background: #1e1e1e;
+    border: 1.5px dashed #2e2e2e;
+    border-radius: 8px;
+    opacity: 0.6;
+    flex-shrink: 0;
+    transition: opacity 0.2s, border-color 0.2s;
+    overflow: hidden;
+  }
+  .logo-item:hover { opacity: 1; border-color: #00F2EA44; }
+  .logo-item img { width: 100%; height: 100%; object-fit: contain; padding: 6px; display: block; }
+  .logo-placeholder-text { font-size: 10px; color: #444; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; text-transform: uppercase; }
+  .logo-sep { display: flex; align-items: center; opacity: 0.15; }
+  .logo-sep svg { width: 6px; height: 6px; }
+
+  /* HOW IT WORKS */
+  section { padding: 100px 48px; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card-bg); border: 1px solid #00F2EA33;
+    padding: 5px 14px; border-radius: 100px;
+    font-size: 11px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--text-muted); margin-bottom: 48px;
+  }
+
+  .steps-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; align-items: stretch;
+  }
+  .step-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 48px 36px;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .step-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+  .step-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 400; text-transform: uppercase;
+    letter-spacing: 0.5px; color: #00F2EA; margin-bottom: 20px;
+  }
+  .step-icon-wrap {
+    width: 72px; height: 72px; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px; flex-shrink: 0;
+  }
+  .step-icon-wrap svg { width: 36px; height: 36px; }
+  .step-card h3 { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 400; line-height: 1.3; margin-bottom: 12px; }
+  .step-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* WORKS */
+  .works-section { background: var(--bg); padding: 100px 0; }
+  .works-section .inner { padding: 0 48px; text-align: center; }
+  .section-title {
+    font-family: 'Inter', sans-serif; font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400; line-height: 1.1; letter-spacing: -2.5px;
+    margin-bottom: 56px;
+  }
+  .section-title .cursive {
+    color: var(--orange);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic; font-weight: 400; letter-spacing: -2px;
+    font-size: 1.25em;
+    line-height: 1;
+  }
+  .videos-scroll-wrap { overflow: hidden; margin-top: 32px; padding: 0 48px; box-sizing: border-box; }
+  .videos-scroll {
+    display: flex; gap: 16px;
+    width: max-content;
+    will-change: transform;
+  }
+  .videos-scroll-wrap:hover .videos-scroll { animation-play-state: paused; }
+  .video-card {
+    width: 280px; height: 420px; border-radius: 16px;
+    background: #222; overflow: hidden; flex-shrink: 0;
+    position: relative; cursor: pointer;
+    transition: transform 0.3s;
+    display: block; text-decoration: none;
+  }
+  .video-card:hover { transform: scale(1.04); }
+  .video-card-bg {
+    width: 100%; height: 100%; object-fit: cover;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  }
+  .video-card-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    color: white;
+  }
+  .video-card-handle { font-size: 12px; font-weight: 400; }
+  .video-card-quote { font-size: 10px; opacity: 0.8; margin-top: 4px; line-height: 1.4; }
+  .vc-platform { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.15); border-radius: 6px; padding: 4px 6px; font-size: 9px; color: white; font-weight: 400; }
+
+  /* ABOUT */
+  .about-section { background: var(--bg); }
+  .about-inner { max-width: 1100px; margin: 0 auto; }
+  .about-text { font-family: 'Inter', sans-serif; font-size: clamp(22px, 3vw, 36px); font-weight: 400; line-height: 1.35; max-width: 720px; margin-bottom: 64px; letter-spacing: -1.5px; }
+  .about-text .hl { color: var(--orange); font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -1.5px; font-size: 1.25em; line-height: 1; }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+  .stat-item { background: var(--card-bg); padding: 40px 36px; }
+  .stat-num { font-family: 'Inter', sans-serif; font-size: 52px; font-weight: 400; letter-spacing: 0px; line-height: 1; }
+  .stat-num span { color: var(--orange); }
+  .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; max-width: 180px; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    max-width: 1100px; margin: 0 auto 40px;
+  }
+  .service-item {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: all 0.25s; cursor: default;
+  }
+  .service-item:hover { border-color: var(--orange); transform: translateY(-3px); }
+  .service-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .service-icon svg { width: 22px; height: 22px; }
+  .service-icon.yt { background: #FF0000; color: white; }
+  .service-icon.ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); color: white; }
+  .service-icon.tt { background: #010101; color: white; }
+  .service-icon.ve { background: #0066FF; color: white; }
+  .service-icon.mg { background: #7C3AED; color: white; }
+  .service-name { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; }
+  .service-desc { font-size: 13px; color: var(--text-muted); }
+
+  /* CTA ORANGE BLOCK */
+  .cta-block {
+    background: var(--orange); border-radius: 24px;
+    padding: 56px; max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-block::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 240px; height: 240px; background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .cta-h { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 400; color: #FFFFFF; line-height: 1.2; margin-bottom: 20px; }
+  .btn-white { background: var(--orange); color: #FFFFFF; padding: 14px 28px; border-radius: 100px; font-size: 14px; font-weight: 400; text-decoration: none; display: inline-block; transition: all 0.25s; }
+  .btn-white:hover { background: #FFFFFF; color: #121212; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(255,255,255,0.2); }
+  .btn-cta-white { display: inline-flex; align-items: center; gap: 8px; background: #FFFFFF; color: #121212; padding: 14px 32px; border-radius: 100px; font-size: 14px; font-weight: 400; text-decoration: none; transition: all 0.25s; }
+  .btn-cta-white:hover { background: #00F2EA; color: #121212; transform: translateY(-2px); }
+  .cta-benefits { display: flex; flex-direction: column; gap: 18px; }
+  .cta-benefit { display: flex; gap: 14px; align-items: flex-start; }
+  .cta-benefit-icon { width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .cta-benefit-icon svg { width: 16px; height: 16px; color: #FFFFFF; }
+  .cta-benefit-text { color: #FFFFFF; }
+  .cta-benefit-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .cta-benefit-text span { font-size: 12px; opacity: 0.7; }
+
+  /* TESTIMONIALS */
+  .testimonials-section { background: var(--bg); }
+  .testimonials-carousel { position: relative; }
+  .testimonials-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 0; align-items: stretch; }
+  .testimonial-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px; min-width: 0;
+    display: flex; flex-direction: column;
+  }
+  .test-profile { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-shrink: 0; }
+  .test-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--card-bg); overflow: hidden; flex-shrink: 0; }
+  .test-avatar-inner { width: 100%; height: 100%; background: linear-gradient(135deg, #FF004F, #00F2EA); display: flex; align-items: center; justify-content: center; font-weight: 400; font-size: 18px; color: white; }
+  .test-handle { font-weight: 400; font-size: 14px; }
+  .test-followers { font-size: 12px; color: var(--text-muted); }
+  .test-quote { font-family: 'Inter', sans-serif; font-style: normal; font-size: 14px; line-height: 1.6; flex: 1; margin-bottom: 0; }
+  .test-stats { display: flex; gap: 24px; padding-top: 16px; border-top: 1px solid var(--border); flex-shrink: 0; margin-top: auto; }
+  .test-stat-num { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 400; color: #00F2EA; }
+  .test-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0px; }
+  .carousel-controls { display: flex; gap: 12px; margin-top: 32px; justify-content: center; }
+  .carousel-btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border);
+    background: var(--card-bg); cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .carousel-btn svg { width: 18px; height: 18px; }
+  .carousel-btn:hover { border-color: #00F2EA; background: #00F2EA; color: #121212; }
+  .carousel-btn:hover svg { stroke: #121212; }
+
+  /* PRICING */
+  .pricing-section { background: var(--bg); }
+  .pricing-toggle { display: flex; gap: 0; background: var(--card-bg); border-radius: 100px; padding: 4px; margin: 0 auto 48px; width: fit-content; }
+  .toggle-btn { padding: 8px 24px; border-radius: 100px; border: none; background: none; font-size: 13px; font-weight: 400; cursor: pointer; transition: all 0.2s; color: var(--text-muted); }
+  .toggle-btn.active { background: var(--orange); color: #FFFFFF; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; align-items: stretch; }
+  .pricing-card {
+    background: var(--card-bg); border: 1.5px solid var(--border);
+    border-radius: 20px; padding: 32px; transition: all 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .pricing-card.featured { background: var(--card-bg); border-color: var(--border); color: #FFFFFF; transform: none; box-shadow: none; }
+  .pricing-card:hover { border-color: var(--orange); transform: translateY(-4px); }
+  .plan-tag { font-size: 11px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; }
+  .pricing-card.featured .plan-tag { color: var(--text-muted); }
+  .plan-name { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 400; margin-bottom: 4px; }
+  .plan-price { font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 0px; line-height: 1; margin: 20px 0 4px; }
+  .plan-price sup { font-size: 20px; vertical-align: top; margin-top: 8px; }
+  .plan-price .period { font-size: 14px; font-weight: 400; opacity: 0.5; }
+  .plan-strike { font-size: 14px; color: var(--text-muted); text-decoration: line-through; margin-bottom: 20px; }
+  .pricing-card.featured .plan-strike { color: rgba(255,255,255,0.4); }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; flex: 1; }
+  .plan-features li { font-size: 13px; display: flex; gap: 8px; align-items: flex-start; }
+  .plan-features li .check-icon { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; color: var(--orange); }
+  .pricing-card.featured .check-icon { color: var(--orange); }
+  .plan-btn { display: block; width: 100%; padding: 13px; border-radius: 100px; text-align: center; font-size: 13px; font-weight: 400; text-decoration: none; transition: all 0.2s; background: #2a2a2a; color: #FFFFFF; border: 1.5px solid #3a3a3a; margin-top: auto; flex-shrink: 0; }
+  .plan-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+  /* FAQ */
+  .faq-section { background: var(--bg); }
+  .faq-wrap { max-width: 720px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0; cursor: pointer; font-weight: 400; font-size: 15px;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--orange); }
+  .faq-icon { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+  .faq-icon svg { width: 14px; height: 14px; transition: transform 0.3s; }
+  .faq-item.open .faq-icon { background: #00F2EA; border-color: #00F2EA; color: #121212; }
+  .faq-item.open .faq-icon svg { transform: rotate(45deg); stroke: #121212; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
+
+  /* CTA FOOTER BANNER */
+  .cta-banner { background: var(--bg-dark); padding: 100px 48px; text-align: center; }
+  .cta-banner h2 { font-family: 'Inter', sans-serif; font-size: clamp(36px, 5vw, 72px); font-weight: 400; color: white; letter-spacing: -2.5px; line-height: 1.1; margin-bottom: 20px; }
+  .cta-banner h2 .cursive { color: var(--orange); font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -2px; }
+  .cta-banner p { color: rgba(255,255,255,0.5); font-size: 16px; max-width: 500px; margin: 0 auto 36px; }
+
+  /* FOOTER */
+  footer { background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.08); padding: 56px 48px 36px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo { display: flex; align-items: center; justify-content: flex-start; margin-bottom: 16px; width: 100%; }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; max-width: 200px; }
+  .footer-col-title { font-size: 12px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+  .social-icons { display: flex; gap: 10px; }
+  .social-icon { display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .social-icon svg { width: 20px; height: 20px; }
+  .social-icon:hover { color: #FFFFFF; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom-left { display: flex; align-items: center; gap: 16px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-brand-link { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-brand-link:hover { color: var(--orange); }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-links a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-bottom-links a:hover { color: var(--orange); }
+  .footer-bottom-logo { display: flex; align-items: center; opacity: 0.5; }
+
+  /* See examples button */
+  .see-examples-btn { background: none; border: none; color: var(--text-muted); font-size: 12px; cursor: pointer; padding: 8px 0 0; text-align: center; width: 100%; transition: color 0.2s; letter-spacing: 0.3px; }
+  .see-examples-btn:hover { color: #fff; }
+
+  /* Modal overlay */
+  .examples-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 1000; backdrop-filter: blur(6px); }
+  .examples-modal-overlay.open { display: block; }
+
+  /* Modal box */
+  .examples-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%); opacity: 0; z-index: 1001; width: 90vw; max-width: 900px; max-height: 85vh; overflow-y: auto; background: #1a1a1a; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: transform 0.3s ease, opacity 0.3s ease; }
+  .examples-modal.open { display: block; transform: translate(-50%, -50%); opacity: 1; }
+  .examples-modal-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; }
+  .examples-modal-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 4px; }
+  .examples-modal-title { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 500; color: #fff; }
+  .examples-modal-close { background: none; border: 1px solid var(--border); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; flex-shrink: 0; transition: background 0.2s; }
+  .examples-modal-close svg { width: 16px; height: 16px; }
+  .examples-modal-close:hover { background: #2a2a2a; }
+
+  /* Modal video grid */
+  .examples-modal-grid { display: grid; gap: 16px; }
+  .examples-modal-grid.cols-1 { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+  .examples-modal-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .examples-modal-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .examples-modal-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .examples-modal-grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .modal-video-card { background: #111; border-radius: 12px; overflow: hidden; aspect-ratio: 9/16; position: relative; cursor: pointer; }
+  .modal-video-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .modal-video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.2s; }
+  .modal-video-card:hover .modal-video-play { background: rgba(0,0,0,0.5); }
+  .modal-video-play svg { width: 40px; height: 40px; color: #fff; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)); }
+
+  @media (max-width: 768px) {
+    .examples-modal { padding: 20px; width: 95vw; }
+    .examples-modal-grid.cols-3, .examples-modal-grid.cols-4, .examples-modal-grid.cols-5 { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Skip link */
+  .skip-link { position: absolute; top: -100px; left: 16px; background: var(--orange); color: #fff; padding: 10px 20px; border-radius: 0 0 8px 8px; font-size: 14px; font-weight: 600; text-decoration: none; z-index: 9999; transition: top 0.2s; }
+  .skip-link:focus { top: 0; }
+
+  /* Hamburger button */
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; margin-left: auto; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile menu overlay */
+  .mobile-menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 998; backdrop-filter: blur(4px); }
+  .mobile-menu-overlay.open { display: block; }
+
+  /* Mobile menu drawer */
+  .mobile-menu { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; background: #1a1a1a; border-left: 1px solid var(--border); z-index: 999; padding: 80px 28px 40px; transition: right 0.35s cubic-bezier(0.25,0.1,0.25,1); display: flex; flex-direction: column; }
+  .mobile-menu.open { right: 0; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .mobile-menu ul li a { display: block; padding: 12px 0; font-size: 17px; color: #fff; text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+  .mobile-menu ul li a:hover { color: var(--orange); }
+  .mobile-menu ul li:last-child a { border-bottom: none; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; padding: 8px; opacity: 0.7; }
+  .mobile-menu-close:hover { opacity: 1; }
+
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeSlideDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+
+  .count-up { display: inline; }
+  .centered { text-align: center; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* ── MOBILE & RESPONSIVE ───────────────────────── */
+  @media (max-width: 768px) {
+    /* Nav */
+    nav { padding: 10px 14px; }
+    .nav-inner { padding: 8px 8px 8px 14px; gap: 10px; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+
+    /* Hero */
+    .hero { padding: 110px 20px 50px; text-align: center; }
+    .hero h1 { font-size: clamp(36px, 10vw, 56px); letter-spacing: -3px; }
+    .hero-sub { font-size: 14px; }
+    .hero-btns { flex-direction: row; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary, .btn-secondary { justify-content: center; flex: 1; min-width: 0; white-space: nowrap; font-size: 13px; padding: 12px 16px; }
+    .hero-badge { margin: 0 auto 20px; }
+    .hero-video-wrap { margin-top: 36px; border-radius: 14px; }
+    .hero-video-wrap iframe,
+    .hero-video-wrap video,
+    .hero-video-wrap img { height: 220px; }
+
+    /* Trusted logos */
+    .trusted { padding: 32px 20px; }
+    .trusted-logos { flex-wrap: wrap; justify-content: center; gap: 16px; }
+
+    /* General sections */
+    section { padding: 60px 20px; }
+    .section-inner { padding: 0; }
+    .works-section .inner { padding: 0 20px; }
+    .section-title { font-size: clamp(28px, 8vw, 42px); letter-spacing: -1.5px; margin-bottom: 36px; text-align: center; }
+    .section-tag { margin-left: auto; margin-right: auto; }
+
+    /* Steps */
+    .steps-grid { grid-template-columns: 1fr; gap: 16px; }
+    .step-card { padding: 36px 28px; }
+    .steps-grid .card-gradient-wrap { display: block; }
+
+    /* Video cards */
+    .video-card { width: 200px; height: 340px; }
+    .videos-scroll { padding: 0 20px; gap: 12px; }
+
+    /* Stats */
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-item { padding: 28px 20px; }
+    .stat-num { font-size: 40px; }
+
+    /* About */
+    .about-text { font-size: clamp(18px, 5vw, 26px); letter-spacing: -1px; }
+    .about-inner { padding: 0 20px; }
+
+    /* Services */
+    .services-grid { grid-template-columns: 1fr; gap: 12px; }
+    .services-grid .card-gradient-wrap { display: block; }
+
+    /* CTA block */
+    .cta-block { grid-template-columns: 1fr; padding: 32px 24px; gap: 32px; text-align: center; }
+    .cta-block .btn-primary, .cta-block .btn-secondary { width: 100%; justify-content: center; }
+
+    /* Testimonials */
+    .testimonials-track { grid-template-columns: 1fr; padding: 0; }
+    .testimonial-card { min-width: 0; max-width: 100%; padding: 24px 20px; height: auto; }
+    .test-quote { -webkit-line-clamp: unset; display: block; overflow: visible; }
+
+    /* Pricing */
+    .pricing-grid { grid-template-columns: 1fr; gap: 16px; }
+    .pricing-landscape-grid { grid-template-columns: 1fr; }
+    .pricing-landscape { padding: 28px 20px; }
+    .pricing-card.featured { transform: none; }
+    .pricing-card.featured:hover { transform: translateY(-4px); }
+    .pricing-grid .card-gradient-wrap { display: block; }
+
+    /* FAQ */
+    .faq-wrap { padding: 0; }
+    .faq-q { font-size: 14px; padding: 20px 0; }
+    .faq-a { font-size: 14px; }
+
+    /* CTA banner */
+    .cta-banner { padding: 70px 20px; text-align: center; }
+    .cta-banner h2 { font-size: clamp(28px, 8vw, 48px); letter-spacing: -1.5px; }
+
+    /* Footer */
+    footer { padding: 40px 20px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .footer-top > div:first-child { grid-column: 1 / -1; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 24px; text-align: center; }
+    .footer-logo { justify-content: center; }
+    .footer-tagline { max-width: 100%; font-size: 12px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .footer-col-title { text-align: center; }
+    .footer-bottom { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    .footer-bottom-left { flex-direction: column; align-items: center; gap: 8px; }
+    .footer-bottom-links { flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .footer-bottom-logo svg { height: 20px; }
+    .social-icons { gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+    /* Modal */
+    .examples-modal { padding: 20px; width: 95vw; }
+    .examples-modal-grid.cols-3,
+    .examples-modal-grid.cols-4,
+    .examples-modal-grid.cols-5 { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: clamp(32px, 11vw, 46px); letter-spacing: -2px; }
+    .nav-cta { display: none; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .hero-btns .btn-primary { display: flex; }
+  }
 </style>
 </head>
 <body>
 
-<!-- ═══ TOP NAV ═══ -->
-<nav class="topnav nav">
-  <!-- Hamburger (mobile) -->
-  <button class="ham" id="ham" onclick="toggleSb()" aria-label="Menu">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-  </button>
+<div class="cursor" id="cursor" style="display:none"></div>
+<div class="cursor-ring" id="cursorRing" style="display:none"></div>
 
-  <!-- Logo — text only in top nav -->
-  <a class="logo" href="#" onclick="go('home');return false">Makersflix</a>
-
-  <!-- Desktop nav links -->
-  <ul class="nav-links" id="navlinks">
-    <li><a href="#" onclick="go('home');return false" id="nl-home" class="act">Originals</a></li>
-    <li><a href="#" onclick="go('makers');return false" id="nl-makers">Makers</a></li>
-    <li><a href="#" onclick="go('community');return false" id="nl-community">Community</a></li>
-    <li><a href="#" onclick="go('launch');return false" id="nl-launch">Launch</a></li>
-    <li><a href="#" onclick="go('tutorials');return false" id="nl-tutorials">Tutorials</a></li>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-gradient-wrap">
+  <div class="nav-inner">
+  <a href="#" class="nav-logo" aria-label="MakersFlix — Home"><svg width="auto" height="44" viewBox="0 0 585 130" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M139.703 47.5504H159.114L172.467 80.0902H173.14L186.493 47.5504H205.904V105H190.644V71.787H190.196L177.404 104.551H168.203L155.412 71.5626H154.963V105H139.703V47.5504ZM225.526 105.673C222.777 105.673 220.346 105.224 218.233 104.327C216.139 103.41 214.493 102.027 213.296 100.175C212.099 98.3237 211.501 95.9674 211.501 93.1061C211.501 90.7498 211.903 88.7395 212.707 87.0751C213.511 85.392 214.633 84.0174 216.073 82.9515C217.513 81.8855 219.187 81.072 221.094 80.511C223.021 79.95 225.096 79.5853 227.322 79.417C229.734 79.23 231.67 79.0056 233.128 78.7438C234.606 78.4632 235.672 78.0799 236.326 77.5936C236.981 77.0887 237.308 76.4248 237.308 75.602V75.4898C237.308 74.3677 236.878 73.5075 236.018 72.909C235.158 72.3106 234.054 72.0114 232.708 72.0114C231.23 72.0114 230.024 72.3387 229.089 72.9932C228.173 73.629 227.621 74.6108 227.434 75.9386H213.184C213.371 73.3205 214.203 70.908 215.68 68.7013C217.176 66.4759 219.355 64.6993 222.216 63.3715C225.078 62.025 228.65 61.3518 232.932 61.3518C236.018 61.3518 238.786 61.7165 241.235 62.4458C243.685 63.1565 245.77 64.157 247.491 65.4473C249.211 66.719 250.52 68.2151 251.418 69.9356C252.334 71.6374 252.793 73.4888 252.793 75.4898V105H238.318V98.9409H237.981C237.121 100.549 236.074 101.849 234.84 102.84C233.624 103.831 232.231 104.551 230.66 105C229.108 105.449 227.397 105.673 225.526 105.673ZM230.576 95.9113C231.754 95.9113 232.857 95.6682 233.886 95.182C234.933 94.6957 235.784 93.9944 236.439 93.0781C237.093 92.1617 237.42 91.049 237.42 89.74V86.1494C237.009 86.3177 236.569 86.4766 236.102 86.6262C235.653 86.7758 235.167 86.9161 234.643 87.047C234.138 87.1779 233.596 87.2995 233.016 87.4117C232.455 87.5239 231.866 87.6267 231.249 87.7203C230.052 87.9073 229.07 88.2158 228.304 88.646C227.556 89.0574 226.995 89.5717 226.621 90.1888C226.265 90.7872 226.088 91.4605 226.088 92.2085C226.088 93.4054 226.508 94.3217 227.35 94.9575C228.191 95.5934 229.267 95.9113 230.576 95.9113ZM274.105 94.7892L274.217 76.3874H276.237L286.672 61.9128H304.064L286.56 84.4663H282.184L274.105 94.7892ZM260.191 105V47.5504H275.676V105H260.191ZM286.784 105L276.91 87.9447L287.008 76.9485L304.513 105H286.784ZM326.968 105.785C322.367 105.785 318.403 104.906 315.074 103.149C311.764 101.372 309.211 98.8287 307.416 95.5186C305.639 92.1898 304.751 88.2065 304.751 83.5686C304.751 79.1178 305.649 75.228 307.444 71.8992C309.239 68.5704 311.773 65.9803 315.046 64.1289C318.319 62.2775 322.18 61.3518 326.631 61.3518C329.885 61.3518 332.831 61.8567 335.467 62.8666C338.104 63.8764 340.358 65.3445 342.228 67.2707C344.098 69.1782 345.538 71.4971 346.548 74.2275C347.558 76.9578 348.063 80.0341 348.063 83.4564V87.047H309.576V78.5193H333.812C333.794 77.2851 333.476 76.2004 332.859 75.2654C332.26 74.3116 331.447 73.5729 330.418 73.0493C329.408 72.507 328.258 72.2358 326.968 72.2358C325.715 72.2358 324.565 72.507 323.518 73.0493C322.47 73.5729 321.629 74.3023 320.993 75.2373C320.376 76.1724 320.049 77.2664 320.011 78.5193V87.7203C320.011 89.1041 320.301 90.3384 320.881 91.4231C321.46 92.5077 322.293 93.3586 323.377 93.9757C324.462 94.5929 325.771 94.9014 327.304 94.9014C328.37 94.9014 329.343 94.7518 330.222 94.4526C331.12 94.1534 331.886 93.7233 332.522 93.1622C333.158 92.5825 333.625 91.8906 333.925 91.0864H348.063C347.576 94.0786 346.426 96.678 344.612 98.8848C342.798 101.073 340.395 102.775 337.403 103.99C334.43 105.187 330.951 105.785 326.968 105.785ZM354.381 105V61.9128H369.417V70.1039H369.866C370.651 67.0743 371.895 64.8582 373.597 63.4557C375.317 62.0531 377.327 61.3518 379.628 61.3518C380.301 61.3518 380.965 61.4079 381.619 61.5201C382.293 61.6136 382.938 61.7539 383.555 61.9409V75.1532C382.788 74.8913 381.844 74.695 380.722 74.5641C379.6 74.4332 378.636 74.3677 377.832 74.3677C376.318 74.3677 374.952 74.7137 373.737 75.4056C372.54 76.0789 371.596 77.0326 370.904 78.2669C370.212 79.4824 369.866 80.9131 369.866 82.5588V105H354.381ZM428.017 75.9386H413.766C413.692 75.0597 413.383 74.3023 412.841 73.6664C412.298 73.0306 411.597 72.5444 410.737 72.2077C409.895 71.8524 408.96 71.6748 407.932 71.6748C406.604 71.6748 405.463 71.9179 404.509 72.4041C403.556 72.8903 403.088 73.5823 403.107 74.4799C403.088 75.1158 403.359 75.7048 403.92 76.2472C404.5 76.7895 405.613 77.2103 407.258 77.5095L416.01 79.0804C420.424 79.8845 423.706 81.2403 425.857 83.1478C428.026 85.0367 429.12 87.5706 429.139 90.7498C429.12 93.8168 428.204 96.4817 426.39 98.7445C424.594 100.989 422.135 102.728 419.012 103.962C415.908 105.178 412.364 105.785 408.38 105.785C401.798 105.785 396.646 104.439 392.924 101.746C389.221 99.0531 387.155 95.4999 386.725 91.0864H402.097C402.303 92.4516 402.976 93.5082 404.117 94.2563C405.276 94.9856 406.735 95.3503 408.493 95.3503C409.914 95.3503 411.083 95.1072 411.999 94.6209C412.934 94.1347 413.411 93.4428 413.43 92.5451C413.411 91.7223 413 91.0677 412.195 90.5815C411.41 90.0953 410.176 89.7026 408.493 89.4033L400.863 88.0569C396.468 87.2901 393.177 85.8314 390.989 83.6808C388.8 81.5302 387.716 78.7625 387.735 75.3776C387.716 72.3854 388.501 69.8514 390.091 67.7756C391.699 65.6811 393.99 64.0915 396.963 63.0068C399.956 61.9035 403.499 61.3518 407.595 61.3518C413.822 61.3518 418.731 62.6422 422.322 65.2229C425.931 67.8037 427.83 71.3756 428.017 75.9386ZM434.847 105V47.5504H475.241V60.1175H450.444V69.9917H472.773V82.5588H450.444V105H434.847ZM496.687 47.5504V105H481.202V47.5504H496.687ZM504.576 105V61.9128H520.061V105H504.576ZM512.318 57.4246C510.224 57.4246 508.429 56.7326 506.933 55.3488C505.436 53.9649 504.688 52.3005 504.688 50.3556C504.688 48.4107 505.436 46.7463 506.933 45.3624C508.429 43.9785 510.224 43.2866 512.318 43.2866C514.432 43.2866 516.227 43.9785 517.704 45.3624C519.2 46.7463 519.948 48.4107 519.948 50.3556C519.948 52.3005 519.2 53.9649 517.704 55.3488C516.227 56.7326 514.432 57.4246 512.318 57.4246ZM541.303 61.9128L547.586 75.2654L554.206 61.9128H569.579L558.021 83.4564L570.14 105H554.88L547.586 91.3108L540.517 105H525.033L537.263 83.4564L525.818 61.9128H541.303Z" fill="white"/><g clip-path="url(#clip0_new_nav)"><path d="M94.1159 35.8857H22.5707C13.2221 35.8857 5.64355 43.4643 5.64355 52.8128V92.7608C5.64355 102.109 13.2221 109.688 22.5707 109.688H94.1159C103.464 109.688 111.043 102.109 111.043 92.7608V52.8128C111.043 43.4643 103.464 35.8857 94.1159 35.8857Z" stroke="white" stroke-width="11.2847"/><path d="M29.791 84.4098L52.1348 60.9375L55.3076 78.8617L79.1231 60.9375L81.2494 84.4098" stroke="white" stroke-width="11.2847" stroke-linecap="round" stroke-linejoin="round"/><path d="M80.5725 9.47852L58.2594 31.7871L41.5273 14.8952" stroke="white" stroke-width="11.2847" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_new_nav"><rect width="116.684" height="115.33" fill="white"/></clipPath></defs></svg></a>
+  <ul class="nav-links" id="nav-links" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#works">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
-
-  <!-- Search -->
-  <div class="nsrch">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" placeholder="Search videos, makers…" oninput="dosrch(this.value)" id="srchi">
+  <a href="#pricing" class="nav-cta">Get Started</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
   </div>
-
-  <!-- Nav actions -->
-  <div class="nav-acts">
-    <div class="nic" title="Upload">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
-    </div>
-    <div class="nic" title="Notifications">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-    </div>
-    <div class="nav-av" onclick="go('profile')">FS</div>
   </div>
 </nav>
-
-<!-- ═══ SIDEBAR OVERLAY (mobile tap-to-close) ═══ -->
-<div class="sb-overlay" id="sb-ov" onclick="closeSb()"></div>
-
-<!-- ═══ SIDEBAR ═══ -->
-<div class="sidebar" id="sidebar">
-  <!-- Brand logo top of sidebar -->
-  <div class="sb-brand" onclick="go('home');closeSb();" style="cursor:pointer">
-    <div class="sb-brand-ico">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="3" width="20" height="13" rx="2"/>
-        <path d="M2 8h20"/>
-        <path d="M7 5.5l2.5 3L7 12"/>
-        <rect x="12" y="8.5" width="6" height="1.2" rx=".6" fill="currentColor" stroke="none" opacity=".5"/>
-        <rect x="12" y="10.5" width="4" height="1" rx=".5" fill="currentColor" stroke="none" opacity=".3"/>
-        <path d="M9 21h6M12 16v5" stroke-width="1.5"/>
-      </svg>
-    </div>
-    <span class="sb-brand-name">Makersflix</span>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">✕</button>
+  <ul>
+    <li><a href="#about" class="mobile-nav-link">About</a></li>
+    <li><a href="#works" class="mobile-nav-link">Work</a></li>
+    <li><a href="#services" class="mobile-nav-link">Services</a></li>
+    <li><a href="#pricing" class="mobile-nav-link">Pricing</a></li>
+    <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+    <li><a href="#pricing" class="mobile-nav-link nav-cta" style="margin-top:8px;">Get Started</a></li>
+  </ul>
+</div>
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+<!-- HERO -->
+<main id="main-content">
+<section class="hero">
+  <div class="hero-badge">
+    <div class="dot"></div>
+    Trusted by creators, influencers, and growing brands.
   </div>
-  <div class="sb-items-wrap">
-  <button class="sbi act" id="sb-home" onclick="go('home')">
-    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg></span>
-    <span class="sbi-lb">Originals</span>
-  </button>
-  <button class="sbi" id="sb-launch" onclick="go('launch')">
-    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
-    <span class="sbi-lb">Launch Videos</span>
-  </button>
-  <button class="sbi" id="sb-community" onclick="go('community')">
-    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
-    <span class="sbi-lb">Community</span>
-  </button>
-  <button class="sbi" id="sb-tutorials" onclick="go('tutorials')">
-    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></span>
-    <span class="sbi-lb">Tutorials</span>
-  </button>
-  <button class="sbi" id="sb-shop" onclick="go('shop')">
-    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg></span>
-    <span class="sbi-lb">Shop</span>
-  </button>
-  <div class="sb-div"></div>
-  <button class="sbi" id="sb-open" onclick="go('open')">
-    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></span>
-    <span class="sbi-lb">Open</span>
-  </button>
-  <button class="sbi" id="sb-livestream" onclick="go('livestream')">
-    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49m-8.48-.01a6 6 0 010-8.49m11.31-2.82a10 10 0 010 14.14m-14.14 0a10 10 0 010-14.14"/></svg></span>
-    <span class="sbi-lb">Livestream</span>
-  </button>
-  <button class="sbi" id="sb-makers" onclick="go('makers')">
-    <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
-    <span class="sbi-lb">Makers</span>
-  </button>
-
-  </div><!-- /sb-items-wrap -->
-  <!-- Bottom: Buy Me a Coffee -->
-  <div class="sb-bot">
-    <div class="sb-div"></div>
-    <a class="sb-cof" href="https://buymeacoffee.com/makersflix" target="_blank" rel="noopener">
-      <span class="sbi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
-      <span class="sbi-lb">Support Us</span>
+  <h1>
+    Done-for-You<br>
+    <span class="highlight">Shorts, Reels</span>
+    <span class="viral-wrap">
+      <span class="viral-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </span>
+      & <span style="color:#00F2EA;">Launch Videos</span>
+    </span>
+  </h1>
+  <p class="hero-sub">Launch videos (30s), UGC content (60s), and storytelling vlogs (120s) — delivered in 48 hrs.</p>
+  <div class="hero-btns">
+    <a href="#pricing" class="btn-primary">Get Started
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#works" class="btn-secondary">See Our Work
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
     </a>
   </div>
-</div>
+  <div class="hero-video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/MQ5p-FaURAQ?autoplay=1&mute=1&loop=1&playlist=MQ5p-FaURAQ&controls=0&modestbranding=1&playsinline=1&rel=0"
+      style="width:100%;height:460px;border:none;display:block;"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      title="Showreel"
+    ></iframe>
+  </div>
+</section>
 
-<!-- ═══ MAIN ═══ -->
-<div class="main">
-
-<!-- ── HOME ── -->
-<div class="pg on" id="pg-home">
-  <div class="hero">
-    <div class="hero-img"><img src="https://img.youtube.com/vi/ZoqgAy3h4OM/maxresdefault.jpg" alt=""></div>
-    <div class="hero-fade"></div><div class="hero-bot"></div>
-    <div class="hero-cnt">
-      <div class="hero-lbl">Originals</div>
-      <div class="hero-ttl">#InRealLife</div>
-      <div class="hero-dsc">Meetups &amp; experiences with entrepreneurs, makers, founders &amp; digital nomads from around the world.</div>
-      <div class="hero-btns">
-        <button class="bw" onclick="ov('ZoqgAy3h4OM','#InRealLife','Makersflix Originals','142k views · 18:24')"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch Now</button>
-        <button class="bg_"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>My List</button>
-      </div>
+<!-- TRUSTED -->
+<div class="trusted">
+  <div class="trusted-label">Trusted by creators, influencers, and growing brands.</div>
+  <div class="logos-track-wrap">
+    <div class="logos-track">
+      <span class="logo-item" title="Logo 1 — replace src with your image">
+        <img src="" alt="Client Logo 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 1</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 2 — replace src with your image">
+        <img src="" alt="Client Logo 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 2</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 3 — replace src with your image">
+        <img src="" alt="Client Logo 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 3</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 4 — replace src with your image">
+        <img src="" alt="Client Logo 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 4</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 5 — replace src with your image">
+        <img src="" alt="Client Logo 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 5</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 6 — replace src with your image">
+        <img src="" alt="Client Logo 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 6</span>
+      </span>
+      <!-- duplicate for marquee -->
+      <span class="logo-item" title="Logo 1 — replace src with your image">
+        <img src="" alt="Client Logo 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 1</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 2 — replace src with your image">
+        <img src="" alt="Client Logo 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 2</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 3 — replace src with your image">
+        <img src="" alt="Client Logo 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 3</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 4 — replace src with your image">
+        <img src="" alt="Client Logo 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 4</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 5 — replace src with your image">
+        <img src="" alt="Client Logo 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 5</span>
+      </span>
+      <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="logo-item" title="Logo 6 — replace src with your image">
+        <img src="" alt="Client Logo 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/>
+        <span class="logo-placeholder-text">Logo 6</span>
+      </span>
     </div>
-  </div>
-  <div class="cats" id="hcats">
-    <button class="cat on" onclick="hcat(this,'all')">All</button>
-    <button class="cat" onclick="hcat(this,'indiehacker')">Indiehacker</button>
-    <button class="cat" onclick="hcat(this,'saas')">SaaS</button>
-    <button class="cat" onclick="hcat(this,'startup')">Startup</button>
-    <button class="cat" onclick="hcat(this,'productivity')">Productivity</button>
-    <button class="cat" onclick="hcat(this,'maker')">Maker Story</button>
-  </div>
-  <div class="sec"><div class="sec-hd"><span class="sec-t">Trending Now</span><a class="sec-m" href="#">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></div><div class="vg vg-3" id="g1"></div></div>
-  <div class="sec"><div class="sec-hd"><span class="sec-t">Startup Journeys</span><a class="sec-m" href="#">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></div><div class="vg vg-3" id="g2"></div></div>
-  <div class="sec"><div class="sec-hd"><span class="sec-t">Indiehacker Wins</span><a class="sec-m" href="#">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></div><div class="vg vg-3" id="g3"></div></div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a><a href="#">Privacy</a><a href="#">Terms</a></div>
-</div>
+  </div></div>
 
-<!-- ── TUTORIALS ── -->
-<div class="pg" id="pg-tutorials">
-  <div class="phd"><div class="plbl">Tutorials</div><div class="pttl">Let's learn to make,<br>Launch Videos, Vlogs<br>or Produce your next<br>big thing.</div></div>
-  <div class="cats" id="tcats"><button class="cat on" onclick="gcat(this,'tcats','gt','all')">All</button><button class="cat" onclick="gcat(this,'tcats','gt','video')">Video Making</button><button class="cat" onclick="gcat(this,'tcats','gt','launch')">Launch</button><button class="cat" onclick="gcat(this,'tcats','gt','tools')">Tools</button></div>
-  <div class="sec"><div class="vg" id="gt"></div></div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
-
-<!-- ── LIVESTREAM ── -->
-<div class="pg" id="pg-livestream">
-  <div class="livew">
-    <div class="llbl">Livestream</div>
-    <div class="lttl">Tune in live with us in<br>another stream.</div>
-    <div class="lplyr" id="lp">
-      <div class="lph" id="lph">
-        <button class="lpbtn" onclick="startlive()"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
-        <span style="font-size:13px;color:var(--mt)">Click to watch live</span>
-      </div>
+<!-- HOW IT WORKS -->
+<section id="howitworks">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom: 60px;">
+      <div class="section-tag reveal">How it Works</div>
+      <h2 class="section-title reveal reveal-delay-1">Grow faster in<br><span class="cursive">three steps</span></h2>
     </div>
-    <div class="lcap">In case you missed it — we got it recorded.</div>
-    <div style="max-width:860px;margin:32px auto 0;text-align:left"><div class="sec-hd" style="margin-bottom:12px"><span class="sec-t">Past Streams</span></div><div class="vg" id="gl"></div></div>
-  </div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
-
-<!-- ── COMMUNITY ── -->
-<div class="pg" id="pg-community">
-  <div class="twocol">
-    <div class="tc-l">
-      <div class="plbl">Community</div>
-      <div class="pttl">Join a community<br>1000+ video makers,<br>producers &amp; editors.</div>
-      <div class="pdsc" style="margin-top:12px">We use Telegram as a platform for community discussions. It's FREE to join, so respect the space or your actions will be responsible.</div>
-      <div style="display:flex;gap:9px;margin-top:20px;flex-wrap:wrap">
-        <button class="bw" onclick="window.open('https://t.me/makersflix','_blank')">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="color:#000"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          Join Telegram
-        </button>
-        <button class="bg_">Learn More</button>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="sv">1k+</div><div class="ss">Members</div></div>
-        <div class="stat"><div class="sv">50+</div><div class="ss">Countries</div></div>
-        <div class="stat"><div class="sv">Free</div><div class="ss">To Join</div></div>
-        <div class="stat"><div class="sv">24/7</div><div class="ss">Active</div></div>
-      </div>
-    </div>
-    <div class="tc-r">
-      <div style="text-align:center;max-width:240px">
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin:0 auto 14px">
-          <rect width="64" height="64" rx="12" fill="var(--bg3)"/>
-          <path d="M32 12C19.85 12 10 21.85 10 34s9.85 22 22 22 22-9.85 22-22S44.15 12 32 12zm10.82 14.95l-3.67 17.27c-.28 1.2-1.01 1.47-2.02.83l-5.5-4.04-2.66 2.56c-.28.28-.55.46-1.19.46l.46-6.15L39.39 27.8c.46-.46-.1-.73-.73-.18L20.75 37l-5.41-1.65c-1.19-.37-1.19-1.19.28-1.74l21.21-8.17c.99-.37 1.92.28 1.56 1.47z" fill="var(--mt2)"/>
-        </svg>
-        <div style="font-size:15px;font-weight:700;margin-bottom:6px">Makersflix Telegram</div>
-        <div style="font-size:12px;color:var(--mt);line-height:1.6">Real conversations between makers, builders and founders. Join free.</div>
-      </div>
-    </div>
-  </div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
-
-<!-- ── MAKERS ── -->
-<div class="pg" id="pg-makers">
-  <div class="phd" style="text-align:center;padding-bottom:4px"><div class="pttl" style="font-size:clamp(28px,5vw,40px)">Makers</div></div>
-  <div class="mkg" id="gmk"></div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
-
-<!-- ── LAUNCH ── -->
-<div class="pg" id="pg-launch">
-  <div class="phd">
-    <div class="plbl">Commercial</div>
-    <div class="pttl">#LaunchLikeAPro</div>
-    <div class="pdsc">Launching your next product? A collection of all launch, promo &amp; ads videos — curated for you.</div>
-    <div style="display:flex;gap:9px;margin-top:16px;flex-wrap:wrap">
-      <button class="bg_"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add My Own Videos</button>
-      <button class="bw" style="color:#000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;color:#000"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Make For Me A Video</button>
-    </div>
-  </div>
-  <div class="cats" id="lcats"><button class="cat on" onclick="gcat(this,'lcats','glch','all')">All</button><button class="cat" onclick="gcat(this,'lcats','glch','promo')">Promo</button><button class="cat" onclick="gcat(this,'lcats','glch','ads')">Ads</button><button class="cat" onclick="gcat(this,'lcats','glch','productlaunch')">Product Launch</button></div>
-  <div class="sec"><div class="vg" id="glch"></div></div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
-
-<!-- ── OPEN ── -->
-<div class="pg" id="pg-open">
-  <div class="oitro">
-    <div class="plbl" style="display:block;text-align:center">Open</div>
-    <div class="pttl" style="text-align:center;font-size:clamp(24px,4vw,34px);margin-bottom:14px">Makersflix is Open.</div>
-    <p>Makersflix is an Open Startup. It operates fully transparent and shares its metrics, including revenue, users and traffic. Revenue is verified by Stripe, Indiehackers, traffic by Google Analytics, uptime by Uptimerobot.</p>
-  </div>
-  <div class="metg">
-    <div class="metb"><div class="metl">Monthly Revenue</div><div class="metv">$0</div><div class="mets">Verified by Stripe</div></div>
-    <div class="metb"><div class="metl">Monthly Visitors</div><div class="metv">—</div><div class="mets">Google Analytics</div></div>
-    <div class="metb"><div class="metl">Uptime</div><div class="metv">99.9%</div><div class="mets">Uptimerobot</div></div>
-    <div class="metb"><div class="metl">Community</div><div class="metv">1k+</div><div class="mets">Members</div></div>
-    <div class="metb"><div class="metl">Videos</div><div class="metv">100+</div><div class="mets">Curated</div></div>
-    <div class="metb"><div class="metl">Makers</div><div class="metv">42+</div><div class="mets">Active Creators</div></div>
-    <div class="metb"><div class="metl">Countries</div><div class="metv">50+</div><div class="mets">Global</div></div>
-    <div class="metb"><div class="metl">Indiehackers</div><div class="metv">Listed</div><div class="mets">Verified</div></div>
-    <div class="metb"><div class="metl">Founded</div><div class="metv">2019</div><div class="mets">MakersFlix.com</div></div>
-  </div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
-
-<!-- ── SHOP ── -->
-<div class="pg" id="pg-shop">
-  <div class="twocol">
-    <div class="tc-l">
-      <div class="plbl">Shop</div>
-      <div class="pttl">You got the SWAG.<br>Be proud of your<br>f*cking sh*t.</div>
-      <div class="pdsc" style="margin-top:12px">Don't be serious, it's just another store selling the coolest things for creators, makers, hackers, digital nomads, entrepreneurs, founders. Whatever! Teespring is handling it.</div>
-      <div style="display:flex;gap:9px;margin-top:18px;flex-wrap:wrap">
-        <button class="bw" onclick="window.open('https://teespring.com','_blank')">Shop Now</button>
-        <button class="bg_">View All</button>
-      </div>
-    </div>
-    <div class="tc-r">
-      <div style="width:100%;max-width:280px;display:flex;flex-direction:column;gap:9px">
-        <div class="shitem">
-          <div class="shiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
-          <div><div style="font-size:13px;font-weight:600">Caps &amp; Hats</div><div style="font-size:11px;color:var(--mt2);margin-top:2px">From $24</div></div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">Step 1</div>
+        <div class="step-icon-wrap" style="background: rgba(0,242,234,0.08);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00F2EA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
         </div>
-        <div class="shitem">
-          <div class="shiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.86H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.86l.58-3.57a2 2 0 00-1.34-2.23z"/></svg></div>
-          <div><div style="font-size:13px;font-weight:600">T-Shirts</div><div style="font-size:11px;color:var(--mt2);margin-top:2px">From $29</div></div>
+        <h3>Send us your raw footage</h3>
+        <p>iPhone, DSLR, screen recording — anything works. Just upload and leave the rest to us.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">Step 2</div>
+        <div class="step-icon-wrap" style="background: rgba(255,0,79,0.08);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FF004F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
         </div>
-        <div class="shitem">
-          <div class="shiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
-          <div><div style="font-size:13px;font-weight:600">Mugs &amp; Accessories</div><div style="font-size:11px;color:var(--mt2);margin-top:2px">From $18</div></div>
+        <h3>We edit, caption &amp; optimise</h3>
+        <p>Your dedicated editor adds hooks, captions, cuts and trending sounds — tailored to each platform's algorithm.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">Step 3</div>
+        <div class="step-icon-wrap" style="background: rgba(0,242,234,0.08);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00F2EA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3>Post &amp; watch your numbers grow</h3>
+        <p>Get publish-ready videos delivered within 48–72 hours. Post consistently and let the algorithm do the rest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT WORKS -->
+<section class="works-section" id="works">
+  <div class="inner">
+    <div class="section-tag reveal" style="margin: 0 auto 16px;">Works</div>
+    <h2 class="section-title reveal reveal-delay-1">Real results for <span class="cursive">real creators</span></h2>
+  </div>
+  <div class="videos-scroll-wrap">
+    <div class="videos-scroll" id="videosScroll"></div>
+  </div>
+  <div style="text-align:center; margin-top:40px;" class="reveal">
+    <a href="#" class="btn-primary">View All Works
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-inner section-inner">
+    <div class="section-tag reveal">Why MakersFlix</div>
+    <p class="about-text reveal reveal-delay-1">
+      We're a <span class="hl">done-for-you editing agency</span> for creators and brands who want to grow faster on social. We turn raw footage into <span class="hl">scroll-stopping Reels, Shorts &amp; Launch Videos</span> — delivered fast, built to perform.
+    </p>
+    <div class="card-gradient-wrap reveal reveal-delay-2" style="display:block;">
+    <div class="stats-grid" style="border-radius:18.5px; overflow:hidden; border:none;">
+      <div class="stat-item">
+        <div class="stat-num"><span class="count-up" data-target="140">0</span>M<span style="color:#00F2EA">+</span></div>
+        <div class="stat-label">Total Views Generated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="count-up" data-target="8">0</span>k<span style="color:#00F2EA">+</span></div>
+        <div class="stat-label">Videos Delivered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$<span class="count-up" data-target="32">0</span>M<span style="color:#00F2EA">+</span></div>
+        <div class="stat-label">Revenue Driven for Clients</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div class="section-tag reveal" style="margin:0 auto 16px;">Services We Offer</div>
+      <h2 class="section-title reveal reveal-delay-1">Every format.<br><span class="cursive">Every platform.</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-item reveal">
+        <div class="service-icon yt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="service-name">YouTube Shorts</div>
+        <div class="service-desc">Punchy, algorithm-optimised Shorts that get pushed to new audiences.</div>
+      </div>
+      <div class="service-item reveal reveal-delay-1">
+        <div class="service-icon ig">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="service-name">Instagram Reels</div>
+        <div class="service-desc">Hook-first Reels designed to stop the scroll and drive follows.</div>
+      </div>
+      <div class="service-item reveal reveal-delay-2">
+        <div class="service-icon tt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </div>
+        <div class="service-name">TikTok Videos</div>
+        <div class="service-desc">FYP-ready edits with trending sounds, pacing and captions built in.</div>
+      </div>
+
+
+    </div>
+
+    <div class="cta-block reveal">
+      <div>
+        <div class="section-tag" style="background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.8); margin-bottom:16px;">Get Started</div>
+        <div class="cta-h">Stop editing. Start creating. Get 60-second vertical videos delivered in 48 hrs.</div>
+        <a href="#contact" class="btn-cta-white">Book A Free Meeting</a>
+      </div>
+      <div class="cta-benefits">
+        <div class="cta-benefit">
+          <div class="cta-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="cta-benefit-text">
+            <strong>No hiring headaches</strong>
+            <span>Skip job boards, contracts and onboarding. We're ready to go from day one.</span>
+          </div>
+        </div>
+        <div class="cta-benefit">
+          <div class="cta-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="cta-benefit-text">
+            <strong>48-hour turnaround</strong>
+            <span>Most videos are delivered within 48–72 hours. Consistent content, every week.</span>
+          </div>
+        </div>
+        <div class="cta-benefit">
+          <div class="cta-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="cta-benefit-text">
+            <strong>Built to perform</strong>
+            <span>Every edit is optimised for hooks, pacing and platform — not just cut and exported.</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
+</section>
 
-<!-- ── PROFILE ── -->
-<div class="pg" id="pg-profile">
-  <div class="prfh">
-    <div class="prav" id="prav">FS</div>
-    <div class="prif">
-      <div class="prnm"><span id="prnm">Fajar Siddiq</span><div class="prck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
-      <div class="prbio" id="prbio">Owner &amp; Founder at @euphoryadesign + @dementclothing + @ilmproductionsg + Professional Yo-Yo Player + Digital Nomad + Maker + Designer &amp; Developer</div>
-      <a class="prln" href="https://fajarsiddiq.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>www.fajarsiddiq.com</a>
-    </div>
-    <button class="supbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Support</button>
-  </div>
-  <div class="sec"><div class="vg vg-4" id="gprf"></div></div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
-
-<!-- ── SEARCH RESULTS ── -->
-<div class="pg" id="pg-search">
-  <div class="phd"><div class="plbl">Search</div><div class="pttl" id="sttl">Results</div></div>
-  <div class="sec"><div class="vg" id="gsrch"></div></div>
-  <div class="ft"><span>© 2025 MakersFlix.com</span><a href="https://euphorya.co" target="_blank">Made by Euphorya</a></div>
-</div>
-
-</div><!-- /main -->
-
-<!-- ═══ MOBILE BOTTOM NAV ═══ -->
-<nav class="bnav" id="bnav">
-  <button class="bb on" id="bn-home" onclick="go('home')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>Home</span>
-  </button>
-  <button class="bb" id="bn-tutorials" onclick="go('tutorials')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-    <span>Learn</span>
-  </button>
-  <button class="bb" id="bn-launch" onclick="go('launch')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-    <span>Launch</span>
-  </button>
-  <button class="bb" id="bn-makers" onclick="go('makers')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-    <span>Makers</span>
-  </button>
-  <button class="bb" id="bn-more" onclick="toggleSb()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg>
-    <span>More</span>
-  </button>
-</nav>
-
-<!-- ═══ VIDEO MODAL ═══ -->
-<div class="mbg" id="vm" onclick="if(event.target===this)cv()">
-  <div class="modal">
-    <div class="mpl">
-      <button class="mcls" onclick="cv()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      <iframe id="vf" src="" allowfullscreen allow="autoplay;encrypted-media"></iframe>
-    </div>
-    <div class="mbd">
-      <div class="mtt" id="vt"></div>
-      <div class="mmt" id="vm2"></div>
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="section-tag reveal" style="margin: 0 auto 16px;">Customer Reviews</div>
+      <h2 class="section-title reveal reveal-delay-1">Creators who grew with <span class="cursive">MakersFlix</span></h2>
     </div>
   </div>
-</div>
+  <div class="section-inner">
+  <div class="testimonials-carousel">
+    <div class="testimonials-track" id="testimonialsTrack">
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#FF004F;">M</div></div>
+          <div>
+            <div class="test-handle">@coachmatt_fit</div>
+            <div class="test-followers">112k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"They don't just edit — they understand what works. Every Reel had a strong hook, clean transitions, and it performed."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">28M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">40k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#00F2EA; color:#121212;">A</div></div>
+          <div>
+            <div class="test-handle">@adam_alvi</div>
+            <div class="test-followers">34k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"Their editing completely changed my content game. The Reels they delivered were snappy, on-trend, and exactly what my audience loves."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">12M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">18k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#FF004F;">R</div></div>
+          <div>
+            <div class="test-handle">@reelqueen_</div>
+            <div class="test-followers">78k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"I never thought my Reels could look this professional. Their edits made my brand feel premium — and the growth? Unreal."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">54M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">62k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#00F2EA; color:#121212;">J</div></div>
+          <div>
+            <div class="test-handle">@jakelifts</div>
+            <div class="test-followers">55k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"Went from 10k to 55k followers in three months. MakersFlix's team knows exactly what performs and they deliver every single time."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">19M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">45k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#FF004F;">S</div></div>
+          <div>
+            <div class="test-handle">@sarahcreates</div>
+            <div class="test-followers">91k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"Honestly the best investment I made for my brand. The turnaround is fast, the quality is high, and I finally feel consistent."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">31M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">53k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#00F2EA; color:#121212;">D</div></div>
+          <div>
+            <div class="test-handle">@danielvlogs</div>
+            <div class="test-followers">47k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"MakersFlix gets it. Clean cuts, great pacing, captions that actually look good. My watch time doubled within the first month."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">9M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">29k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="section-tag reveal" style="margin: 0 auto 16px;">Pricing</div>
+      <h2 class="section-title reveal reveal-delay-1">Simple pricing,<span class="cursive"> real results</span></h2>
+      <p class="reveal reveal-delay-2" style="color:var(--text-muted); max-width:400px; margin:0 auto 36px; font-size:15px;">No contracts. No hidden fees. Cancel anytime.</p>
+    </div>
+    <div class="pricing-toggle" id="pricingToggle">
+      <button class="toggle-btn active" onclick="setMonthly()">Monthly</button>
+      <button class="toggle-btn" onclick="setYearly()">Yearly</button>
+    </div>
+    <div class="pricing-grid">
+      <!-- Clipstart — Starter -->
+      <div class="pricing-card reveal">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+          <div class="plan-tag">Clipstart</div>
+          <span style="font-size:10px; font-weight:500; background:rgba(0,242,234,0.12); color:#00F2EA; padding:3px 10px; border-radius:100px; letter-spacing:0.4px;">UGC · 60s</span>
+        </div>
+        <div class="plan-name">Starter</div>
+        <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">For creators who want to stay consistent</div>
+        <div class="plan-price"><sup>$</sup><span class="price-val">299</span><span class="period">/mo</span></div>
+        <div class="plan-strike price-strike" style="display:none;">$399/mo</div>
+        <ul class="plan-features">
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>4 short-form videos per month (1 per week)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Basic editing (cuts, pacing, simple transitions)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Captions + clean formatting</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Light hook improvement (based on your footage)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>3–5 day turnaround per video</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 minor revision per video</li>
+        </ul>
+        <a href="#" class="plan-btn">Get Started</a>
+        <button class="see-examples-btn" onclick="openModal('clipstart')" aria-label="See Clipstart examples">See examples →</button>
+      </div>
+      <!-- ReelFlow — Growth -->
+      <div class="pricing-card reveal reveal-delay-1">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+          <div class="plan-tag">ReelFlow</div>
+          <span style="font-size:10px; font-weight:500; background:rgba(0,242,234,0.12); color:#00F2EA; padding:3px 10px; border-radius:100px; letter-spacing:0.4px;">UGC · 60s</span>
+        </div>
+        <div class="plan-name">Growth</div>
+        <div style="font-size:12px; opacity:0.6; margin-bottom:12px;">For creators posting consistently and growing presence</div>
+        <div class="plan-price"><sup>$</sup><span class="price-val">599</span><span class="period">/mo</span></div>
+        <div class="plan-strike price-strike" style="display:none;color:rgba(255,255,255,0.4)">$699/mo</div>
+        <ul class="plan-features">
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>8–10 short-form videos per month</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Clean, professional editing (cuts, pacing, captions, structure)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hook refinement (light rewriting/structuring)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Basic motion graphics (simple text emphasis)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sound selection using trending or suitable audio</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Brand consistency (fonts, colors, visual style)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>3–5 day turnaround</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 minor revision per video</li>
+        </ul>
+        <a href="#" class="plan-btn" style="background:var(--orange);color:#fff;border-color:var(--orange);">Get Started</a>
+        <button class="see-examples-btn" onclick="openModal('reelflow')" aria-label="See ReelFlow examples">See examples →</button>
+      </div>
+      <!-- ScaleUp — Custom -->
+      <div class="pricing-card reveal reveal-delay-2">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+          <div class="plan-tag">ScaleUp</div>
+          <span style="font-size:10px; font-weight:500; background:rgba(0,242,234,0.12); color:#00F2EA; padding:3px 10px; border-radius:100px; letter-spacing:0.4px;">UGC · 60s</span>
+        </div>
+        <div class="plan-name">Custom</div>
+        <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">For brands or high-output creators</div>
+        <div class="plan-price">$999<span class="period">/mo</span></div>
+        <div class="plan-strike price-strike" style="display:none;"></div>
+        <ul class="plan-features">
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>15–20 short-form videos per month (capped)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Structured batch delivery (weekly or bi-weekly)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Editing optimized for clarity and retention</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Basic content direction suggestions</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority turnaround (48–72h per batch)</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Optional thumbnail covers for Shorts/Reels</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 revision per video (minor changes only)</li>
+        </ul>
+        <a href="#" class="plan-btn" style="background:#00F2EA;color:#121212;border-color:#00F2EA;">Get Started</a>
+        <button class="see-examples-btn" onclick="openModal('scaleup')" aria-label="See ScaleUp examples">See examples →</button>
+      </div>
+    </div>
+
+    <!-- Landscape cards: Launch Videos & Storytelling Vlogs -->
+    <div class="pricing-landscape-grid">
+
+      <!-- Launch Videos (30s) -->
+      <div class="pricing-card pricing-landscape reveal">
+        <div class="pricing-landscape-left">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+            <div class="plan-tag" style="margin:0;">QuickLaunch</div>
+            <span style="font-size:10px; font-weight:500; background:rgba(255,0,79,0.12); color:#FF004F; padding:3px 10px; border-radius:100px; letter-spacing:0.4px;">Launch Videos · 30s</span>
+          </div>
+          <div class="plan-name" style="font-size:24px;">Fast</div>
+          <div style="font-size:13px; color:var(--text-muted); margin-top:6px; max-width:340px; line-height:1.6;">Short launch videos built for attention spans. Ideal for product drops, announcements, and ads. Delivered fast, ready to post.</div>
+          <div class="plan-price" style="margin:20px 0 0;"><sup>$</sup><span>250</span><span class="period">/video</span></div>
+        </div>
+        <div class="pricing-landscape-right">
+          <ul class="plan-features" style="margin-bottom:24px;">
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Up to 30 seconds, vertical format</li>
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hook-first structure optimised for scroll-stop</li>
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Captions, text overlays & sound selection</li>
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>48-hour turnaround</li>
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 revision included</li>
+          </ul>
+          <a href="#" class="plan-btn" style="width:auto; display:inline-block; padding:13px 32px; background:var(--orange); color:#fff; border-color:var(--orange);">Get Started</a>
+          <button class="see-examples-btn" onclick="openModal('quicklaunch')" style="margin-top:10px;">See example →</button>
+        </div>
+      </div>
+
+      <!-- Storytelling Vlogs (120s) -->
+      <div class="pricing-card pricing-landscape reveal reveal-delay-1">
+        <div class="pricing-landscape-left">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+            <div class="plan-tag" style="margin:0;">StoryMode</div>
+            <span style="font-size:10px; font-weight:500; background:rgba(255,255,255,0.1); color:#ffffff; padding:3px 10px; border-radius:100px; letter-spacing:0.4px;">Storytelling Vlog · 120s</span>
+          </div>
+          <div class="plan-name" style="font-size:24px;">Engaging</div>
+          <div style="font-size:13px; color:var(--text-muted); margin-top:6px; max-width:340px; line-height:1.6;">For creators who want to build connection through storytelling. Longer-form vertical content edited for retention from start to finish.</div>
+          <div class="plan-price" style="margin:20px 0 0;"><sup>$</sup><span>399</span><span class="period">/video</span></div>
+        </div>
+        <div class="pricing-landscape-right">
+          <ul class="plan-features" style="margin-bottom:24px;">
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Up to 120 seconds, vertical format</li>
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Story arc structure with retention editing</li>
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>B-roll pacing, captions & music</li>
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>3–5 day turnaround</li>
+            <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 revision included</li>
+          </ul>
+          <a href="#" class="plan-btn" style="width:auto; display:inline-block; padding:13px 32px; background:#ffffff; color:#121212; border-color:#ffffff;">Get Started</a>
+          <button class="see-examples-btn" onclick="openModal('storymode')" style="margin-top:10px;">See example →</button>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="text-align:center; color:var(--text-muted); font-size:13px; line-height:1.7; max-width:780px; margin:36px auto 0;">We help creators stay consistent with short-form content through clean, structured editing. No viral guarantees—just reliable, repeatable content production so you can post consistently without stress.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div class="section-tag reveal" style="margin: 0 auto 16px;">FAQ</div>
+      <h2 class="section-title reveal reveal-delay-1">Got questions?<span class="cursive"> We've got answers.</span></h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>How do I get started?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">It's simple — book a free call, share your content goals, and upload your first footage. We'll match you with a dedicated editor and have your first video ready within 48–72 hours.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Is my footage safe and private?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">Yes. Your footage is encrypted in transit and only accessible by your dedicated editing team. We never share or use client content for any other purpose.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>How fast will I get my videos back?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">Starter plan clients receive videos within 48–72 hours. Growth and Enterprise clients get priority turnaround, often same-day for urgent requests.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>What if I don't like the edit?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">Every plan includes revisions — Starter gets 1 per video, Growth gets 2, and Enterprise gets unlimited. We work until you're happy with it.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Do you work with brands or just solo creators?</span>
+          <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="faq-a">Both. We work with solo creators, influencers, SMMA owners and growing brands. Whether you need 4 videos a month or 40, we have a plan that fits.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" id="contact">
+  <h2>Ready to grow<br><span class="cursive">faster on social?</span></h2>
+  <p>Turn ideas into 60-second vertical videos, hassle-free.</p>
+  <a href="#pricing" class="btn-white" style="font-size:15px; padding:16px 36px;">Get Started
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+</main>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><svg width="180" height="42" viewBox="0 0 585 130" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M139.703 47.5504H159.114L172.467 80.0902H173.14L186.493 47.5504H205.904V105H190.644V71.787H190.196L177.404 104.551H168.203L155.412 71.5626H154.963V105H139.703V47.5504ZM225.526 105.673C222.777 105.673 220.346 105.224 218.233 104.327C216.139 103.41 214.493 102.027 213.296 100.175C212.099 98.3237 211.501 95.9674 211.501 93.1061C211.501 90.7498 211.903 88.7395 212.707 87.0751C213.511 85.392 214.633 84.0174 216.073 82.9515C217.513 81.8855 219.187 81.072 221.094 80.511C223.021 79.95 225.096 79.5853 227.322 79.417C229.734 79.23 231.67 79.0056 233.128 78.7438C234.606 78.4632 235.672 78.0799 236.326 77.5936C236.981 77.0887 237.308 76.4248 237.308 75.602V75.4898C237.308 74.3677 236.878 73.5075 236.018 72.909C235.158 72.3106 234.054 72.0114 232.708 72.0114C231.23 72.0114 230.024 72.3387 229.089 72.9932C228.173 73.629 227.621 74.6108 227.434 75.9386H213.184C213.371 73.3205 214.203 70.908 215.68 68.7013C217.176 66.4759 219.355 64.6993 222.216 63.3715C225.078 62.025 228.65 61.3518 232.932 61.3518C236.018 61.3518 238.786 61.7165 241.235 62.4458C243.685 63.1565 245.77 64.157 247.491 65.4473C249.211 66.719 250.52 68.2151 251.418 69.9356C252.334 71.6374 252.793 73.4888 252.793 75.4898V105H238.318V98.9409H237.981C237.121 100.549 236.074 101.849 234.84 102.84C233.624 103.831 232.231 104.551 230.66 105C229.108 105.449 227.397 105.673 225.526 105.673ZM230.576 95.9113C231.754 95.9113 232.857 95.6682 233.886 95.182C234.933 94.6957 235.784 93.9944 236.439 93.0781C237.093 92.1617 237.42 91.049 237.42 89.74V86.1494C237.009 86.3177 236.569 86.4766 236.102 86.6262C235.653 86.7758 235.167 86.9161 234.643 87.047C234.138 87.1779 233.596 87.2995 233.016 87.4117C232.455 87.5239 231.866 87.6267 231.249 87.7203C230.052 87.9073 229.07 88.2158 228.304 88.646C227.556 89.0574 226.995 89.5717 226.621 90.1888C226.265 90.7872 226.088 91.4605 226.088 92.2085C226.088 93.4054 226.508 94.3217 227.35 94.9575C228.191 95.5934 229.267 95.9113 230.576 95.9113ZM274.105 94.7892L274.217 76.3874H276.237L286.672 61.9128H304.064L286.56 84.4663H282.184L274.105 94.7892ZM260.191 105V47.5504H275.676V105H260.191ZM286.784 105L276.91 87.9447L287.008 76.9485L304.513 105H286.784ZM326.968 105.785C322.367 105.785 318.403 104.906 315.074 103.149C311.764 101.372 309.211 98.8287 307.416 95.5186C305.639 92.1898 304.751 88.2065 304.751 83.5686C304.751 79.1178 305.649 75.228 307.444 71.8992C309.239 68.5704 311.773 65.9803 315.046 64.1289C318.319 62.2775 322.18 61.3518 326.631 61.3518C329.885 61.3518 332.831 61.8567 335.467 62.8666C338.104 63.8764 340.358 65.3445 342.228 67.2707C344.098 69.1782 345.538 71.4971 346.548 74.2275C347.558 76.9578 348.063 80.0341 348.063 83.4564V87.047H309.576V78.5193H333.812C333.794 77.2851 333.476 76.2004 332.859 75.2654C332.26 74.3116 331.447 73.5729 330.418 73.0493C329.408 72.507 328.258 72.2358 326.968 72.2358C325.715 72.2358 324.565 72.507 323.518 73.0493C322.47 73.5729 321.629 74.3023 320.993 75.2373C320.376 76.1724 320.049 77.2664 320.011 78.5193V87.7203C320.011 89.1041 320.301 90.3384 320.881 91.4231C321.46 92.5077 322.293 93.3586 323.377 93.9757C324.462 94.5929 325.771 94.9014 327.304 94.9014C328.37 94.9014 329.343 94.7518 330.222 94.4526C331.12 94.1534 331.886 93.7233 332.522 93.1622C333.158 92.5825 333.625 91.8906 333.925 91.0864H348.063C347.576 94.0786 346.426 96.678 344.612 98.8848C342.798 101.073 340.395 102.775 337.403 103.99C334.43 105.187 330.951 105.785 326.968 105.785ZM354.381 105V61.9128H369.417V70.1039H369.866C370.651 67.0743 371.895 64.8582 373.597 63.4557C375.317 62.0531 377.327 61.3518 379.628 61.3518C380.301 61.3518 380.965 61.4079 381.619 61.5201C382.293 61.6136 382.938 61.7539 383.555 61.9409V75.1532C382.788 74.8913 381.844 74.695 380.722 74.5641C379.6 74.4332 378.636 74.3677 377.832 74.3677C376.318 74.3677 374.952 74.7137 373.737 75.4056C372.54 76.0789 371.596 77.0326 370.904 78.2669C370.212 79.4824 369.866 80.9131 369.866 82.5588V105H354.381ZM428.017 75.9386H413.766C413.692 75.0597 413.383 74.3023 412.841 73.6664C412.298 73.0306 411.597 72.5444 410.737 72.2077C409.895 71.8524 408.96 71.6748 407.932 71.6748C406.604 71.6748 405.463 71.9179 404.509 72.4041C403.556 72.8903 403.088 73.5823 403.107 74.4799C403.088 75.1158 403.359 75.7048 403.92 76.2472C404.5 76.7895 405.613 77.2103 407.258 77.5095L416.01 79.0804C420.424 79.8845 423.706 81.2403 425.857 83.1478C428.026 85.0367 429.12 87.5706 429.139 90.7498C429.12 93.8168 428.204 96.4817 426.39 98.7445C424.594 100.989 422.135 102.728 419.012 103.962C415.908 105.178 412.364 105.785 408.38 105.785C401.798 105.785 396.646 104.439 392.924 101.746C389.221 99.0531 387.155 95.4999 386.725 91.0864H402.097C402.303 92.4516 402.976 93.5082 404.117 94.2563C405.276 94.9856 406.735 95.3503 408.493 95.3503C409.914 95.3503 411.083 95.1072 411.999 94.6209C412.934 94.1347 413.411 93.4428 413.43 92.5451C413.411 91.7223 413 91.0677 412.195 90.5815C411.41 90.0953 410.176 89.7026 408.493 89.4033L400.863 88.0569C396.468 87.2901 393.177 85.8314 390.989 83.6808C388.8 81.5302 387.716 78.7625 387.735 75.3776C387.716 72.3854 388.501 69.8514 390.091 67.7756C391.699 65.6811 393.99 64.0915 396.963 63.0068C399.956 61.9035 403.499 61.3518 407.595 61.3518C413.822 61.3518 418.731 62.6422 422.322 65.2229C425.931 67.8037 427.83 71.3756 428.017 75.9386ZM434.847 105V47.5504H475.241V60.1175H450.444V69.9917H472.773V82.5588H450.444V105H434.847ZM496.687 47.5504V105H481.202V47.5504H496.687ZM504.576 105V61.9128H520.061V105H504.576ZM512.318 57.4246C510.224 57.4246 508.429 56.7326 506.933 55.3488C505.436 53.9649 504.688 52.3005 504.688 50.3556C504.688 48.4107 505.436 46.7463 506.933 45.3624C508.429 43.9785 510.224 43.2866 512.318 43.2866C514.432 43.2866 516.227 43.9785 517.704 45.3624C519.2 46.7463 519.948 48.4107 519.948 50.3556C519.948 52.3005 519.2 53.9649 517.704 55.3488C516.227 56.7326 514.432 57.4246 512.318 57.4246ZM541.303 61.9128L547.586 75.2654L554.206 61.9128H569.579L558.021 83.4564L570.14 105H554.88L547.586 91.3108L540.517 105H525.033L537.263 83.4564L525.818 61.9128H541.303Z" fill="white"/><g clip-path="url(#clip0_new_footer)"><path d="M94.1159 35.8857H22.5707C13.2221 35.8857 5.64355 43.4643 5.64355 52.8128V92.7608C5.64355 102.109 13.2221 109.688 22.5707 109.688H94.1159C103.464 109.688 111.043 102.109 111.043 92.7608V52.8128C111.043 43.4643 103.464 35.8857 94.1159 35.8857Z" stroke="white" stroke-width="11.2847"/><path d="M29.791 84.4098L52.1348 60.9375L55.3076 78.8617L79.1231 60.9375L81.2494 84.4098" stroke="white" stroke-width="11.2847" stroke-linecap="round" stroke-linejoin="round"/><path d="M80.5725 9.47852L58.2594 31.7871L41.5273 14.8952" stroke="white" stroke-width="11.2847" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_new_footer"><rect width="116.684" height="115.33" fill="white"/></clipPath></defs></svg></div>
+        <div class="footer-tagline">Done-for-you Shorts, Reels &amp; Launch Videos — delivered in 48 hours.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#works">Works</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Features</div>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#howitworks">How It Works</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Follow Us</div>
+        <div class="social-icons">
+          <!-- Instagram -->
+          <a href="https://instagram.com/fajarsiddiq" target="_blank" rel="noopener" class="social-icon" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://tiktok.com/@fajarsiddiqfs" target="_blank" rel="noopener" class="social-icon" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="https://youtube.com/fajarsiddiq" target="_blank" rel="noopener" class="social-icon" title="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <a href="https://makersflix.com" target="_blank" rel="noopener" class="footer-brand-link">MakersFlix</a> by <a href="https://euphorya.co" target="_blank" rel="noopener" class="footer-brand-link">Euphorya</a></div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-const VD=[
-  {id:'ZoqgAy3h4OM',t:'How I Built a $10k/mo SaaS Alone',c:'saas',d:'18:24',v:'142k',cr:'Pieter Levels',b:'TRENDING'},
-  {id:'1W1bZAkFgYw',t:'From Zero to $1M ARR — The Real Story',c:'startup',d:'24:11',v:'89k',cr:'KP Talks',b:''},
-  {id:'H5wLgkGwBM8',t:'How Notion Grew to 20M Users',c:'saas',d:'15:30',v:'201k',cr:'Lenny Rachitsky',b:'HOT'},
-  {id:'PKy2lYPRgqc',t:'Indie Hacker Hits $50k MRR in 12 Months',c:'indiehacker',d:'31:05',v:'67k',cr:'Arvid Kahl',b:''},
-  {id:'ph2IU-UGqeM',t:'Build in Public — Why Transparency Wins',c:'maker',d:'12:44',v:'43k',cr:'Makersflix',b:'NEW'},
-  {id:'lT1PbDRjCgM',t:'Micro SaaS: The Playbook Nobody Tells You',c:'saas',d:'22:18',v:'95k',cr:'Tyler Tringas',b:''},
-  {id:'rHiHeaEl5KA',t:'I Made $100k Selling Digital Products',c:'indiehacker',d:'19:55',v:'112k',cr:'Pat Walls',b:''},
-  {id:'Hv-JkuzXesM',t:'Morning Routine of a $5M Founder',c:'productivity',d:'08:30',v:'78k',cr:'Ali Abdaal',b:''},
-  {id:'8xoECRMDKc8',t:'The Lean Startup — Full Breakdown',c:'startup',d:'28:40',v:'156k',cr:'Eric Ries',b:''},
-  {id:'sQdUcHnmj-E',t:'How to Get Your First 100 Customers',c:'startup',d:'17:22',v:'92k',cr:'YC Startup School',b:''},
-  {id:'_3BEf5O8cOE',t:'How to Make a Product Launch Video',c:'video',d:'14:15',v:'38k',cr:'Video Wizards',b:'TUTORIAL'},
-  {id:'Rku_GDz8fAk',t:'Notion Setup for Founders — Full Guide',c:'tools',d:'26:00',v:'51k',cr:'Thomas Frank',b:'TUTORIAL'},
-  {id:'T4lnkqhEJOU',t:'Build a Landing Page That Converts',c:'launch',d:'18:50',v:'44k',cr:'Conversion Lab',b:'TUTORIAL'},
-  {id:'lCRLbMQIGHI',t:'YouTube SEO for Makers & Builders',c:'video',d:'21:33',v:'29k',cr:'Makersflix',b:'TUTORIAL'},
-  {id:'dIYoMiuHExw',t:'Product Hunt Launch — Step by Step',c:'promo',d:'16:44',v:'67k',cr:'Ryan Hoover',b:''},
-  {id:'VczHGMEBZ4M',t:'1000 Upvotes on Product Hunt',c:'productlaunch',d:'11:22',v:'48k',cr:'Makers Mag',b:'HOT'},
-  {id:'mjpMtHGMUbA',t:'Perfect App Store Screenshots',c:'promo',d:'09:15',v:'33k',cr:'Startup Design',b:''},
-  {id:'TmwKV01vlq4',t:'Email Marketing for Launches',c:'ads',d:'23:44',v:'41k',cr:'ConvertKit',b:''},
-  {id:'Mx1dwvkXm4w',t:'Live: Building in Public — Week 12',c:'live',d:'1:24:33',v:'8.2k',cr:'Makersflix Live',b:'RECORDED'},
-  {id:'n4APJZ01c8A',t:'Live AMA: Newsletter to 50k Subs',c:'live',d:'58:12',v:'5.9k',cr:'Makersflix Live',b:'RECORDED'},
-];
-const MK=[
-  {i:'FS',n:'Fajar Siddiq'},{i:'PL',n:'Pieter Levels'},{i:'AK',n:'Arvid Kahl'},
-  {i:'PW',n:'Pat Walls'},{i:'KP',n:'KP'},{i:'TR',n:'Tyler Tringas'},
-  {i:'LR',n:'Lenny R.'},{i:'AA',n:'Ali Abdaal'},{i:'RH',n:'Ryan Hoover'},
-  {i:'TF',n:'Thomas Frank'},{i:'MF',n:'Mubs'},{i:'JK',n:'Justin Jackson'},
-  {i:'CK',n:'Courtland'},{i:'BD',n:'Ben Tossell'},{i:'SL',n:'Sahil Lavingia'},
-  {i:'HT',n:'Harry Dry'},{i:'DH',n:'DHH'},{i:'JS',n:'Jon Yongfook'},
-  {i:'MV',n:'Marc Lou'},{i:'XD',n:'X. Desouza'},{i:'NM',n:'Nik Mirkovic'},{i:'EC',n:'Edward C.'},
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; if(cursor){cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';} });
+function animRing() { rx += (mx - rx) * 0.14; ry += (my - ry) * 0.14; if(cursorRing){cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px';} requestAnimationFrame(animRing); }
+animRing();
+document.querySelectorAll('a,button,.faq-q,.video-card,.step-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { if(cursor){cursor.style.width='20px'; cursor.style.height='20px';} if(cursorRing){cursorRing.style.width='56px'; cursorRing.style.height='56px';} });
+  el.addEventListener('mouseleave', () => { if(cursor){cursor.style.width='12px'; cursor.style.height='12px';} if(cursorRing){cursorRing.style.width='36px'; cursorRing.style.height='36px';} });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+// observer.observe() called after card wrapping below
+
+// Count-up animation
+const countObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      let start = 0;
+      const duration = 2000;
+      const startTime = performance.now();
+      function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target);
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.count-up').forEach(el => countObserver.observe(el));
+
+// Video cards scroll — real thumbnails
+const realVideos = [
+  {
+    platform: 'TikTok',
+    handle: '@fajarsiddiqfs',
+    url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511',
+    oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511',
+    fallbackColor: '#010101',
+    badge: 'TikTok',
+    badgeBg: '#010101',
+  },
+  {
+    platform: 'Instagram Reels',
+    handle: '@fajarsiddiqfs',
+    url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7590016535175892244',
+    oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7590016535175892244',
+    fallbackColor: '#833ab4',
+    badge: 'Instagram Reels',
+    badgeBg: 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)',
+  },
+  {
+    platform: 'YouTube',
+    handle: '@fajarsiddiqfs',
+    url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7576823238882348296',
+    oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7576823238882348296',
+    fallbackColor: '#ff0000',
+    badge: 'YouTube',
+    badgeBg: '#ff0000',
+  },
+  {
+    platform: 'TikTok',
+    handle: '@fajarsiddiqfs',
+    url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7528473879786900754',
+    oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7528473879786900754',
+    fallbackColor: '#1a1a2e',
+    badge: 'TikTok',
+    badgeBg: '#010101',
+  },
+  {
+    platform: 'Instagram Reels',
+    handle: '@fajarsiddiqfs',
+    url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7535483707470138642',
+    oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7535483707470138642',
+    fallbackColor: '#833ab4',
+    badge: 'Instagram Reels',
+    badgeBg: 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)',
+  },
+  {
+    platform: 'YouTube',
+    handle: '@fajarsiddiqfs',
+    url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7639733317310369044',
+    oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7639733317310369044',
+    fallbackColor: '#ff0000',
+    badge: 'YouTube',
+    badgeBg: '#ff0000',
+  },
 ];
 
-// ── CARD ──────────────────────────────────────────────────────────────────────
-function mk(v){
-  return`<div class="vc" onclick="ov('${v.id}','${v.t}','${v.cr}','${v.v} views · ${v.d}')">
-    <div class="vth">
-      ${v.b?`<div class="vbdg">${v.b}</div>`:''}
-      <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" loading="lazy" onerror="this.style.display='none'">
-      <div class="vpo"><div class="vpb"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
-      <div class="vdr">${v.d}</div>
-    </div>
-    <div class="vi">
-      <div class="vtt">${v.t}</div>
-      <div class="vm"><span>${v.cr}</span><span class="vmd"></span><span>${v.v}</span></div>
-    </div>
-  </div>`;
+const playIconSVG = `<svg viewBox="0 0 24 24" fill="white" width="48" height="48" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5))"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+
+const tiktokIconSVG = `<svg viewBox="0 0 24 24" fill="currentColor" width="11" height="11"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>`;
+const youtubeIconSVG = `<svg viewBox="0 0 24 24" fill="currentColor" width="11" height="11"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+const igIconSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`;
+
+function getPlatformIcon(platform) {
+  if (platform === 'TikTok') return tiktokIconSVG;
+  if (platform === 'YouTube') return youtubeIconSVG;
+  return igIconSVG;
 }
-function fl(id,arr){const e=document.getElementById(id);if(e)e.innerHTML=arr.map(mk).join('');}
 
-// ── PAGE INIT ─────────────────────────────────────────────────────────────────
-const ini={
-  home:()=>{
-    fl('g1',VD.filter(v=>['saas','indiehacker','startup','productivity','maker'].includes(v.c)).slice(0,3));
-    fl('g2',VD.filter(v=>v.c==='startup').slice(0,3));
-    fl('g3',VD.filter(v=>v.c==='indiehacker').slice(0,3));
+function makeFallbackCard(v) {
+  return `<div style="width:100%;height:100%;background:linear-gradient(160deg,${v.fallbackColor}cc,${v.fallbackColor});display:flex;align-items:center;justify-content:center;">${playIconSVG}</div>`;
+}
+
+function buildCard(v, thumb) {
+  const c = document.createElement('a');
+  c.className = 'video-card';
+  c.href = v.url;
+  c.target = '_blank';
+  c.rel = 'noopener noreferrer';
+  c.style.textDecoration = 'none';
+  c.style.display = 'block';
+  c.style.cursor = 'pointer';
+
+  const bgHtml = thumb
+    ? `<div style="width:100%;height:100%;position:relative;">
+        <img src="${thumb}" style="width:100%;height:100%;object-fit:cover;display:block;" alt="${v.handle}" onerror="this.parentElement.innerHTML='${makeFallbackCard(v).replace(/'/g,"\\'")}'"/>
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;" class="play-overlay">${playIconSVG}</div>
+       </div>`
+    : `<div style="width:100%;height:100%;background:linear-gradient(160deg,${v.fallbackColor}cc,${v.fallbackColor});display:flex;align-items:center;justify-content:center;">${playIconSVG}</div>`;
+
+  const badgeStyle = v.badgeBg.includes('gradient')
+    ? `background:${v.badgeBg};`
+    : `background:${v.badgeBg};`;
+
+  c.innerHTML = `
+    <div class="video-card-bg" style="position:relative;width:100%;height:100%;">${bgHtml}</div>
+    <div class="vc-platform" style="${badgeStyle}color:white;display:flex;align-items:center;gap:4px;">
+      ${getPlatformIcon(v.platform)} ${v.badge}
+    </div>
+    `;
+
+  // show play overlay on hover
+  c.addEventListener('mouseenter', () => {
+    const overlay = c.querySelector('.play-overlay');
+    if (overlay) overlay.style.opacity = '1';
+  });
+  c.addEventListener('mouseleave', () => {
+    const overlay = c.querySelector('.play-overlay');
+    if (overlay) overlay.style.opacity = '0';
+  });
+
+  return c;
+}
+
+const track = document.getElementById('videosScroll');
+
+async function loadVideoCards() {
+  if(!track) return;
+  const thumbMap = await Promise.all(realVideos.map(async (v) => {
+    if (!v.oembedUrl) return null;
+    try {
+      const res = await fetch(v.oembedUrl);
+      if (res.ok) {
+        const data = await res.json();
+        return data.thumbnail_url || null;
+      }
+    } catch(e) {}
+    return null;
+  }));
+
+  // Build 2 full sets: 1,2,3,4,5,6,1,2,3,4,5,6 for seamless -50% loop
+  const allCards = [];
+  [0,1].forEach(() => {
+    realVideos.forEach((v, i) => {
+      const card = buildCard(v, thumbMap[i]);
+      track.appendChild(card);
+      allCards.push(card);
+    });
+  });
+
+  // Attach hover listeners
+  allCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const o = card.querySelector('.play-overlay');
+      if (o) o.style.opacity = '1';
+    });
+    card.addEventListener('mouseleave', () => {
+      const o = card.querySelector('.play-overlay');
+      if (o) o.style.opacity = '0';
+    });
+  });
+
+  // JS-driven seamless marquee: scroll by exact width of one set
+  const setCount = realVideos.length;
+  let pos = 0;
+  let paused = false;
+  const wrap = document.querySelector('.videos-scroll-wrap');
+  if (wrap) {
+    wrap.addEventListener('mouseenter', () => paused = true);
+    wrap.addEventListener('mouseleave', () => paused = false);
+  }
+  function getSetWidth() {
+    const cards = track.querySelectorAll('.video-card');
+    if (!cards.length) return 0;
+    const cardW = cards[0].getBoundingClientRect().width;
+    const gap = 16;
+    return setCount * (cardW + gap);
+  }
+  let setWidth = 0;
+  function animate() {
+    if (!setWidth) setWidth = getSetWidth();
+    if (!paused) {
+      pos += 0.6;
+      if (pos >= setWidth) pos -= setWidth;
+      track.style.transform = `translateX(-${pos}px)`;
+    }
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+}
+
+loadVideoCards();
+
+// Testimonials carousel
+let slideIndex = 0;
+const testimonialsTrack = document.getElementById('testimonialsTrack');
+function updateSlide() {
+  if(!testimonialsTrack) return;
+  const cardWidth = 360 + 24;
+  testimonialsTrack.style.transform = `translateX(calc(48px - ${slideIndex * cardWidth}px))`;
+}
+function nextSlide() { if(!testimonialsTrack) return; const max = testimonialsTrack.children.length - 2; slideIndex = Math.min(slideIndex + 1, max); updateSlide(); }
+function prevSlide() { if(!testimonialsTrack) return; slideIndex = Math.max(slideIndex - 1, 0); updateSlide(); }
+
+// FAQ
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Pricing toggle
+function setMonthly() {
+  document.querySelectorAll('.toggle-btn')[0].classList.add('active');
+  document.querySelectorAll('.toggle-btn')[1].classList.remove('active');
+  document.querySelectorAll('.price-val').forEach((el, i) => {
+    el.textContent = ['299','599',''][i] || el.textContent;
+  });
+  document.querySelectorAll('.price-strike').forEach(el => el.style.display = 'none');
+}
+function setYearly() {
+  document.querySelectorAll('.toggle-btn')[1].classList.add('active');
+  document.querySelectorAll('.toggle-btn')[0].classList.remove('active');
+  const vals = ['239','479'];
+  document.querySelectorAll('.price-val').forEach((el, i) => {
+    if (vals[i]) el.textContent = vals[i];
+  });
+  document.querySelectorAll('.price-strike').forEach(el => el.style.display = 'block');
+}
+
+// Wrap cards in gradient border wrappers
+(function() {
+  const selectors = ['.service-item', '.testimonial-card', '.pricing-card'];
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(card => {
+      const wrap = document.createElement('div');
+      wrap.className = 'card-gradient-wrap';
+      // Carry over reveal classes from the card to the wrapper
+      ['reveal','reveal-delay-1','reveal-delay-2'].forEach(cls => {
+        if (card.classList.contains(cls)) {
+          wrap.classList.add(cls);
+          card.classList.remove(cls);
+        }
+      });
+      card.parentNode.insertBefore(wrap, card);
+      wrap.appendChild(card);
+    });
+  });
+  // Stats grid: re-wrap the grid container so gap/grid layout still works
+  // stat-items are inside .stats-grid, so just wrap each individually (already done above)
+})();
+
+// Wrap step cards
+(function() {
+  document.querySelectorAll('.step-card').forEach(card => {
+    const wrap = document.createElement('div');
+    wrap.className = 'card-gradient-wrap';
+    ['reveal','reveal-delay-1','reveal-delay-2'].forEach(cls => {
+      if (card.classList.contains(cls)) {
+        wrap.classList.add(cls);
+        card.classList.remove(cls);
+      }
+    });
+    card.parentNode.insertBefore(wrap, card);
+    wrap.appendChild(card);
+  });
+})();
+
+// Register all .reveal elements AFTER wrapping so wrapper divs are included
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const hero = document.querySelector('.hero');
+  if (hero) hero.style.backgroundPositionY = (y * 0.4) + 'px';
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const mobileClose = document.getElementById('mobile-menu-close');
+
+function openMenu() {
+  mobileMenu.classList.add('open');
+  mobileOverlay.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+hamburger && hamburger.addEventListener('click', openMenu);
+mobileClose && mobileClose.addEventListener('click', closeMenu);
+mobileOverlay && mobileOverlay.addEventListener('click', closeMenu);
+document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', closeMenu));
+
+// Close menu/modal on Escape key
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenu(); closeModal(); } });
+
+// Examples modal data
+const modalData = {
+  clipstart: {
+    label: 'UGC · 60s — Clipstart Starter',
+    title: '4 Videos Per Month',
+    cols: 4,
+    videos: [
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7590016535175892244', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7590016535175892244' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7528473879786900754', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7528473879786900754' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7535483707470138642', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7535483707470138642' },
+    ]
   },
-  tutorials:()=>fl('gt',VD.filter(v=>['video','launch','tools'].includes(v.c))),
-  launch:()=>fl('glch',VD.filter(v=>['promo','ads','productlaunch'].includes(v.c))),
-  livestream:()=>fl('gl',VD.filter(v=>v.c==='live')),
-  makers:()=>{
-    const g=document.getElementById('gmk');
-    if(g)g.innerHTML=MK.map(m=>`<div class="mkc" onclick="sprof('${m.n}','${m.i}')"><div class="mkav">${m.i}</div><div class="mknm">${m.n}</div></div>`).join('');
+  reelflow: {
+    label: 'UGC · 60s — ReelFlow Growth',
+    title: '8–10 Videos Per Month',
+    cols: 5,
+    videos: [
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7590016535175892244', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7590016535175892244' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7576823238882348296', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7576823238882348296' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7528473879786900754', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7528473879786900754' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7535483707470138642', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7535483707470138642' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7639733317310369044', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7639733317310369044' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7268727483732675848', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7268727483732675848' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7590016535175892244', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7590016535175892244' },
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7576823238882348296', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7576823238882348296' },
+    ]
   },
-  profile:()=>{
-    const g=document.getElementById('gprf');
-    if(!g)return;
-    const add=`<div style="background:var(--bg2);border:1px solid var(--bdr);border-radius:8px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;cursor:pointer" onclick="alert('Connect your YouTube / Twitch / Vimeo')">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      <div style="font-size:10px;color:var(--mt2);text-align:center;padding:0 10px;line-height:1.5">Add any Twitch, Youtube,<br>Vimeo videos to your profile.</div>
-    </div>`;
-    g.innerHTML=add+VD.slice(0,11).map(mk).join('');
+  scaleup: {
+    label: 'UGC · 60s — ScaleUp Custom',
+    title: '15–20 Videos Per Month',
+    cols: 5,
+    videos: Array.from({length: 15}, (_, i) => {
+      const ids = ['7275256431304117511','7590016535175892244','7576823238882348296','7528473879786900754','7535483707470138642','7639733317310369044','7268727483732675848'];
+      const id = ids[i % ids.length];
+      return { url: `https://www.tiktok.com/@fajarsiddiqfs/video/${id}`, thumb: `https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/${id}` };
+    })
+  },
+  quicklaunch: {
+    label: 'Launch Videos · 30s — QuickLaunch',
+    title: '1 Video Example',
+    cols: 1,
+    videos: [
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511' },
+    ]
+  },
+  storymode: {
+    label: 'Storytelling Vlog · 120s — StoryMode',
+    title: '1 Video Example',
+    cols: 1,
+    videos: [
+      { url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7639733317310369044', thumb: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7639733317310369044' },
+    ]
   }
 };
 
-// ── NAVIGATION ────────────────────────────────────────────────────────────────
-const PGS=['home','tutorials','livestream','community','makers','launch','open','shop','profile','search'];
-let curPg='home';
-
-function go(id){
-  closeSb();
-  PGS.forEach(p=>{
-    const e=document.getElementById('pg-'+p);
-    if(e)e.classList.toggle('on',p===id);
+async function openModal(planKey) {
+  const data = modalData[planKey];
+  if (!data) return;
+  document.getElementById('modalLabel').textContent = data.label;
+  document.getElementById('modalTitle').textContent = data.title;
+  const grid = document.getElementById('modalGrid');
+  grid.className = `examples-modal-grid cols-${Math.min(data.cols, data.videos.length)}`;
+  grid.innerHTML = '';
+  data.videos.forEach((vid) => {
+    const card = document.createElement('a');
+    card.href = vid.url;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.className = 'modal-video-card';
+    card.innerHTML = `<div class="modal-video-play" style="flex-direction:column;gap:8px;"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="#222"/><polygon points="10 8 16 12 10 16 10 8" fill="white"/></svg><span style="font-size:10px;color:#888;">Loading...</span></div>`;
+    grid.appendChild(card);
+    fetch(vid.thumb)
+      .then(r => r.json())
+      .then(d => {
+        if (d.thumbnail_url) {
+          card.innerHTML = `<img class="modal-video-thumb" src="${d.thumbnail_url}" alt="${d.title||'Video example'}" loading="lazy"><div class="modal-video-play"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.5)"/><polygon points="10 8 16 12 10 16 10 8" fill="white"/></svg></div>`;
+        }
+      })
+      .catch(() => {});
   });
-  // sidebar active
-  document.querySelectorAll('.sbi').forEach(b=>b.classList.remove('act'));
-  const sb=document.getElementById('sb-'+id);if(sb)sb.classList.add('act');
-  // bottom nav active
-  document.querySelectorAll('.bb').forEach(b=>b.classList.remove('on'));
-  const bn=document.getElementById('bn-'+id);if(bn)bn.classList.add('on');
-  // top nav links active
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('act'));
-  const nl=document.getElementById('nl-'+id);if(nl)nl.classList.add('act');
-  // lazy init
-  if(ini[id])ini[id]();
-  curPg=id;
-  window.scrollTo(0,0);
+  document.getElementById('examplesOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  const modal = document.getElementById('examplesModal');
+  modal.style.display = 'block';
+  requestAnimationFrame(() => modal.classList.add('open'));
 }
 
-// ── SIDEBAR TOGGLE (mobile) ───────────────────────────────────────────────────
-function toggleSb(){
-  const sb=document.getElementById('sidebar');
-  const ov=document.getElementById('sb-ov');
-  const open=sb.classList.toggle('mob-open');
-  ov.classList.toggle('vis',open);
-  document.body.style.overflow=open?'hidden':'';
+function closeModal() {
+  const modal = document.getElementById('examplesModal');
+  const overlay = document.getElementById('examplesOverlay');
+  modal.classList.remove('open');
+  overlay.classList.remove('open');
+  setTimeout(() => { modal.style.display = 'none'; }, 300);
+  document.body.style.overflow = '';
 }
-function closeSb(){
-  document.getElementById('sidebar').classList.remove('mob-open');
-  document.getElementById('sb-ov').classList.remove('vis');
-  document.body.style.overflow='';
-}
-
-// ── CATEGORY FILTERS ──────────────────────────────────────────────────────────
-function hcat(btn,cat){
-  document.querySelectorAll('#hcats .cat').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  const p=cat==='all'?VD:VD.filter(v=>v.c===cat);
-  fl('g1',p.slice(0,3));
-  fl('g2',p.filter(v=>v.c==='startup'||cat==='all').slice(0,3));
-  fl('g3',p.filter(v=>v.c==='indiehacker'||cat==='all').slice(0,3));
-}
-function gcat(btn,cid,gid,cat){
-  document.querySelectorAll('#'+cid+' .cat').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  fl(gid,cat==='all'?VD:VD.filter(v=>v.c===cat));
-}
-
-// ── SEARCH ────────────────────────────────────────────────────────────────────
-let st;
-function dosrch(q){
-  clearTimeout(st);
-  if(!q.trim())return;
-  st=setTimeout(()=>{
-    const r=VD.filter(v=>
-      v.t.toLowerCase().includes(q.toLowerCase())||
-      v.cr.toLowerCase().includes(q.toLowerCase())||
-      v.c.toLowerCase().includes(q.toLowerCase())
-    );
-    document.getElementById('sttl').textContent=`"${q}"`;
-    fl('gsrch',r);
-    if(!r.length)document.getElementById('gsrch').innerHTML=`<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--mt);font-size:14px">No results for "${q}"</div>`;
-    go('search');
-  },280);
-}
-
-// ── PROFILE HELPER ────────────────────────────────────────────────────────────
-function sprof(name,init){
-  document.getElementById('prnm').textContent=name;
-  document.getElementById('prav').textContent=init;
-  document.getElementById('prbio').textContent='Maker, builder & creator on Makersflix. Sharing the journey of building products people love.';
-  go('profile');
-}
-
-// ── VIDEO MODAL ───────────────────────────────────────────────────────────────
-function ov(ytid,title,creator,meta){
-  document.getElementById('vf').src=`https://www.youtube.com/embed/${ytid}?autoplay=1&rel=0&modestbranding=1`;
-  document.getElementById('vt').textContent=title;
-  document.getElementById('vm2').innerHTML=`<span>${creator}</span><span style="opacity:.35">·</span><span>${meta}</span>`;
-  document.getElementById('vm').classList.add('on');
-  document.body.style.overflow='hidden';
-}
-function cv(){
-  document.getElementById('vm').classList.remove('on');
-  document.getElementById('vf').src='';
-  document.body.style.overflow='';
-}
-function startlive(){
-  document.getElementById('lp').innerHTML=`<iframe src="https://www.youtube.com/embed/Mx1dwvkXm4w?autoplay=1&rel=0" allowfullscreen allow="autoplay"></iframe>`;
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')cv()});
-
-// ── BOOT ─────────────────────────────────────────────────────────────────────
-go('home');
 </script>
+<!-- EXAMPLES MODAL -->
+<div class="examples-modal-overlay" id="examplesOverlay" onclick="closeModal()"></div>
+<div class="examples-modal" id="examplesModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="examples-modal-header">
+    <div>
+      <div id="modalLabel" class="examples-modal-label"></div>
+      <h3 id="modalTitle" class="examples-modal-title"></h3>
+    </div>
+    <button class="examples-modal-close" onclick="closeModal()" aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="examples-modal-grid" id="modalGrid"></div>
+</div>
+
 </body>
 </html>
