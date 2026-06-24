@@ -871,8 +871,9 @@
   .section-inner { max-width: 1100px; margin: 0 auto; }
 
   /* ── MOBILE & RESPONSIVE ───────────────────────── */
+  .faq-title-break { display: inline; }
+
   @media (max-width: 768px) {
-    /* Nav */
     nav { padding: 10px 14px; }
     .nav-inner { padding: 8px 8px 8px 14px; gap: 10px; }
     .nav-links { display: none; }
@@ -941,6 +942,9 @@
     .pricing-card.featured:hover { transform: translateY(-4px); }
     .pricing-grid .card-gradient-wrap { display: block; }
 
+    /* FAQ title break */
+    .faq-title-break { display: block; }
+
     /* FAQ */
     .faq-wrap { padding: 0; }
     .faq-q { font-size: 14px; padding: 20px 0; }
@@ -978,6 +982,15 @@
     .hero-btns .btn-primary { display: flex; }
   }
 </style>
+  <!-- Cal element-click embed code begins -->
+  <script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "euphorya-partnerships-sponsorships", {origin:"https://app.cal.com"});
+    Cal.config = Cal.config || {};
+    Cal.config.forwardQueryParams = true;
+    Cal.ns["euphorya-partnerships-sponsorships"]("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+  <!-- Cal element-click embed code ends -->
 </head>
 <body>
 
@@ -997,7 +1010,7 @@
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="#pricing" class="nav-cta"><img src="images/fajar.webp" alt="Fajar Siddiq"/>Book A Call with Fajar Siddiq</a>
+  <a href="#" class="nav-cta" data-cal-link="fajarsiddiq/euphorya-partnerships-sponsorships" data-cal-namespace="euphorya-partnerships-sponsorships" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'><img src="images/fajar.webp" alt="Fajar Siddiq"/>Book A Call with Fajar Siddiq</a>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
@@ -1012,7 +1025,7 @@
     <li><a href="#services" class="mobile-nav-link">Services</a></li>
     <li><a href="#pricing" class="mobile-nav-link">Pricing</a></li>
     <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
-    <li><a href="#pricing" class="mobile-nav-link nav-cta" style="margin-top:8px;"><img src="images/fajar.webp" alt="Fajar Siddiq"/>Book A Call with Fajar Siddiq</a></li>
+    <li><a href="#" class="mobile-nav-link nav-cta" style="margin-top:8px;" data-cal-link="fajarsiddiq/euphorya-partnerships-sponsorships" data-cal-namespace="euphorya-partnerships-sponsorships" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'><img src="images/fajar.webp" alt="Fajar Siddiq"/>Book A Call with Fajar Siddiq</a></li>
   </ul>
 </div>
 <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
@@ -1534,7 +1547,7 @@
   <div class="section-inner">
     <div style="text-align:center; margin-bottom:56px;">
       <div class="section-tag reveal" style="margin: 0 auto 16px;">FAQ</div>
-      <h2 class="section-title reveal reveal-delay-1">Got questions?<span class="cursive"> We've got answers.</span></h2>
+      <h2 class="section-title reveal reveal-delay-1">Got questions?<span class="faq-title-break"><span class="cursive"> We've got answers.</span></span></h2>
     </div>
     <div class="faq-wrap">
       <div class="faq-item reveal">
