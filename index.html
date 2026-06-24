@@ -344,6 +344,34 @@
   }
   .btn-secondary:hover { color: #00F2EA; border-color: #00F2EA; }
 
+  .hero-trust-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    opacity: 0;
+    animation: fadeSlideUp 0.9s 0.7s ease forwards;
+  }
+  .hero-trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 5px 13px 5px 9px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+  .hero-trust-pill svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
   /* =============================================
      RIGHT — 3 infinite-scrolling columns
      ============================================= */
@@ -357,11 +385,11 @@
     box-sizing: border-box;
     overflow: hidden;
     -webkit-mask-image: linear-gradient(to bottom,
-      transparent 0%, rgba(0,0,0,0.1) 8%, rgba(0,0,0,0.6) 18%, #000 38%,
-      #000 62%, rgba(0,0,0,0.6) 82%, rgba(0,0,0,0.1) 92%, transparent 100%);
+      transparent 0%, transparent 8%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.7) 32%, #000 50%,
+      #000 50%, rgba(0,0,0,0.7) 68%, rgba(0,0,0,0.3) 80%, transparent 92%, transparent 100%);
     mask-image: linear-gradient(to bottom,
-      transparent 0%, rgba(0,0,0,0.1) 8%, rgba(0,0,0,0.6) 18%, #000 38%,
-      #000 62%, rgba(0,0,0,0.6) 82%, rgba(0,0,0,0.1) 92%, transparent 100%);
+      transparent 0%, transparent 8%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.7) 32%, #000 50%,
+      #000 50%, rgba(0,0,0,0.7) 68%, rgba(0,0,0,0.3) 80%, transparent 92%, transparent 100%);
     opacity: 0;
     animation: fadeIn 1s 0.5s ease forwards;
   }
@@ -449,6 +477,7 @@
     .viral-icon svg { width: 28px; height: 28px; }
     .hero-sub { max-width: 100%; }
     .hero-btns { justify-content: center; }
+    .hero-trust-pills { justify-content: center; }
     .hero-badge { align-self: center; }
     .hero-trusted { align-items: center; }
     .hero-trusted-label { text-align: center; }
@@ -469,7 +498,7 @@
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 14px;
+    margin-bottom: 22px;
   }
   .hero-trusted .logos-track-wrap {
     overflow: hidden;
@@ -1000,14 +1029,29 @@
         &amp; <span style="color:#00F2EA;">Launch Videos</span>
       </span>
     </h1>
-    <p class="hero-sub">Launch videos (30s), UGC content (60s), and storytelling vlogs (120s) — delivered in 48 hrs.</p>
+    <p class="hero-sub">Founded by <a href="https://fajarsiddiq.com/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--text);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s;vertical-align:middle;" onmouseover="this.style.color='#00F2EA'" onmouseout="this.style.color='var(--text)'"><img src="fajar.webp" alt="Fajar Siddiq" style="width:22px;height:22px;border-radius:50%;object-fit:cover;display:inline-block;vertical-align:middle;flex-shrink:0;"/>Fajar Siddiq</a> — AI-powered for modern brands.</p>
     <div class="hero-btns">
       <a href="#pricing" class="btn-primary">Get Started
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#works" class="btn-secondary">See Our Work
+      <a href="#works" class="btn-secondary">See Work
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
+    </div>
+
+    <div class="hero-trust-pills">
+      <span class="hero-trust-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Productized Service
+      </span>
+      <span class="hero-trust-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2z"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        Senior Talent
+      </span>
+      <span class="hero-trust-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Payment via Stripe
+      </span>
     </div>
 
     <!-- TRUSTED LOGOS — inline below hero CTA -->
@@ -1015,28 +1059,28 @@
       <div class="hero-trusted-label">Trusted by creators &amp; brands</div>
       <div class="logos-track-wrap">
         <div class="logos-track">
-          <span class="logo-item"><img src="" alt="Client Logo 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 1</span></span>
+          <span class="logo-item"><img src="images/logo1.png" alt="Client Logo 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 1</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 2</span></span>
+          <span class="logo-item"><img src="images/logo2.png" alt="Client Logo 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 2</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 3</span></span>
+          <span class="logo-item"><img src="images/logo3.png" alt="Client Logo 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 3</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 4</span></span>
+          <span class="logo-item"><img src="images/logo4.png" alt="Client Logo 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 4</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 5</span></span>
+          <span class="logo-item"><img src="images/logo5.png" alt="Client Logo 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 5</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 6</span></span>
-          <span class="logo-item"><img src="" alt="Client Logo 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 1</span></span>
+          <span class="logo-item"><img src="images/logo6.png" alt="Client Logo 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 6</span></span>
+          <span class="logo-item"><img src="images/logo1.png" alt="Client Logo 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 1</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 2</span></span>
+          <span class="logo-item"><img src="images/logo2.png" alt="Client Logo 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 2</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 3</span></span>
+          <span class="logo-item"><img src="images/logo3.png" alt="Client Logo 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 3</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 4</span></span>
+          <span class="logo-item"><img src="images/logo4.png" alt="Client Logo 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 4</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 5</span></span>
+          <span class="logo-item"><img src="images/logo5.png" alt="Client Logo 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 5</span></span>
           <span class="logo-sep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg></span>
-          <span class="logo-item"><img src="" alt="Client Logo 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display:none;"/><span class="logo-placeholder-text">Logo 6</span></span>
+          <span class="logo-item"><img src="images/logo6.png" alt="Client Logo 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/><span class="logo-placeholder-text" style="display:none;">Logo 6</span></span>
         </div>
       </div>
     </div>
