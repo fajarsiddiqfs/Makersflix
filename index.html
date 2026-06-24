@@ -269,7 +269,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding: 120px 56px 80px 8%;
+    padding: 120px 16px 80px 20%;
     z-index: 2;
     box-sizing: border-box;
   }
@@ -351,7 +351,7 @@
     height: 100vh;
     display: flex;
     gap: 8px;
-    padding: 0 24px 0 12px;
+    padding: 0 170px 0 12px;
     box-sizing: border-box;
     overflow: hidden;
     -webkit-mask-image: linear-gradient(to bottom,
@@ -377,24 +377,34 @@
   /* Each card — strict 9:16 vertical video ratio */
   .hero-card {
     width: 100%;
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 2 / 3;
     border-radius: 14px;
     overflow: hidden;
     background: #151525;
     flex-shrink: 0;
     position: relative;
+    display: block;
+    text-decoration: none;
   }
-  .hero-card img {
+  .hero-card img.hero-card-img {
     width: 100%; height: 100%;
     object-fit: cover; display: block;
     transition: transform 0.4s ease;
   }
-  .hero-card:hover img { transform: scale(1.04); }
+  .hero-card:hover img.hero-card-img { transform: scale(1.04); }
+  .hero-card-badge {
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(0,0,0,0.45); backdrop-filter: blur(4px);
+    border-radius: 6px; padding: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; z-index: 2;
+  }
+  .hero-card-badge svg { width: 11px; height: 11px; }
 
   /* Placeholder tile */
   .hero-card-placeholder {
     position: absolute; inset: 0;
-    display: flex; flex-direction: column;
+    display: none; flex-direction: column;
     align-items: center; justify-content: center; gap: 8px;
     background: linear-gradient(160deg, #1c1c2e 0%, #16213e 55%, #0f3460 100%);
     color: #2a3a5a;
@@ -406,15 +416,21 @@
 
   /* ── Responsive ── */
   @media (max-width: 1200px) {
-    .hero-left { padding-left: 6%; padding-right: 40px; }
+    .hero-left { padding-left: 6%; padding-right: 16px; }
   }
   @media (max-width: 960px) {
-    .hero-left { flex: 0 0 50%; width: 50%; padding-left: 5%; padding-right: 32px; }
+    .hero-left { flex: 0 0 50%; width: 50%; padding-left: 5%; padding-right: 12px; }
     .hero-right { flex: 0 0 50%; width: 50%; }
   }
   @media (max-width: 768px) {
     .hero { flex-direction: column; align-items: stretch; min-height: auto; }
-    .hero-left { flex: none; width: 100%; padding: 120px 24px 40px 24px; }
+    .hero-left { flex: none; width: 100%; padding: 90px 24px 40px 24px; align-items: center; text-align: center; }
+    .hero h1 { text-align: center; }
+    .hero h1 .viral-wrap { justify-content: center; flex-wrap: wrap; gap: 6px 10px; }
+    .viral-icon svg { width: 28px; height: 28px; }
+    .hero-sub { max-width: 100%; }
+    .hero-btns { justify-content: center; }
+    .hero-badge { align-self: center; }
     .hero-right { flex: none; width: 100%; height: 420px; padding: 0 16px; }
   }
 
@@ -782,7 +798,7 @@
 
     /* Hero */
     .hero { padding: 110px 20px 50px; text-align: center; }
-    .hero h1 { font-size: clamp(36px, 10vw, 56px); letter-spacing: -3px; }
+    .hero h1 { font-size: clamp(32px, 9vw, 50px); letter-spacing: -2.5px; }
     .hero-sub { font-size: 14px; }
     .hero-btns { flex-direction: row; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
     .btn-primary, .btn-secondary { justify-content: center; flex: 1; min-width: 0; white-space: nowrap; font-size: 13px; padding: 12px 16px; }
@@ -960,24 +976,24 @@
   <div class="hero-right" id="heroRight">
     <!-- Column 1 (scrolls UP) -->
     <div class="hero-col" id="col1">
-      <div class="hero-card"><img src="images/slide1.jpg"  alt="Sample 1"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide1.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide2.jpg"  alt="Sample 2"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide2.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide3.jpg"  alt="Sample 3"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide3.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide4.jpg"  alt="Sample 4"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide4.jpg</span></div></div>
+      <a class="hero-card" data-vidx="0"><img class="hero-card-img" alt="Sample 1"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="1"><img class="hero-card-img" alt="Sample 2"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="2"><img class="hero-card-img" alt="Sample 3"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="3"><img class="hero-card-img" alt="Sample 4"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
     </div>
     <!-- Column 2 (scrolls DOWN) -->
     <div class="hero-col" id="col2">
-      <div class="hero-card"><img src="images/slide5.jpg"  alt="Sample 5"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide5.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide6.jpg"  alt="Sample 6"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide6.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide7.jpg"  alt="Sample 7"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide7.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide8.jpg"  alt="Sample 8"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide8.jpg</span></div></div>
+      <a class="hero-card" data-vidx="4"><img class="hero-card-img" alt="Sample 5"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="5"><img class="hero-card-img" alt="Sample 6"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="0"><img class="hero-card-img" alt="Sample 7"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="1"><img class="hero-card-img" alt="Sample 8"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
     </div>
     <!-- Column 3 (scrolls UP, slightly faster) -->
     <div class="hero-col" id="col3">
-      <div class="hero-card"><img src="images/slide9.jpg"  alt="Sample 9"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide9.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide10.jpg" alt="Sample 10" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide10.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide11.jpg" alt="Sample 11" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide11.jpg</span></div></div>
-      <div class="hero-card"><img src="images/slide12.jpg" alt="Sample 12" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide12.jpg</span></div></div>
+      <a class="hero-card" data-vidx="2"><img class="hero-card-img" alt="Sample 9"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="3"><img class="hero-card-img" alt="Sample 10"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="4"><img class="hero-card-img" alt="Sample 11"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
+      <a class="hero-card" data-vidx="5"><img class="hero-card-img" alt="Sample 12"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg></div></a>
     </div>
   </div>
 
@@ -1785,6 +1801,78 @@ async function loadVideoCards() {
 }
 
 loadVideoCards();
+
+// Populate hero carousel cards with the same videos/thumbnails used in Works section
+async function loadHeroCards() {
+  const heroCards = document.querySelectorAll('.hero-card[data-vidx]');
+  if (!heroCards.length) return;
+  const thumbCache = {};
+  await Promise.all(realVideos.map(async (v, i) => {
+    if (!v.oembedUrl) return;
+    try {
+      const res = await fetch(v.oembedUrl);
+      if (res.ok) {
+        const data = await res.json();
+        thumbCache[i] = data.thumbnail_url || null;
+      }
+    } catch (e) {}
+  }));
+
+  function proxiedUrl(url) {
+    // route through a CORS-friendly image proxy to dodge TikTok CDN hotlink/referrer blocks
+    return `https://images.weserv.nl/?url=${encodeURIComponent(url.replace(/^https?:\/\//, ''))}`;
+  }
+
+  heroCards.forEach(card => {
+    const idx = parseInt(card.getAttribute('data-vidx'), 10);
+    const v = realVideos[idx];
+    if (!v) return;
+    card.href = v.url;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+
+    const img = card.querySelector('.hero-card-img');
+    const ph = card.querySelector('.hero-card-placeholder');
+    const thumb = thumbCache[idx];
+
+    // Branded fallback: platform icon + handle, on the show's fallback color
+    if (ph) {
+      ph.style.background = v.fallbackColor
+        ? `linear-gradient(160deg, ${v.fallbackColor}cc, ${v.fallbackColor})`
+        : ph.style.background;
+      ph.innerHTML = `${getPlatformIcon(v.platform)}<span style="margin-top:6px;">${v.handle}</span>`;
+      ph.querySelector('svg').style.width = '20px';
+      ph.querySelector('svg').style.height = '20px';
+      ph.querySelector('svg').style.opacity = '0.9';
+      ph.querySelector('svg').style.color = '#ffffff';
+      ph.querySelector('span').style.color = 'rgba(255,255,255,0.85)';
+      ph.querySelector('span').style.fontSize = '10px';
+      ph.querySelector('span').style.letterSpacing = '0.5px';
+      ph.querySelector('span').style.textTransform = 'none';
+    }
+
+    // Small platform badge, consistent with Works cards
+    if (!card.querySelector('.hero-card-badge')) {
+      const badge = document.createElement('div');
+      badge.className = 'hero-card-badge';
+      badge.innerHTML = getPlatformIcon(v.platform);
+      card.appendChild(badge);
+    }
+
+    if (img && thumb) {
+      const tryProxy = () => {
+        img.onerror = () => { img.style.display = 'none'; if (ph) ph.style.display = 'flex'; };
+        img.src = proxiedUrl(thumb);
+      };
+      img.onerror = tryProxy;
+      img.src = thumb;
+    } else {
+      if (img) img.style.display = 'none';
+      if (ph) ph.style.display = 'flex';
+    }
+  });
+}
+loadHeroCards();
 
 // Testimonials carousel
 let slideIndex = 0;
