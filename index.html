@@ -383,6 +383,8 @@
     border-radius: 16px;
     overflow: hidden;
     background: #151525;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
     position: relative;
     display: block;
     text-decoration: none;
@@ -1633,7 +1635,7 @@ const realVideos = [
     handle: '@fajarsiddiqfs',
     url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511',
     oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7275256431304117511',
-    fallbackColor: '#010101',
+    fallbackColor: '#2a2a35',
     badge: 'TikTok',
     badgeBg: '#010101',
   },
@@ -1660,7 +1662,7 @@ const realVideos = [
     handle: '@fajarsiddiqfs',
     url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7528473879786900754',
     oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7528473879786900754',
-    fallbackColor: '#1a1a2e',
+    fallbackColor: '#2d2d45',
     badge: 'TikTok',
     badgeBg: '#010101',
   },
@@ -1687,7 +1689,7 @@ const realVideos = [
     handle: '@fajarsiddiqfs',
     url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7652990385509125397',
     oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7652990385509125397',
-    fallbackColor: '#010101',
+    fallbackColor: '#2a2a35',
     badge: 'TikTok',
     badgeBg: '#010101',
   },
@@ -1714,7 +1716,7 @@ const realVideos = [
     handle: '@fajarsiddiqfs',
     url: 'https://www.tiktok.com/@fajarsiddiqfs/video/7651288290150190357',
     oembedUrl: 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@fajarsiddiqfs/video/7651288290150190357',
-    fallbackColor: '#1a1a2e',
+    fallbackColor: '#2d2d45',
     badge: 'TikTok',
     badgeBg: '#010101',
   },
@@ -1840,7 +1842,7 @@ async function loadVideoCards() {
   const wrap = document.querySelector('.videos-scroll-wrap');
   if (wrap) {
     wrap.addEventListener('mouseenter', () => paused = true);
-    wrap.addEventListener('mouseleave', () => paused = false);
+    wrap.addEventListener('mouseleave', () => { if (!isDragging) paused = false; });
   }
   function getSetWidth() {
     const cards = track.querySelectorAll('.video-card');
@@ -1850,6 +1852,58 @@ async function loadVideoCards() {
     return setCount * (cardW + gap);
   }
   let setWidth = 0;
+
+  // Manual drag/scroll while animation is running
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartPos = 0;
+  let dragMoved = false;
+
+  function normalizePos() {
+    if (!setWidth) setWidth = getSetWidth();
+    if (!setWidth) return;
+    pos = ((pos % setWidth) + setWidth) % setWidth;
+  }
+
+  function onDragStart(clientX) {
+    isDragging = true;
+    paused = true;
+    dragMoved = false;
+    dragStartX = clientX;
+    dragStartPos = pos;
+    wrap.style.cursor = 'grabbing';
+  }
+  function onDragMove(clientX) {
+    if (!isDragging) return;
+    const delta = clientX - dragStartX;
+    if (Math.abs(delta) > 3) dragMoved = true;
+    pos = dragStartPos - delta;
+    normalizePos();
+    track.style.transform = `translateX(-${pos}px)`;
+  }
+  function onDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    paused = false;
+    wrap.style.cursor = 'grab';
+  }
+
+  if (wrap) {
+    wrap.style.cursor = 'grab';
+    wrap.addEventListener('mousedown', (e) => { onDragStart(e.clientX); e.preventDefault(); });
+    window.addEventListener('mousemove', (e) => onDragMove(e.clientX));
+    window.addEventListener('mouseup', onDragEnd);
+
+    wrap.addEventListener('touchstart', (e) => { onDragStart(e.touches[0].clientX); }, { passive: true });
+    wrap.addEventListener('touchmove', (e) => onDragMove(e.touches[0].clientX), { passive: true });
+    wrap.addEventListener('touchend', onDragEnd);
+
+    // Prevent click-through to a video link right after a drag
+    wrap.addEventListener('click', (e) => {
+      if (dragMoved) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+  }
+
   function animate() {
     if (!setWidth) setWidth = getSetWidth();
     if (!paused) {
