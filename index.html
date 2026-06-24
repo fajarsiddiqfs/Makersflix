@@ -538,7 +538,7 @@
     width: max-content;
     will-change: transform;
   }
-  .videos-scroll-wrap:hover .videos-scroll { animation-play-state: paused; }
+  /* hover pause handled by JS */
   .video-card {
     width: 280px; height: 420px; border-radius: 16px;
     background: #222; overflow: hidden; flex-shrink: 0;
@@ -1838,12 +1838,9 @@ async function loadVideoCards() {
   // JS-driven seamless marquee: scroll by exact width of one set
   const setCount = realVideos.length;
   let pos = 0;
-  let paused = false;
+  let autoPaused = false;  // paused by user interaction (drag/hover)
   const wrap = document.querySelector('.videos-scroll-wrap');
-  if (wrap) {
-    wrap.addEventListener('mouseenter', () => paused = true);
-    wrap.addEventListener('mouseleave', () => { if (!isDragging) paused = false; });
-  }
+
   function getSetWidth() {
     const cards = track.querySelectorAll('.video-card');
     if (!cards.length) return 0;
@@ -1867,11 +1864,11 @@ async function loadVideoCards() {
 
   function onDragStart(clientX) {
     isDragging = true;
-    paused = true;
+    autoPaused = true;
     dragMoved = false;
     dragStartX = clientX;
     dragStartPos = pos;
-    wrap.style.cursor = 'grabbing';
+    if (wrap) wrap.style.cursor = 'grabbing';
   }
   function onDragMove(clientX) {
     if (!isDragging) return;
@@ -1884,19 +1881,40 @@ async function loadVideoCards() {
   function onDragEnd() {
     if (!isDragging) return;
     isDragging = false;
-    paused = false;
-    wrap.style.cursor = 'grab';
+    autoPaused = false;
+    if (wrap) wrap.style.cursor = 'grab';
   }
 
   if (wrap) {
     wrap.style.cursor = 'grab';
+
+    // Mouse drag
     wrap.addEventListener('mousedown', (e) => { onDragStart(e.clientX); e.preventDefault(); });
     window.addEventListener('mousemove', (e) => onDragMove(e.clientX));
     window.addEventListener('mouseup', onDragEnd);
 
+    // Touch swipe
     wrap.addEventListener('touchstart', (e) => { onDragStart(e.touches[0].clientX); }, { passive: true });
-    wrap.addEventListener('touchmove', (e) => onDragMove(e.touches[0].clientX), { passive: true });
+    wrap.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      onDragMove(e.touches[0].clientX);
+    }, { passive: true });
     wrap.addEventListener('touchend', onDragEnd);
+
+    // Mouse wheel / trackpad horizontal scroll
+    wrap.addEventListener('wheel', (e) => {
+      // Use horizontal delta if available, otherwise vertical
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(delta) < 2) return;
+      e.preventDefault();
+      pos += delta;
+      normalizePos();
+      track.style.transform = `translateX(-${pos}px)`;
+      // Briefly pause auto-scroll after wheel interaction
+      autoPaused = true;
+      clearTimeout(wrap._wheelTimer);
+      wrap._wheelTimer = setTimeout(() => { autoPaused = false; }, 800);
+    }, { passive: false });
 
     // Prevent click-through to a video link right after a drag
     wrap.addEventListener('click', (e) => {
@@ -1906,7 +1924,7 @@ async function loadVideoCards() {
 
   function animate() {
     if (!setWidth) setWidth = getSetWidth();
-    if (!paused) {
+    if (!autoPaused) {
       pos += 0.6;
       if (pos >= setWidth) pos -= setWidth;
       track.style.transform = `translateX(-${pos}px)`;
@@ -1920,8 +1938,6 @@ loadVideoCards();
 
 // Populate hero carousel cards with the same videos/thumbnails used in Works section
 async function loadHeroCards() {
-  const heroCards = document.querySelectorAll('.hero-card[data-vidx]');
-  if (!heroCards.length) return;
   const thumbCache = {};
   await Promise.all(realVideos.map(async (v, i) => {
     if (!v.oembedUrl) return;
@@ -1939,7 +1955,8 @@ async function loadHeroCards() {
     return `https://images.weserv.nl/?url=${encodeURIComponent(url.replace(/^https?:\/\//, ''))}`;
   }
 
-  heroCards.forEach(card => {
+  // Apply data to a single hero card element
+  function applyHeroCard(card) {
     const idx = parseInt(card.getAttribute('data-vidx'), 10);
     const v = realVideos[idx];
     if (!v) return;
@@ -1957,14 +1974,20 @@ async function loadHeroCards() {
         ? `linear-gradient(160deg, ${v.fallbackColor}cc, ${v.fallbackColor})`
         : ph.style.background;
       ph.innerHTML = `${getPlatformIcon(v.platform)}<span style="margin-top:6px;">${v.handle}</span>`;
-      ph.querySelector('svg').style.width = '20px';
-      ph.querySelector('svg').style.height = '20px';
-      ph.querySelector('svg').style.opacity = '0.9';
-      ph.querySelector('svg').style.color = '#ffffff';
-      ph.querySelector('span').style.color = 'rgba(255,255,255,0.85)';
-      ph.querySelector('span').style.fontSize = '10px';
-      ph.querySelector('span').style.letterSpacing = '0.5px';
-      ph.querySelector('span').style.textTransform = 'none';
+      const svg = ph.querySelector('svg');
+      if (svg) {
+        svg.style.width = '20px';
+        svg.style.height = '20px';
+        svg.style.opacity = '0.9';
+        svg.style.color = '#ffffff';
+      }
+      const span = ph.querySelector('span');
+      if (span) {
+        span.style.color = 'rgba(255,255,255,0.85)';
+        span.style.fontSize = '10px';
+        span.style.letterSpacing = '0.5px';
+        span.style.textTransform = 'none';
+      }
     }
 
     // Small platform badge, consistent with Works cards
@@ -1988,9 +2011,14 @@ async function loadHeroCards() {
     } else {
       img && (img.style.opacity = '0');
     }
-  });
+  }
+
+  // Apply to ALL hero cards — including clones created by the infinite-scroll JS
+  document.querySelectorAll('.hero-card[data-vidx]').forEach(applyHeroCard);
 }
-loadHeroCards();
+
+// Run after a small delay to ensure the infinite-scroll JS has cloned the cards
+setTimeout(loadHeroCards, 100);
 
 // Testimonials carousel
 let slideIndex = 0;
