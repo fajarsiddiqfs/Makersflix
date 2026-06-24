@@ -241,20 +241,45 @@
 
   /* Featured pricing card: no special treatment */
 
-  /* HERO */
-  .hero {
+  /* =============================================
+     HERO — split: left 45% copy | right 55% columns
+     ============================================= */
+  .hero-outer {
     min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center;
-    padding: 120px 24px 60px;
-    position: relative; overflow: hidden;
+    display: flex;
+    overflow: hidden;
+    position: relative;
   }
+
+  .hero {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* LEFT — takes remaining space */
+  .hero-left {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 120px 56px 80px 8%;
+    z-index: 2;
+    box-sizing: border-box;
+  }
+
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--card-bg); border: 1px solid var(--border);
     padding: 6px 16px 6px 8px; border-radius: 100px;
     font-size: 12px; font-weight: 400; color: var(--text-muted);
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     animation: fadeSlideDown 0.8s ease forwards;
     opacity: 0;
   }
@@ -263,11 +288,11 @@
 
   .hero h1 {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(36px, 4.5vw, 68px);
-    font-weight: 400;
+    font-size: clamp(34px, 3.6vw, 64px);
+    font-weight: 800;
     line-height: 1.05;
-    letter-spacing: -3px;
-    max-width: 900px;
+    letter-spacing: -2.5px;
+    text-align: left;
     opacity: 0;
     animation: fadeSlideUp 0.9s 0.2s ease forwards;
   }
@@ -276,35 +301,35 @@
     font-family: 'Instrument Serif', serif;
     font-style: italic;
     font-weight: 400;
-    letter-spacing: -3px;
+    letter-spacing: -2.5px;
   }
   .hero h1 .viral-wrap {
-    display: inline-flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 10px;
   }
   .viral-icon {
-    display: inline-flex;
-    color: #00F2EA;
+    display: inline-flex; color: #00F2EA;
     align-items: center; justify-content: center;
-    animation: spin 6s linear infinite;
-    flex-shrink: 0;
+    animation: spin 6s linear infinite; flex-shrink: 0;
   }
-  .viral-icon svg { width: 52px; height: 52px; }
+  .viral-icon svg { width: 38px; height: 38px; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
   .hero-sub {
-    font-size: 16px; color: var(--text-muted); margin-top: 20px; margin-bottom: 36px;
+    font-size: 15px; color: var(--text-muted);
+    margin-top: 24px; margin-bottom: 40px;
+    max-width: 380px; line-height: 1.7;
     opacity: 0;
     animation: fadeSlideUp 0.9s 0.4s ease forwards;
   }
   .hero-btns {
-    display: flex; gap: 14px; align-items: center;
+    display: flex; gap: 16px; align-items: center;
     opacity: 0;
     animation: fadeSlideUp 0.9s 0.55s ease forwards;
   }
   .btn-primary {
     background: var(--orange); color: #FFFFFF;
     padding: 14px 28px; border-radius: 100px;
-    font-size: 14px; font-weight: 400; text-decoration: none;
+    font-size: 14px; font-weight: 500; text-decoration: none;
     transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px;
   }
   .btn-primary:hover { background: var(--white); color: #121212; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
@@ -317,17 +342,84 @@
   }
   .btn-secondary:hover { color: #00F2EA; border-color: #00F2EA; }
 
-  .hero-video-wrap {
-    margin-top: 56px; width: 100%; max-width: 900px;
-    border-radius: 20px; overflow: hidden;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
-    position: relative;
+  /* =============================================
+     RIGHT — 3 infinite-scrolling columns
+     ============================================= */
+  .hero-right {
+    flex: 0 0 42%;
+    width: 42%;
+    height: 100vh;
+    display: flex;
+    gap: 8px;
+    padding: 0 24px 0 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%, rgba(0,0,0,0.6) 8%, #000 18%,
+      #000 82%, rgba(0,0,0,0.6) 92%, transparent 100%);
+    mask-image: linear-gradient(to bottom,
+      transparent 0%, rgba(0,0,0,0.6) 8%, #000 18%,
+      #000 82%, rgba(0,0,0,0.6) 92%, transparent 100%);
     opacity: 0;
-    animation: fadeSlideUp 1s 0.7s ease forwards;
+    animation: fadeIn 1s 0.5s ease forwards;
   }
-  .hero-video-wrap video, .hero-video-wrap img {
-    width: 100%; height: 460px; object-fit: cover; display: block;
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* Each column — JS will set translateY and scroll infinitely */
+  .hero-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    will-change: transform;
   }
+
+  /* Each card — strict 9:16 vertical video ratio */
+  .hero-card {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #151525;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .hero-card img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+  }
+  .hero-card:hover img { transform: scale(1.04); }
+
+  /* Placeholder tile */
+  .hero-card-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+    background: linear-gradient(160deg, #1c1c2e 0%, #16213e 55%, #0f3460 100%);
+    color: #2a3a5a;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-family: 'Inter', sans-serif; text-align: center; padding: 12px;
+  }
+  .hero-card-placeholder svg { width: 24px; height: 24px; opacity: 0.15; stroke: #4a6fa5; }
+  .hero-card-placeholder span { color: #3a4a6a; }
+
+  /* ── Responsive ── */
+  @media (max-width: 1200px) {
+    .hero-left { padding-left: 6%; padding-right: 40px; }
+  }
+  @media (max-width: 960px) {
+    .hero-left { flex: 0 0 50%; width: 50%; padding-left: 5%; padding-right: 32px; }
+    .hero-right { flex: 0 0 50%; width: 50%; }
+  }
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; align-items: stretch; min-height: auto; }
+    .hero-left { flex: none; width: 100%; padding: 120px 24px 40px 24px; }
+    .hero-right { flex: none; width: 100%; height: 420px; padding: 0 16px; }
+  }
+
+  /* keep old .hero-video-wrap hidden */
+  .hero-video-wrap { display: none; }
 
   /* TRUSTED LOGOS */
   .trusted {
@@ -827,40 +919,70 @@
 <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 <!-- HERO -->
 <main id="main-content">
+<div class="hero-outer">
 <section class="hero">
-  <div class="hero-badge">
-    <div class="dot"></div>
-    Trusted by creators, influencers, and growing brands.
-  </div>
-  <h1>
-    Done-for-You<br>
-    <span class="highlight">Shorts, Reels</span>
-    <span class="viral-wrap">
-      <span class="viral-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+
+  <!-- LEFT: copy + CTA -->
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="dot"></div>
+      Trusted by creators, influencers, and growing brands.
+    </div>
+    <h1>
+      Done-for-You<br>
+      <span class="highlight">Shorts, Reels</span><br>
+      <span class="viral-wrap">
+        <span class="viral-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </span>
+        &amp; <span style="color:#00F2EA;">Launch Videos</span>
       </span>
-      & <span style="color:#00F2EA;">Launch Videos</span>
-    </span>
-  </h1>
-  <p class="hero-sub">Launch videos (30s), UGC content (60s), and storytelling vlogs (120s) — delivered in 48 hrs.</p>
-  <div class="hero-btns">
-    <a href="#pricing" class="btn-primary">Get Started
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-    <a href="#works" class="btn-secondary">See Our Work
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-    </a>
+    </h1>
+    <p class="hero-sub">Launch videos (30s), UGC content (60s), and storytelling vlogs (120s) — delivered in 48 hrs.</p>
+    <div class="hero-btns">
+      <a href="#pricing" class="btn-primary">Get Started
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#works" class="btn-secondary">See Our Work
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
   </div>
-  <div class="hero-video-wrap">
-    <iframe
-      src="https://www.youtube.com/embed/MQ5p-FaURAQ?autoplay=1&mute=1&loop=1&playlist=MQ5p-FaURAQ&controls=0&modestbranding=1&playsinline=1&rel=0"
-      style="width:100%;height:460px;border:none;display:block;"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-      title="Showreel"
-    ></iframe>
+
+  <!--
+    RIGHT — 3 infinite-scrolling vertical columns.
+    To use your own images:
+      1. Create an  images/  folder next to index.html
+      2. Add portrait images named slide1.jpg … slide12.jpg (1080×1920 recommended)
+    Columns 1 & 3 scroll UP, column 2 scrolls DOWN for a parallax feel.
+    JS below handles the seamless infinite loop via requestAnimationFrame.
+  -->
+  <div class="hero-right" id="heroRight">
+    <!-- Column 1 (scrolls UP) -->
+    <div class="hero-col" id="col1">
+      <div class="hero-card"><img src="images/slide1.jpg"  alt="Sample 1"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide1.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide2.jpg"  alt="Sample 2"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide2.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide3.jpg"  alt="Sample 3"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide3.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide4.jpg"  alt="Sample 4"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide4.jpg</span></div></div>
+    </div>
+    <!-- Column 2 (scrolls DOWN) -->
+    <div class="hero-col" id="col2">
+      <div class="hero-card"><img src="images/slide5.jpg"  alt="Sample 5"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide5.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide6.jpg"  alt="Sample 6"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide6.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide7.jpg"  alt="Sample 7"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide7.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide8.jpg"  alt="Sample 8"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide8.jpg</span></div></div>
+    </div>
+    <!-- Column 3 (scrolls UP, slightly faster) -->
+    <div class="hero-col" id="col3">
+      <div class="hero-card"><img src="images/slide9.jpg"  alt="Sample 9"  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide9.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide10.jpg" alt="Sample 10" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide10.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide11.jpg" alt="Sample 11" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide11.jpg</span></div></div>
+      <div class="hero-card"><img src="images/slide12.jpg" alt="Sample 12" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-card-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M21 15l-5-5L5 21"/></svg><span>slide12.jpg</span></div></div>
+    </div>
   </div>
+
 </section>
+</div><!-- /hero-outer -->
 
 <!-- TRUSTED -->
 <div class="trusted">
@@ -1874,6 +1996,63 @@ function closeModal() {
   setTimeout(() => { modal.style.display = 'none'; }, 300);
   document.body.style.overflow = '';
 }
+
+// ── Hero columns: true infinite scroll via requestAnimationFrame ──
+(function () {
+  // Config: pixels per second for each column
+  // positive = scroll UP, negative = scroll DOWN
+  var speeds = { col1: 40, col2: -32, col3: 48 };
+
+  function initCol(id, pxPerSec) {
+    var col = document.getElementById(id);
+    if (!col) return;
+
+    // Clone all original cards and append (so we have 2 full sets = seamless loop)
+    var origCards = Array.from(col.children);
+    origCards.forEach(function (c) { col.appendChild(c.cloneNode(true)); });
+
+    var offset = 0;
+    // For down-scrolling columns, start at -half so first card visible immediately
+    if (pxPerSec < 0) {
+      // measure after paint
+      requestAnimationFrame(function () {
+        var half = col.scrollHeight / 2;
+        offset = -half;
+        col.style.transform = 'translateY(' + offset + 'px)';
+      });
+    }
+
+    var lastTime = null;
+    function tick(now) {
+      if (lastTime === null) { lastTime = now; }
+      var dt = (now - lastTime) / 1000; // seconds
+      lastTime = now;
+
+      offset -= pxPerSec * dt; // move up (negative pxPerSec moves down)
+
+      var half = col.scrollHeight / 2;
+      if (half <= 0) { requestAnimationFrame(tick); return; }
+
+      // Wrap: when scrolled past the first half, jump back by half
+      if (pxPerSec > 0 && offset <= -half) { offset += half; }
+      // Wrap for downward scroll
+      if (pxPerSec < 0 && offset >= 0) { offset -= half; }
+
+      col.style.transform = 'translateY(' + offset + 'px)';
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Wait for layout to settle before reading heights
+  window.addEventListener('load', function () {
+    Object.keys(speeds).forEach(function (id) { initCol(id, speeds[id]); });
+  });
+  // Fallback if load already fired
+  if (document.readyState === 'complete') {
+    Object.keys(speeds).forEach(function (id) { initCol(id, speeds[id]); });
+  }
+})();
 </script>
 <!-- EXAMPLES MODAL -->
 <div class="examples-modal-overlay" id="examplesOverlay" onclick="closeModal()"></div>
