@@ -346,12 +346,12 @@
      RIGHT — 3 infinite-scrolling columns
      ============================================= */
   .hero-right {
-    flex: 0 0 42%;
-    width: 42%;
+    flex: 0 0 auto;
+    width: auto;
     height: 100vh;
     display: flex;
-    gap: 8px;
-    padding: 0 170px 0 12px;
+    gap: 16px;
+    padding: 0 36px 0 0;
     box-sizing: border-box;
     overflow: hidden;
     -webkit-mask-image: linear-gradient(to bottom,
@@ -367,21 +367,22 @@
 
   /* Each column — JS will set translateY and scroll infinitely */
   .hero-col {
-    flex: 1;
+    flex: 0 0 200px;
+    width: 200px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
     will-change: transform;
   }
 
   /* Each card — strict 9:16 vertical video ratio */
   .hero-card {
-    width: 100%;
-    aspect-ratio: 2 / 3;
-    border-radius: 14px;
+    width: 200px;
+    height: 300px;
+    flex-shrink: 0;
+    border-radius: 16px;
     overflow: hidden;
     background: #151525;
-    flex-shrink: 0;
     position: relative;
     display: block;
     text-decoration: none;
@@ -389,7 +390,9 @@
   .hero-card img.hero-card-img {
     width: 100%; height: 100%;
     object-fit: cover; display: block;
-    transition: transform 0.4s ease;
+    position: absolute; inset: 0; z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
   .hero-card:hover img.hero-card-img { transform: scale(1.04); }
   .hero-card-badge {
@@ -404,12 +407,13 @@
   /* Placeholder tile */
   .hero-card-placeholder {
     position: absolute; inset: 0;
-    display: none; flex-direction: column;
+    display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: 8px;
     background: linear-gradient(160deg, #1c1c2e 0%, #16213e 55%, #0f3460 100%);
     color: #2a3a5a;
     font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
     font-family: 'Inter', sans-serif; text-align: center; padding: 12px;
+    z-index: 1;
   }
   .hero-card-placeholder svg { width: 24px; height: 24px; opacity: 0.15; stroke: #4a6fa5; }
   .hero-card-placeholder span { color: #3a4a6a; }
@@ -420,7 +424,9 @@
   }
   @media (max-width: 960px) {
     .hero-left { flex: 0 0 50%; width: 50%; padding-left: 5%; padding-right: 12px; }
-    .hero-right { flex: 0 0 50%; width: 50%; }
+    .hero-right { flex: 0 0 50%; width: 50%; padding: 0 16px 0 0; }
+    .hero-col { width: 100%; flex: 1; }
+    .hero-card { width: 100%; height: auto; aspect-ratio: 2 / 3; }
   }
   @media (max-width: 768px) {
     .hero { flex-direction: column; align-items: stretch; min-height: auto; }
@@ -432,6 +438,8 @@
     .hero-btns { justify-content: center; }
     .hero-badge { align-self: center; }
     .hero-right { flex: none; width: 100%; height: 420px; padding: 0 16px; }
+    .hero-col { width: 100%; flex: 1; }
+    .hero-card { width: 100%; height: auto; aspect-ratio: 2 / 3; }
   }
 
   /* keep old .hero-video-wrap hidden */
@@ -1860,15 +1868,17 @@ async function loadHeroCards() {
     }
 
     if (img && thumb) {
+      const finalFallback = () => { img.style.opacity = '0'; };
       const tryProxy = () => {
-        img.onerror = () => { img.style.display = 'none'; if (ph) ph.style.display = 'flex'; };
+        img.onload = () => { img.style.opacity = '1'; };
+        img.onerror = finalFallback;
         img.src = proxiedUrl(thumb);
       };
+      img.onload = () => { img.style.opacity = '1'; };
       img.onerror = tryProxy;
       img.src = thumb;
     } else {
-      if (img) img.style.display = 'none';
-      if (ph) ph.style.display = 'flex';
+      img && (img.style.opacity = '0');
     }
   });
 }
