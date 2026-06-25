@@ -2370,5 +2370,13 @@ function closeModal() {
   <div class="examples-modal-grid" id="modalGrid"></div>
 </div>
 
+  <!-- Prevent page scroll on Cal.com buttons -->
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('[data-cal-link]')) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
