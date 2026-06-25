@@ -867,10 +867,11 @@
 
   @media (max-width: 768px) {
     nav { padding: 10px 14px; }
-    .nav-inner { padding: 8px 8px 8px 14px; gap: 10px; }
+    .nav-inner { padding: 8px 8px 8px 14px; gap: 10px; justify-content: space-between; }
     .nav-links { display: none; }
     .nav-cta { display: none; }
-    .hamburger { display: flex; }
+    .nav-cta-group { display: none !important; }
+    .hamburger { display: flex; margin-left: auto; }
 
     /* Hero */
     .hero { padding: 110px 20px 50px; text-align: center; }
@@ -905,8 +906,8 @@
     .videos-scroll { padding: 0 20px; gap: 12px; }
 
     /* Stats */
-    .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .stat-item { padding: 28px 20px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 1px; }
+    .stat-item { padding: 28px 24px; }
     .stat-num { font-size: 40px; }
 
     /* About */
@@ -966,7 +967,7 @@
   @media (max-width: 480px) {
     .hero h1 { font-size: clamp(32px, 11vw, 46px); letter-spacing: -2px; }
     .nav-cta { display: none; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
     .hero-btns .btn-primary { display: flex; }
   }
 </style>
@@ -998,7 +999,7 @@
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <div style="display:inline-flex;align-items:center;gap:10px;flex-shrink:0;">
+  <div class="nav-cta-group" style="display:inline-flex;align-items:center;gap:10px;flex-shrink:0;">
     <div style="display:inline-flex;align-items:center;gap:6px;">
       <span style="font-size:11px;color:var(--text-muted);letter-spacing:0.3px;white-space:nowrap;">Tools we use:</span>
       <img src="images/capcut.png" alt="CapCut" style="height:16px;width:auto;opacity:0.7;vertical-align:middle;" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/><span style="display:none;font-size:11px;color:var(--text-muted);">CapCut</span>
