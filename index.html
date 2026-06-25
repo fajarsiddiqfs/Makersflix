@@ -692,6 +692,34 @@
   .cta-benefit-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
   .cta-benefit-text span { font-size: 12px; opacity: 0.7; }
 
+  /* TESTIMONIALS */
+  .testimonials-section { background: var(--bg); }
+  .testimonials-carousel { position: relative; }
+  .testimonials-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 0; align-items: stretch; }
+  .testimonial-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px; min-width: 0;
+    display: flex; flex-direction: column;
+  }
+  .test-profile { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-shrink: 0; }
+  .test-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--card-bg); overflow: hidden; flex-shrink: 0; }
+  .test-avatar-inner { width: 100%; height: 100%; background: linear-gradient(135deg, #FF004F, #00F2EA); display: flex; align-items: center; justify-content: center; font-weight: 400; font-size: 18px; color: white; }
+  .test-handle { font-weight: 400; font-size: 14px; }
+  .test-followers { font-size: 12px; color: var(--text-muted); }
+  .test-quote { font-family: 'Inter', sans-serif; font-style: normal; font-size: 14px; line-height: 1.6; flex: 1; margin-bottom: 0; }
+  .test-stats { display: flex; gap: 24px; padding-top: 16px; border-top: 1px solid var(--border); flex-shrink: 0; margin-top: auto; }
+  .test-stat-num { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 400; color: #00F2EA; }
+  .test-stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0px; }
+  .carousel-controls { display: flex; gap: 12px; margin-top: 32px; justify-content: center; }
+  .carousel-btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border);
+    background: var(--card-bg); cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .carousel-btn svg { width: 18px; height: 18px; }
+  .carousel-btn:hover { border-color: #00F2EA; background: #00F2EA; color: #121212; }
+  .carousel-btn:hover svg { stroke: #121212; }
+
   /* PRICING */
   .pricing-section { background: var(--bg); }
   .pricing-toggle { display: flex; gap: 0; background: var(--card-bg); border-radius: 100px; padding: 4px; margin: 0 auto 48px; width: fit-content; }
@@ -901,6 +929,11 @@
     .cta-block { grid-template-columns: 1fr; padding: 32px 24px; gap: 32px; text-align: center; }
     .cta-block .btn-primary, .cta-block .btn-secondary { width: 100%; justify-content: center; }
 
+    /* Testimonials */
+    .testimonials-track { grid-template-columns: 1fr; padding: 0; }
+    .testimonial-card { min-width: 0; max-width: 100%; padding: 24px 20px; height: auto; }
+    .test-quote { -webkit-line-clamp: unset; display: block; overflow: visible; }
+
     /* Pricing */
     .pricing-grid { grid-template-columns: 1fr; gap: 16px; }
     .pricing-landscape-grid { grid-template-columns: 1fr; }
@@ -1017,7 +1050,7 @@
         &amp; <span style="color:#00F2EA;">Launch Videos</span>
       </span>
     </h1>
-    <p class="hero-sub" style="white-space:nowrap;">Founded by <a href="https://fajarsiddiq.com/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--text);text-decoration:none;transition:color 0.2s;vertical-align:middle;" onmouseover="this.style.color='#00F2EA'" onmouseout="this.style.color='var(--text)'"><img src="images/fajar.webp" alt="Fajar Siddiq" style="width:22px;height:22px;border-radius:50%;object-fit:cover;display:inline-block;vertical-align:middle;flex-shrink:0;"/>Fajar Siddiq</a> — AI-powered for modern brands.</p>
+    <p class="hero-sub" style="white-space:nowrap;">Founded by <a href="https://fajarsiddiq.com/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:var(--text);text-decoration:none;transition:color 0.2s;vertical-align:middle;" onmouseover="this.style.color='#00F2EA'" onmouseout="this.style.color='var(--text)'"><img src="images/fajar.webp" alt="Fajar Siddiq" style="width:1em;height:1em;border-radius:50%;object-fit:cover;display:inline-block;vertical-align:middle;flex-shrink:0;"/>Fajar Siddiq</a> — AI-powered for modern brands.</p>
     <div class="hero-btns">
       <a href="#" class="btn-primary" data-cal-link="fajarsiddiq/euphorya-partnerships-sponsorships" data-cal-namespace="euphorya-partnerships-sponsorships" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'>Get Started
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1177,7 +1210,7 @@
   <div class="about-inner section-inner">
     <div class="section-tag reveal">Why MakersFlix</div>
     <p class="about-text reveal reveal-delay-1">
-      We're a <span class="hl">done-for-you editing agency</span> by <a href="https://euphorya.co" target="_blank" rel="noopener noreferrer" style="color:#00F2EA;text-decoration:none;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Euphorya</a> for creators and brands who want to grow faster on social. We turn raw footage into <span class="hl">scroll-stopping Reels, Shorts &amp; Launch Videos</span> — delivered fast, built to perform. Founded by <a href="https://fajarsiddiq.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:#00F2EA;text-decoration:none;vertical-align:middle;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><img src="images/fajar.webp" alt="Fajar Siddiq" style="width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;"/>Fajar Siddiq</a>
+      We're a <span class="hl">done-for-you editing agency</span> by <a href="https://euphorya.co" target="_blank" rel="noopener noreferrer" style="color:#00F2EA;text-decoration:none;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Euphorya</a> for creators and brands who want to grow faster on social. We turn raw footage into <span class="hl">scroll-stopping Reels, Shorts &amp; Launch Videos</span> — delivered fast, built to perform. Founded by <a href="https://fajarsiddiq.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:#00F2EA;text-decoration:none;vertical-align:middle;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><img src="images/fajar.webp" alt="Fajar Siddiq" style="width:1em;height:1em;border-radius:50%;object-fit:cover;flex-shrink:0;"/>Fajar Siddiq</a>
     </p>
     <div class="card-gradient-wrap reveal reveal-delay-2" style="display:block;">
     <div class="stats-grid" style="border-radius:18.5px; overflow:hidden; border:none;">
@@ -1268,6 +1301,107 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="section-tag reveal" style="margin: 0 auto 16px;">Customer Reviews</div>
+      <h2 class="section-title reveal reveal-delay-1">Creators who grew with <span class="cursive">MakersFlix</span></h2>
+    </div>
+  </div>
+  <div class="section-inner">
+  <div class="testimonials-carousel">
+    <div class="testimonials-track" id="testimonialsTrack">
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#FF004F;">M</div></div>
+          <div>
+            <div class="test-handle">@coachmatt_fit</div>
+            <div class="test-followers">112k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"They don't just edit — they understand what works. Every Reel had a strong hook, clean transitions, and it performed."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">28M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">40k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#00F2EA; color:#121212;">A</div></div>
+          <div>
+            <div class="test-handle">@adam_alvi</div>
+            <div class="test-followers">34k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"Their editing completely changed my content game. The Reels they delivered were snappy, on-trend, and exactly what my audience loves."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">12M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">18k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#FF004F;">R</div></div>
+          <div>
+            <div class="test-handle">@reelqueen_</div>
+            <div class="test-followers">78k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"I never thought my Reels could look this professional. Their edits made my brand feel premium — and the growth? Unreal."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">54M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">62k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#00F2EA; color:#121212;">J</div></div>
+          <div>
+            <div class="test-handle">@jakelifts</div>
+            <div class="test-followers">55k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"Went from 10k to 55k followers in three months. MakersFlix's team knows exactly what performs and they deliver every single time."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">19M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">45k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#FF004F;">S</div></div>
+          <div>
+            <div class="test-handle">@sarahcreates</div>
+            <div class="test-followers">91k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"Honestly the best investment I made for my brand. The turnaround is fast, the quality is high, and I finally feel consistent."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">31M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">53k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-profile">
+          <div class="test-avatar"><div class="test-avatar-inner" style="background:#00F2EA; color:#121212;">D</div></div>
+          <div>
+            <div class="test-handle">@danielvlogs</div>
+            <div class="test-followers">47k Followers</div>
+          </div>
+        </div>
+        <p class="test-quote">"MakersFlix gets it. Clean cuts, great pacing, captions that actually look good. My watch time doubled within the first month."</p>
+        <div class="test-stats">
+          <div><div class="test-stat-num">9M+</div><div class="test-stat-label">Views gained</div></div>
+          <div><div class="test-stat-num">29k+</div><div class="test-stat-label">Followers gained</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
 </section>
 
 <!-- PRICING -->
@@ -1486,7 +1620,7 @@
         <div class="footer-col-title">Features</div>
         <ul class="footer-links">
           <li><a href="#services">Services</a></li>
-
+          <li><a href="#testimonials">Reviews</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#howitworks">How It Works</a></li>
         </ul>
@@ -1954,6 +2088,17 @@ async function loadHeroCards() {
 // Run after a small delay to ensure the infinite-scroll JS has cloned the cards
 setTimeout(loadHeroCards, 100);
 
+// Testimonials carousel
+let slideIndex = 0;
+const testimonialsTrack = document.getElementById('testimonialsTrack');
+function updateSlide() {
+  if(!testimonialsTrack) return;
+  const cardWidth = 360 + 24;
+  testimonialsTrack.style.transform = `translateX(calc(48px - ${slideIndex * cardWidth}px))`;
+}
+function nextSlide() { if(!testimonialsTrack) return; const max = testimonialsTrack.children.length - 2; slideIndex = Math.min(slideIndex + 1, max); updateSlide(); }
+function prevSlide() { if(!testimonialsTrack) return; slideIndex = Math.max(slideIndex - 1, 0); updateSlide(); }
+
 // FAQ
 function toggleFaq(el) {
   const item = el.parentElement;
@@ -1983,7 +2128,7 @@ function setYearly() {
 
 // Wrap cards in gradient border wrappers
 (function() {
-  const selectors = ['.service-item', '.pricing-card'];
+  const selectors = ['.service-item', '.testimonial-card', '.pricing-card'];
   selectors.forEach(sel => {
     document.querySelectorAll(sel).forEach(card => {
       const wrap = document.createElement('div');
