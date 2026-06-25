@@ -198,7 +198,9 @@
   .nav-cta img {
     width: 28px; height: 28px; border-radius: 50%;
     object-fit: cover; flex-shrink: 0;
-    border: 1.5px solid rgba(255,255,255,0.3);
+    border: none;
+    outline: none;
+    box-shadow: none;
   }
   .nav-cta:hover { opacity: 0.85; transform: scale(1.03); }
 
@@ -604,7 +606,24 @@
     font-size: 1.25em;
     line-height: 1;
   }
-  .videos-scroll-wrap { overflow: hidden; margin-top: 32px; padding: 0 48px; box-sizing: border-box; }
+  .videos-scroll-wrap {
+    overflow: hidden; margin-top: 32px; padding: 0; box-sizing: border-box;
+    position: relative;
+  }
+  .videos-scroll-wrap::before,
+  .videos-scroll-wrap::after {
+    content: '';
+    position: absolute; top: 0; bottom: 0;
+    width: 160px; z-index: 2; pointer-events: none;
+  }
+  .videos-scroll-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg) 0%, var(--bg) 20%, transparent 100%);
+  }
+  .videos-scroll-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg) 0%, var(--bg) 20%, transparent 100%);
+  }
   .videos-scroll {
     display: flex; gap: 16px;
     width: max-content;
@@ -1008,6 +1027,10 @@
     <div class="hero-badge">
       <div class="dot"></div>
       Short-Form Videos For Social Media Content.
+    </div>
+    <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <span style="font-size:11px;color:var(--text-muted);letter-spacing:0.3px;">Tools we use:</span>
+      <img src="images/capcut.png" alt="CapCut" style="height:18px;width:auto;opacity:0.75;vertical-align:middle;" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/><span style="display:none;font-size:11px;color:var(--text-muted);">CapCut</span>
     </div>
     <h1>
       Done-for-You<br>
