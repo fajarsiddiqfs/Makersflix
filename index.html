@@ -847,6 +847,21 @@
   .mobile-menu ul li:last-child a { border-bottom: none; }
   .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; padding: 8px; opacity: 0.7; }
   .mobile-menu-close:hover { opacity: 1; }
+  .mobile-book-cta {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; margin-top: 16px;
+    background: var(--orange); color: #fff;
+    padding: 13px 20px; border-radius: 100px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    border: none !important;
+    transition: opacity 0.2s;
+  }
+  .mobile-book-cta:hover { opacity: 0.85; color: #fff; }
+  .mobile-book-cta img {
+    width: 26px; height: 26px; border-radius: 50%;
+    object-fit: cover; flex-shrink: 0;
+    border: none; outline: none; box-shadow: none;
+  }
 
 
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -1020,7 +1035,7 @@
     <li><a href="#services" class="mobile-nav-link">Services</a></li>
     <li><a href="#pricing" class="mobile-nav-link">Pricing</a></li>
     <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
-    <li><a href="#" class="mobile-nav-link nav-cta" style="margin-top:8px;" data-cal-link="fajarsiddiq/euphorya-partnerships-sponsorships" data-cal-namespace="euphorya-partnerships-sponsorships" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'><img src="images/fajar.webp" alt="Fajar Siddiq"/>Book A Call</a></li>
+    <li><a href="#" class="mobile-book-cta" data-cal-link="fajarsiddiq/euphorya-partnerships-sponsorships" data-cal-namespace="euphorya-partnerships-sponsorships" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'><img src="images/fajar.webp" alt="Fajar Siddiq"/>Book A Call</a></li>
   </ul>
 </div>
 <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
